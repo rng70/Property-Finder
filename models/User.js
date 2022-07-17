@@ -38,7 +38,8 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     image: {
-        type: Media,
+        data: Buffer,
+        type: String,
         required: true
     },
     location: {

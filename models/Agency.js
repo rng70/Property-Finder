@@ -35,7 +35,13 @@ const agencySchema = new mongoose.Schema({
         ref: 'location'
     },
     images: {
-        type: [Media],
+        type: [
+            {
+                data: Buffer,
+                type: String,
+                required: false
+            }
+        ],
         required: false
     }
 });

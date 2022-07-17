@@ -3,7 +3,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next dev",
+    "__comment__": " it should be 'next start' but it doesn't work"
   },
   "dependencies": {
     "next": "latest",
