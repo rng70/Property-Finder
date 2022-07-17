@@ -4,6 +4,8 @@ const config = require('config');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../../models/User');
+const Agency = require('../../models/Agency');
+const Owner = require('../../models/Owner');
 const auth = require('../../middleware/auth');
 const { check, validationResult } = require('express-validator');
 
@@ -16,6 +18,18 @@ const { check, validationResult } = require('express-validator');
 router.get('/', auth, async (req, res) => {
     try {
         const user = await User.findById(req.user.id).select('-password');
+        if (!user) {
+            const agency = await Agency.findById(req.user.id).select('-password');
+            if (!agency) {
+                const owner = await Owner.findById(req.user.id).select('-password');
+                if (!owner) {
+                    return res.status(400).json({ msg: 'User not found' });
+                }
+                res.json(owner);
+            }
+            res.json(agency);
+        }
+
         res.json(user);
     } catch (err) {
         console.error(err.message);
@@ -52,7 +66,13 @@ router.post('/', [
         let user = await User.findOne({ email: email });
 
         if (!user) {
-            return res.status(400).json({errors: [{ msg: "Invalid Credentials"}] });
+            user = await Agency.findOne({ email: email });
+            if (!user) {
+                user = await Owner.findOne({ email: email });
+                if (!user) {
+                    return res.status(400).json({errors: [{ msg: "Invalid Credentials"}] });
+                }
+            }
         }
 
         /* Case-2: Match the email and password */
