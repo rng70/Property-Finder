@@ -1,7 +1,11 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-    name: {
+    firstName: {
+        type: String,
+        required: true
+    },
+    lastName: {
         type: String,
         required: true
     },
@@ -20,7 +24,27 @@ const userSchema = new mongoose.Schema({
     date: {
         type: Date,
         default: Date.now
-    }
+    },
+    dob: {
+        type: Date,
+        default: Date.now
+    },
+    phone: {
+        type: String,
+        required: true
+    },
+    nid: {
+        type: String,
+        required: true
+    },
+    image: {
+        type: Media,
+        required: true
+    },
+    location: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'location'
+    },
 });
 
 module.exports = User = mongoose.model('user', userSchema);
