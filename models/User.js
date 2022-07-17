@@ -7,7 +7,6 @@ const userSchema = new mongoose.Schema({
     },
     lastName: {
         type: String,
-        required: true
     },
     email: {
         type: String,
@@ -40,7 +39,6 @@ const userSchema = new mongoose.Schema({
     image: {
         data: Buffer,
         type: String,
-        required: true
     },
     location: {
         type: mongoose.Schema.Types.ObjectId,

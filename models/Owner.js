@@ -34,7 +34,6 @@ const ownerSchema = new mongoose.Schema({
     lastName: {
         type: String,
     }
-}
-);
+});
 
 module.exports = Owner = mongoose.model('owner', ownerSchema);

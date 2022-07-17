@@ -39,10 +39,8 @@ const agencySchema = new mongoose.Schema({
             {
                 data: Buffer,
                 type: String,
-                required: false
             }
         ],
-        required: false
     }
 });
 
