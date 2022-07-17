@@ -1,0 +1,38 @@
+// a mongoose schema with fields: owner, location, ownerType which is only one of the following: agency or persons, landArea in sq feet, land images, price and isSold which is only one of the following: true or false
+
+const mongoose = require('mongoose');
+
+const landSchema = new mongoose.Schema({
+    owner: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'user'
+    },
+    location: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'location'
+    },
+    ownerType: {
+        type: String,
+        enum: ['agency', 'person'],
+        required: true
+    },
+    landArea: {
+        type: Number,
+        required: true
+    },
+    landImages: {
+        type: [Media],
+        required: false
+    },
+    price: {
+        type: Number,
+        required: true
+    },
+    isSold: {
+        type: Boolean,
+        default: false
+    }
+}
+);
+
+module.exports = Land = mongoose.model('land', landSchema);
