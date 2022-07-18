@@ -11,27 +11,36 @@ const houseSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'location'
     },
-    basePrice: {
+    price: {
         type: Number,
+        required: true
     },
     noOfFloors: {
         type: Number,
+        required: true
     },
     type: {
         type: String,
         enum: ['residential', 'commercial'],
-        default: 'residential'
+        default: 'residential',
+        required: true
     },
     parkingSpaceArea: {
         type: Number,
     },
-    totalAreaInSqFt: {
+    landArea: {
         type: Number,
+        required: true
     },
     ownerType: {
         type: String,
         enum: ['agency', 'person'],
         default: 'agency'
+    },
+    isSold: {
+        type: Boolean,
+        default: false,
+        required: true
     }
 });
 

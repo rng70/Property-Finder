@@ -13,22 +13,27 @@ const spaceSchema = new mongoose.Schema({
     },
     price: {
         type: Number,
+        required: true
     },
     sellType: {
         type: String,
         enum: ['rent', 'sale'],
-        default: 'rent'
+        default: 'rent',
+        required: true
     },
     type: {
         type: String,
         enum: ['residential', 'commercial'],
-        default: 'residential'
+        default: 'residential',
+        required: true
     },
-    areaInSqFt: {
+    area: {
         type: Number,
+        required: true
     },
     noOfRooms: {
         type: Number,
+        required: true
     },
     noOfKitchens: {
         type: Number,
@@ -46,7 +51,7 @@ const spaceSchema = new mongoose.Schema({
         type: Number,
     },
     apartmentNo: {
-        type: Number,
+        type: Number
     },
     noOfFloors: {
         type: Number,
@@ -70,13 +75,15 @@ const spaceSchema = new mongoose.Schema({
     },
     isAvailable: {
         type: Boolean,
-        default: true
+        default: true,
+        required: true
     },
     spaceDetails: {
         type: String,
     },
-    whichFloor: {
-        type: Number,
+    whichFloors: {
+        type: [Number],
+        required: true
     }
 });
 

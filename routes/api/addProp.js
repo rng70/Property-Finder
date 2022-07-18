@@ -1,22 +1,31 @@
 const express = require('express');
 const router = express.Router();
 const { post } = require('request');
-const User = require('../../models/User')
-const Post = require('../../models/Post')
+const User = require('../../models/User');
+const Owner = require('../../models/Owner');
+const Agency = require('../../models/Agency');
+const Land = require('../../models/Land');
+const House = require('../../models/House');
+const Space = require('../../models/Space');
 const auth = require('../../middleware/auth');
 const { check, validationResult } = require('express-validator');
 
 /**
  * @route   POST api/posts
- * @desc    Create a post
+ * @desc    Create a addPropPost
  * @access  Private
  */ 
 
-router.post('/',
+/**
+ * @desc adding Land
+ */
+router.post('/addLand',
     [
         auth,
         [
-            check('text', 'Text is required').not().isEmpty()
+            check('landArea', 'Land Area is required').not().isEmpty().isNumeric(),
+            check('price', 'Price is required').not().isEmpty().isNumeric(),
+            check('isSold', 'Is Sold is required').not().isEmpty(),
         ]
     ],
     async (req, res) => {
@@ -26,23 +35,127 @@ router.post('/',
         }
 
         try {
-            const user = await User.findById(req.user.id).select('-password');
+            const owner = await Owner.findById(req.user.id).select('-password');
+            const type = 'person';
+            if (!owner) {
+                owner = await Agency.findById(req.user.id).select('-password');
+                type = 'agency';
+            }
 
-            const newPost = new Post({
-                text: req.body.text,
-                name: user.name,
-                avatar: user.avatar,
-                user: req.user.id
+            const newLand = new Land({
+                ownerType: type,
+                LandArea: req.body.LandArea,
+                price: req.body.price,
+                isSold: req.body.isSold,
+                name: owner.name,
+                avatar: owner.avatar,
+                owner: req.user.id
             });
 
-            const post = await newPost.save();
-            return res.json(post);
+            const land = await newLand.save();
+            return res.json(land);
+        } catch (err) {
+            console.error(err.message);
+            return res.status(500).send('Server Error');
+        }
+    });
+
+/**
+ * @desc adding House
+ */
+router.post('/addHouse',
+    [
+        auth,
+        [
+            check('landArea', 'Land Area is required').not().isEmpty().isNumeric(),
+            check('price', 'Price is required').not().isEmpty().isNumeric(),
+            check('isSold', 'Is Sold is required').not().isEmpty(),
+            check('noOfFloors', 'No of Floors is required').not().isEmpty().isNumeric(),
+            check('type', 'Type of House is required').not().isEmpty()
+        ]
+    ],
+    async (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
+
+        try {
+            const owner = await Owner.findById(req.user.id).select('-password');
+            const type = 'person';
+            if (!owner) {
+                owner = await Agency.findById(req.user.id).select('-password');
+                type = 'agency';
+            }
+
+            const newHouse = new House({
+                type: req.body.type,
+                noOfFloors: req.body.noOfFloors,
+                landArea: req.body.landArea,
+                price: req.body.price,
+                isSold: req.body.isSold,
+                ownerType: type,
+                name: owner.name,
+                avatar: owner.avatar,
+                owner: req.user.id
+            });
+
+            const house = await newHouse.save();
+            return res.json(house);
+        } catch (err) {
+            console.error(err.message);
+            return res.status(500).send('Server Error');
+        }
+    }); 
+
+/**
+ * @desc adding Space
+ */
+router.post('/addSpace',
+    [
+        auth,
+        [
+            check('landArea', 'Land Area is required').not().isEmpty().isNumeric(),
+            check('price', 'Price is required').not().isEmpty().isNumeric(),
+            check('isSold', 'Is Sold is required').not().isEmpty(),
+            check('noOfFloors', 'No of Floors is required').not().isEmpty().isNumeric(),
+            check('type', 'Type of House is required').not().isEmpty()
+        ]
+    ],
+    async (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
+
+        try {
+            const owner = await Owner.findById(req.user.id).select('-password');
+            if (!owner) {
+                owner = await Agency.findById(req.user.id).select('-password');
+            }
+
+            const newSpace = new Space({
+                type: req.body.type,
+                noOfRooms: req.body.noOfRooms,
+                area: req.body.area,
+                sellTyep: req.body.sellType,
+                price: req.body.price,
+                isSold: req.body.isSold,
+            });
+
+            const space = await newSpace.save();
+            return res.json(space);
         } catch (err) {
             console.error(err.message);
             return res.status(500).send('Server Error');
         }
 });
 
+
+
+
+
+//////////////////////////// unnecessary posts
 /**
  * @route   GET api/posts
  * @desc    Get all post

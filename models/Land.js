@@ -30,7 +30,12 @@ const landSchema = new mongoose.Schema({
     },
     isSold: {
         type: Boolean,
-        default: false
+        default: false,
+        required: true
+    },
+    landDetails: {
+        type: String,
+        required: false
     }
 }
 );
