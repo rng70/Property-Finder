@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 
 const ownerSchema = new mongoose.Schema({
-    contactNo: {
+    phone: {
         type: String,
         required: true
     },
@@ -11,7 +11,7 @@ const ownerSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    nidNumber: {
+    nid: {
         type: String,
         required: true
     },
@@ -33,7 +33,10 @@ const ownerSchema = new mongoose.Schema({
     },
     lastName: {
         type: String,
-    }
+    },
+    avatar: {
+        type: String
+    },
 });
 
 module.exports = Owner = mongoose.model('owner', ownerSchema);

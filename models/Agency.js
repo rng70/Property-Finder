@@ -41,6 +41,9 @@ const agencySchema = new mongoose.Schema({
                 type: String,
             }
         ],
+    },
+    avatar: {
+        type: String,
     }
 });
 
