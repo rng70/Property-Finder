@@ -71,7 +71,12 @@ const spaceSchema = new mongoose.Schema({
         type: Number,
     },
     image: {
-        type: [Media],
+        type: [
+            {
+                data: Buffer,
+                type: String,
+            }
+        ],
     },
     isAvailable: {
         type: Boolean,

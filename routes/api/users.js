@@ -16,10 +16,10 @@ const { check, validationResult } = require('express-validator');
  */ 
 
 router.post('/regUser', [
-    check('fname', 'First Name is required').not().isEmpty(),
+    check('firstName', 'First Name is required').not().isEmpty(),
     check('email', 'Please include a valid email').isEmail(),
     check('password', 'Please enter a password with 6 or more charactes').isLength({ min: 6 }),
-    check('phone', 'Please enter a valid phone number').isLength({ min: 11 }).startsWith('01'),
+    check('phone', 'Please enter a valid phone number').isLength({ min: 11 }),
     check('nid', 'Please enter a valid nid number').isLength({ min: 10 })
     
 ], async (req, res) => {
@@ -108,8 +108,8 @@ router.post('/regAgency', [
     check('name', 'First Name is required').not().isEmpty(),
     check('email', 'Please include a valid email').isEmail(),
     check('password', 'Please enter a password with 6 or more charactes').isLength({ min: 6 }),
-    check('tradeLicenseNO', 'Please enter a valid phone number').isLength({ min: 8 }),
-    check('yearOfEstablishment', 'Please enter a valid nid number').isDate()
+    check('tradeLicenseNo', 'Please enter a valid trade license number').isLength({ min: 8 }),
+    check('yearOfEstablishment', 'Please enter a year').isDate()
     
 ], async (req, res) => {
     const errors = validationResult(req);
@@ -118,7 +118,7 @@ router.post('/regAgency', [
         return res.status(400).json({ errors: errors.array() });
     }
 
-    const { name, email, password, tradeLicenseNO, yearOfEstablishment } = req.body;
+    const { name, email, password, tradeLicenseNo, yearOfEstablishment } = req.body;
     
     try {
         /**
@@ -148,7 +148,7 @@ router.post('/regAgency', [
             email,
             avatar,
             password,
-            tradeLicenseNO,
+            tradeLicenseNo,
             yearOfEstablishment
         })
 
@@ -195,7 +195,7 @@ router.post('/regOwner', [
     check('firstName', 'First Name is required').not().isEmpty(),
     check('email', 'Please include a valid email').isEmail(),
     check('password', 'Please enter a password with 6 or more charactes').isLength({ min: 6 }),
-    check('phone', 'Please enter a valid phone number').isLength({ min: 11 }).startsWith('01'),   
+    check('phone', 'Please enter a valid phone number').isLength({ min: 11 }),   
     check('nid', 'Please enter a valid nid number').not().isEmpty()
     
 ], async (req, res) => {

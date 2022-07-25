@@ -21,8 +21,12 @@ const landSchema = new mongoose.Schema({
         required: true
     },
     landImages: {
-        type: [Media],
-        required: false
+        type: [
+            {
+                data: Buffer,
+                type: String,
+            }
+        ],
     },
     price: {
         type: Number,

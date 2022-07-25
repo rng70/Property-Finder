@@ -37,6 +37,10 @@ const ownerSchema = new mongoose.Schema({
     avatar: {
         type: String
     },
+    password: {
+        type: String,
+        required: true
+    }
 });
 
 module.exports = Owner = mongoose.model('owner', ownerSchema);
