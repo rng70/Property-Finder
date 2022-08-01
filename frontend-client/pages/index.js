@@ -1,7 +1,15 @@
 import Head from 'next/head'
+import {useRouter} from "next/router"
+import Link from "next/link"
+import {getAllProperties} from '../dummy-data'
+import PropertyList from '../Components/Properties/PropertyList';
 import Image from 'next/image'
 
 const Home = () => {
+  const properties = getAllProperties();
+  const router = useRouter();
+  console.log(router.pathname);
+  console.log(router.query);
   return (
     <div className="flex min-h-screen flex-col items-center justify-center py-2">
       
@@ -10,26 +18,8 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <nav className="flex justify-between items-center px-8 py-3 fixed z-1 w-full top-0 opacity-90 bg-zinc-700 text-white">
-      <h1>
-        <a href="index.html"><i className="fas fa-code"></i> Property Finder</a>
-      </h1>
-      <ul className="flex">
-        <li><a href="profiles.html">Home</a></li>
-        <li><a href="register.html">Register</a></li>
-        <li><a href="login.html">Login</a></li>
-      </ul>
-      </nav>
-      
-      <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to Property Finder
-        </h1>
-      </main>
-
-      <footer className="flex h-24 w-full items-center justify-center border-t">
-        
-      </footer>
+        <PropertyList properties={properties}/>
+ 
     </div>
   )
 }
