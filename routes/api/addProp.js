@@ -8,6 +8,10 @@ const House = require('../../models/House');
 const Space = require('../../models/Space');
 const auth = require('../../middleware/auth');
 const { check, validationResult } = require('express-validator');
+var multer = require('multer');
+
+var storage = multer.memoryStorage();
+var upload = multer({ storage: storage });
 
 /**
  * @route   POST api/posts
@@ -21,6 +25,7 @@ const { check, validationResult } = require('express-validator');
 router.post('/addLand',
     [
         auth,
+        upload.single('image'),
         [
             check('landArea', 'Land Area is required').not().isEmpty().isNumeric(),
             check('price', 'Price is required').not().isEmpty().isNumeric(),
@@ -61,6 +66,9 @@ router.post('/addLand',
                 avatar: owner.avatar,
                 owner: req.user.id
             });
+
+            newLand.landImages.data = [req.file.buffer];
+            newLand.imlandImagesg.contentType = 'image/jpg';
             console.log(newLand);
 
             const land = await newLand.save();
