@@ -11,7 +11,7 @@ const { check, validationResult } = require('express-validator');
 var multer = require('multer');
 
 var storage = multer.memoryStorage();
-var upload = multer({ storage: storage });
+var upload = multer({ dest: 'storage/' });
 
 /**
  * @route   POST api/posts
@@ -40,7 +40,7 @@ router.post('/addLand',
 
         try {
             console.log(req.user);
-            console.log(req.body);
+            console.log("Files in requ: ", req.file);
             let owner = await Owner.findById(req.user.id).select('-password');
             console.log(owner);
             let type = 'person';
@@ -63,12 +63,15 @@ router.post('/addLand',
                 price: req.body.price,
                 isSold: req.body.isSold,
                 name: ownerName,
-                avatar: owner.avatar,
                 owner: req.user.id
             });
 
-            newLand.landImages.data = [req.file.buffer];
-            newLand.imlandImagesg.contentType = 'image/jpg';
+            const landImage = {
+                data: req.file.buffer,
+                contentType: 'image/jpg',
+            }
+
+            newLand.landImages.unshift(landImage);
             console.log(newLand);
 
             const land = await newLand.save();

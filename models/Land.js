@@ -20,14 +20,12 @@ const landSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    landImages: {
-        type: [
+    landImages: [
             {
                 data: Buffer,
-                type: String,
-            }
+                contentType: String,
+            },
         ],
-    },
     price: {
         type: Number,
         required: true
