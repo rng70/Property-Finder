@@ -4,7 +4,7 @@ import styles from "../../styles/UserSignIn.module.css";
 import {useState } from 'react';
 import {useRouter} from 'next/router';
 
-const UserSignIn = (props) => {
+const OwnerSignIn = (props) => {
 
     //for dispalying user message about valid email input
     // keeping state using react hooks
@@ -61,7 +61,7 @@ const UserSignIn = (props) => {
         <main className={styles.main}>
             <div className={styles.mainWrapper}>
 
-                <h1 className={styles.signinHeader}>Sign In as User</h1>
+                <h1 className={styles.signinHeader}>Sign In as an Owner</h1>
                 
                 <input type="text" placeholder="Email Address" className={styles.emailInput} onChange={handleOnChnangeEmail}/>
                 
@@ -74,4 +74,4 @@ const UserSignIn = (props) => {
     )
 }
 
-export default UserSignIn;
+export default OwnerSignIn;

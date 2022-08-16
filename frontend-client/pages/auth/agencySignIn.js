@@ -61,7 +61,7 @@ const UserSignIn = (props) => {
         <main className={styles.main}>
             <div className={styles.mainWrapper}>
 
-                <h1 className={styles.signinHeader}>Sign In as User</h1>
+                <h1 className={styles.signinHeader}>Sign In as Agency</h1>
                 
                 <input type="text" placeholder="Email Address" className={styles.emailInput} onChange={handleOnChnangeEmail}/>
                 
