@@ -1,9 +1,7 @@
 import Head from 'next/head'
 import {useRouter} from "next/router"
-import Link from "next/link"
 import {getAllProperties} from '../dummy-data'
 import PropertyList from '../Components/Properties/PropertyList';
-import Image from 'next/image'
 
 const Home = () => {
   const properties = getAllProperties();

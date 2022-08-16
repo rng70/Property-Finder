@@ -6,14 +6,14 @@ function MainHeader() {
   return (
     <header className={classes.header}>
       <div className={classes.logo}>
-        <Link to='/'>Property FInder</Link>
+        <Link href='/'>Property FInder</Link>
       </div>
       <nav className={classes.navigation}>
         <ul>
           <li>
-            <Link to='/'>Browse All Properties</Link>
-            {/* <Link to='/signin'>Sign In</Link>
-            <Link to='/singup'>Sign Up</Link> */}
+            <Link href='/'>Browse All Properties</Link>
+            {/* <Link href='/signin'>Sign In</Link>
+            <Link href='/singup'>Sign Up</Link> */}
           </li>
         </ul>
       </nav>
