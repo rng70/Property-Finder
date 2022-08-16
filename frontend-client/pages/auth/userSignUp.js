@@ -1,11 +1,15 @@
-import { NavBar } from "../../Components"
-
+import Head from "next/head"
+import styles from "../../styles/UserSignIn.module.css"
 const UserSignUp = (props) => {
-    return 
+    return( 
     <div>
-        <h1>hello world</h1>
-
+        <Head>
+            <title>
+                 User Sign Up
+            </title>
+        </Head>
     </div>
+    )
 }
 
 export default UserSignUp
