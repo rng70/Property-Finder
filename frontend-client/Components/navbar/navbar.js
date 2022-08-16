@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useState } from 'react';
 import styles from '../../styles/NavBar.module.css';
+import Image from 'next/image';
 
 const NavBar = (props) => {
 
@@ -32,13 +33,18 @@ const NavBar = (props) => {
                         PropertyFinder
                     </div>
                 </a>
-            
+{/*             
                 <ul className={styles.navItems}>
                     <li className={styles.navItem} onClick={handleOnClickLogIn}>Log In</li>
                     <li className={styles.navItem} onClick={handleOnClickRegister}>Register</li>
-                </ul>
+                </ul> */}
 
                 <nav className={styles.navContainer}>
+
+                <ul className={styles.navItems}>
+                    <li className={styles.navItem} onClick={handleOnClickLogIn}>LogIn</li>
+                    <li className={styles.navItem} onClick={handleOnClickRegister}>Register</li>
+                </ul>
                     <div>
                         <button className={styles.usernameButton} onClick={handleShowDropDown}>
                             <p className={styles.username}>Username: Tanin</p>
