@@ -1,5 +1,11 @@
-const UserSignUp = () => {
-    return <h1>UserSignUp</h1>
+import { NavBar } from "../../Components"
+
+const UserSignUp = (props) => {
+    return 
+    <div>
+        <h1>hello world</h1>
+
+    </div>
 }
 
 export default UserSignUp

@@ -42,8 +42,8 @@ const NavBar = (props) => {
                 <nav className={styles.navContainer}>
 
                 <ul className={styles.navItems}>
-                    <li className={styles.navItem} onClick={handleOnClickLogIn}>Sign In</li>
-                    <li className={styles.navItem} onClick={handleOnClickRegister}>Sign Up</li>
+                    <li className={styles.navItem} onClick={handleOnClickLogIn}>SignIn</li>
+                    <li className={styles.navItem} onClick={handleOnClickRegister}>SignUp</li>
                 </ul>
                     <div>
                         <button className={styles.usernameButton} onClick={handleShowDropDown}>

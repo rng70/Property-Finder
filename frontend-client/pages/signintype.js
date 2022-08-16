@@ -13,23 +13,32 @@ export async function getStaticProps(context) {
 }
 
 const SingInType = (props) => {
-    console.log(props.cardInfo);
+    //console.log(props.cardInfo);
+    const addStr = (str,index,strintToAdd)=>{
+        return str.substring(0,index)+strintToAdd+str.substring(index,str.length);
+    }
+    
     return (
-          <>
-            {props.cardInfo.length > 0 && <div className={styles.cardLayout}>
-                {props.cardInfo.map((singleCard) =>
-                    <Card
-                        key={singleCard.title}
-                        title={singleCard.title}
-                        description={singleCard.description}
-                        href={`auth/${singleCard.hrefId}`}
-                        btnTitle={singleCard.buttonTitle}
-                        className={styles.card}
-                    />
-                )};
+        
+         <div>
+            
+            <div className={styles.container}>
+                {props.cardInfo.length > 0 && <div className={styles.cardLayout}>
+                    {props.cardInfo.map((singleCard) =>
+                        <Card
+                            key={singleCard.title}
+                            title={singleCard.title}
+                            description={singleCard.description}
+                            href={`auth/${singleCard.hrefIdSignIn}`}
+                            btnTitle={addStr(singleCard.buttonTitle, 5, 'in ')}
+                            className={styles.card}
+                        />
+                    )};
+                </div>
+                }
             </div>
-            }
-          </>
+
+          </div>
     )      
 }
 
