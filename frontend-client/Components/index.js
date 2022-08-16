@@ -7,4 +7,4 @@ export { default as Layout } from "./layout/layout";
 export { default as AddressIcon } from "./icons/address-icon";
 export { default as ArrowRightIcon } from "./icons/arrow-right-icon";
 export { default as DateIcon } from "./icons/date-icon";
-export { default as Banner } from "./banner/banner";
+export { default as Banner } from "./banner";

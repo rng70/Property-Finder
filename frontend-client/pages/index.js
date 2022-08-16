@@ -1,12 +1,15 @@
 import Head from "next/head";
-import { getAllProperties } from "../dummy-data";
-import { PropertyList, NavBar } from "../Components";
+import { getAllProperties } from "../data/dummy-data";
+import { getAllBannerData } from "../data/banner-data";
+import { PropertyList, NavBar, Banner } from "../Components";
 
 export async function getStaticProps(context) {
-  const propertiesData = getAllProperties(); 
+  const propertiesData = getAllProperties();
+  const bannerData = getAllBannerData();
   return {
     props: {
       properties: propertiesData,
+      bannerData,
     }
   }
 }
@@ -20,7 +23,8 @@ const Home = (props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <NavBar/>
+      <NavBar />
+      {/* <Banner bannerData={props.bannerData} /> */}
       <PropertyList properties={props.properties} />
  
     </div>
