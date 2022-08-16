@@ -2,11 +2,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import React, { useState } from 'react';
 import { login } from '../actions/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const Login = ({login, isAuthenticated}) => {
 
-    let navigation = useNavigate();
+    let router = useRouter();
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -21,7 +22,7 @@ const Login = ({login, isAuthenticated}) => {
     }
 
     if (isAuthenticated) {
-        navigation('/posts')
+        router.push('/')
     }
     return (
         <>

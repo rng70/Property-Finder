@@ -11,12 +11,12 @@ const NavBar = (props) => {
 
     const handleOnClickLogIn = (e) => {
         e.preventDefault()
-        router.push('/signin')
+        router.push('/signintype')
     }
 
     const handleOnClickRegister = (e) => {
         e.preventDefault()
-        router.push('/signup')
+        router.push('/signuptype')
     }
 
     const handleShowDropDown = (e) => {
@@ -42,8 +42,8 @@ const NavBar = (props) => {
                 <nav className={styles.navContainer}>
 
                 <ul className={styles.navItems}>
-                    <li className={styles.navItem} onClick={handleOnClickLogIn}>LogIn</li>
-                    <li className={styles.navItem} onClick={handleOnClickRegister}>Register</li>
+                    <li className={styles.navItem} onClick={handleOnClickLogIn}>Sign In</li>
+                    <li className={styles.navItem} onClick={handleOnClickRegister}>Sign Up</li>
                 </ul>
                     <div>
                         <button className={styles.usernameButton} onClick={handleShowDropDown}>

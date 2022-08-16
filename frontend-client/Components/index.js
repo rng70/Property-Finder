@@ -8,3 +8,4 @@ export { default as AddressIcon } from "./icons/address-icon";
 export { default as ArrowRightIcon } from "./icons/arrow-right-icon";
 export { default as DateIcon } from "./icons/date-icon";
 export { default as Banner } from "./banner";
+export { default as Card } from "./card";
