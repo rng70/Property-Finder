@@ -13,6 +13,7 @@ export async function getStaticProps(context) {
 }
 
 const SingInType = (props) => {
+    console.log(props.cardInfo);
     return (
           <>
             {props.cardInfo.length > 0 && <div className={styles.cardLayout}>

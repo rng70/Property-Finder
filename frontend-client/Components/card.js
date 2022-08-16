@@ -7,17 +7,19 @@ import styles from '../styles/Card.module.css'
 
 const Card = (props) => {
     return (
-        <>
+        <div className={styles.container}>
             <Link href={props.href}>
                 <a className={styles.cardLink}>
                     <div className={cls('glass', styles.container)}>
                         <div>
                             <h2 className={styles.cardHeader}>
-                                {props.name}
+                                {props.title}
                             </h2>
                         </div>
                         
                         <div className={styles.cardImageWrapper}>
+                            <p className={styles.cardImage}>{props.description}</p>
+                            <button>This is button</button>
                             {/* <Image
                                 className={styles.cardImage}
                                 src={props.imgUrl}
@@ -29,7 +31,7 @@ const Card = (props) => {
                     </div>
                 </a>
             </Link>
-        </>
+        </div>
     )
 }
 
