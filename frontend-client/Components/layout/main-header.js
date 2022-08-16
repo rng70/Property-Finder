@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import classes from './main-header.module.css';
+import classes from '../../styles/MainHeader.module.css';
 
 function MainHeader() {
   return (

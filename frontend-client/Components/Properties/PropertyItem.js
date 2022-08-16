@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import classes from'./PropertyItem.module.css'
+import classes from'../../styles/PropertyItem.module.css'
 import Button from '../ui/Button'
 import DateIcon from '../icons/date-icon';
 import AddressIcon from '../icons/address-icon';

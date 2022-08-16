@@ -1,5 +1,5 @@
 import PropertyItem from './PropertyItem';
-import classes from './PropertyList.module.css'
+import classes from '../../styles/PropertyList.module.css'
 
 function PropertyList(props){
     const {properties} = props;
