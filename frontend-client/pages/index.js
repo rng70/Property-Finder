@@ -1,13 +1,17 @@
-import Head from 'next/head'
-import {useRouter} from "next/router"
-import {getAllProperties} from '../dummy-data'
-import PropertyList from '../Components/Properties/PropertyList';
+import Head from "next/head";
+import { getAllProperties } from "../dummy-data";
+import { PropertyList, NavBar } from "../Components";
 
-const Home = () => {
-  const properties = getAllProperties();
-  const router = useRouter();
-  console.log(router.pathname);
-  console.log(router.query);
+export async function getStaticProps(context) {
+  const propertiesData = getAllProperties(); 
+  return {
+    props: {
+      properties: propertiesData,
+    }
+  }
+}
+const Home = (props) => {
+
   return (
     <div className="flex min-h-screen flex-col items-center justify-center py-2">
       
@@ -16,10 +20,11 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-        <PropertyList properties={properties}/>
+      <NavBar/>
+      <PropertyList properties={props.properties} />
  
     </div>
   )
 }
 
-export default Home
+export default Home;
