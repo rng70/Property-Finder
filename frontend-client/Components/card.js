@@ -19,7 +19,7 @@ const Card = (props) => {
                         
                         <div className={styles.cardImageWrapper}>
                             <p className={styles.cardImage}>{props.description}</p>
-                            <button>This is button</button>
+                            <button>{props.btnTitle}</button>
                             {/* <Image
                                 className={styles.cardImage}
                                 src={props.imgUrl}

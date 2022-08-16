@@ -23,6 +23,7 @@ const SingInType = (props) => {
                         title={singleCard.title}
                         description={singleCard.description}
                         href={`auth/${singleCard.hrefId}`}
+                        btnTitle={singleCard.buttonTitle}
                         className={styles.card}
                     />
                 )};
