@@ -1,7 +1,9 @@
 import Head from "next/head";
 import { getAllProperties } from "../data/dummy-data";
 import { getAllBannerData } from "../data/banner-data";
-import { PropertyList, NavBar, Banner } from "../Components";
+import { PropertyList, NavBar, Banner, Card } from "../Components";
+import CardHome from './cardHome';
+import footerStyle from "../styles/Footer.module.css";
 
 export async function getStaticProps(context) {
   const propertiesData = getAllProperties();
@@ -13,6 +15,7 @@ export async function getStaticProps(context) {
     }
   }
 }
+
 const Home = (props) => {
 
   return (
@@ -22,11 +25,14 @@ const Home = (props) => {
         <title>Property Finder</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <NavBar />
-      {/* <Banner bannerData={props.bannerData} /> */}
-      <PropertyList properties={props.properties} />
- 
+      <Banner title="Property FinderBD" />
+      {/* <NavBar /> */}
+      {/* { <Banner bannerData={props.bannerData} /> } */}
+      <CardHome />
+      <footer className={footerStyle.footer}>
+        <p>Author : CSE,BUET</p>
+        <p><a href="www.cse.buet.ac.bd">www.cse.buet.ac.bd</a></p>
+      </footer>
     </div>
   )
 }

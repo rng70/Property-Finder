@@ -1,7 +1,9 @@
 import styles from '../styles/Banner.module.css';
 
-const Banner = ({ bannerData }) => {
-    const { title, button } = bannerData;
+// const Banner = ({ bannerData }) => {
+const Banner = (props)=>{
+    // const { title, button } = bannerData;
+    const title  = props.title;
 
     return (
         <div className={styles.container}>
@@ -9,15 +11,13 @@ const Banner = ({ bannerData }) => {
 
             <div className={styles.buttonWrapper}>
                 <button className={styles.button}>
-                    {button.sale.title}
+                    {/* {button.sale.title} */}
+                    Sign in
                 </button>
                  
-                <button className={styles.button}>
-                    {button.rent.title}
-                </button>
             </div>
 
-            <button className={styles.searchButton}>Search</button>
+            {/* <button className={styles.searchButton}>Search</button> */}
         </div>
     )
 }
