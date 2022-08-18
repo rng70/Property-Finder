@@ -1,12 +1,12 @@
 import styles from '../styles/Banner.module.css';
 
-// const Banner = ({ bannerData }) => {
-const Banner = (props)=>{
-    // const { title, button } = bannerData;
-    const title  = props.title;
+
+const Banner = ({ bannerData }) => {
+    const { title, button, imgUrl } = bannerData;
+    console.log(imgUrl);
 
     return (
-        <div className={styles.container}>
+        <div className={styles.container}  style={{ backgroundImage: `url(${imgUrl})` }}>
             <h3 className={styles.title}>{title}</h3>
 
             <div className={styles.buttonWrapper}>

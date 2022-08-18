@@ -9,7 +9,8 @@ const BANNER_DATA ={
             title: "For Rent",
             link: "/"
         }
-    }
+    },
+    imgUrl: "/static/signin-bg.jpg"
 }
 
 export function getAllBannerData() {

@@ -1,4 +1,4 @@
-import {  NavBar } from "../Components";
+import {  NavBar, Card } from "../Components";
 import Head from "next/head";
 
 const userFeed = () =>{

@@ -5,6 +5,8 @@ import { PropertyList, NavBar, Banner, Card } from "../Components";
 import CardHome from './cardHome';
 import footerStyle from "../styles/Footer.module.css";
 
+import styles from '../styles/Home.module.css'
+
 export async function getStaticProps(context) {
   const propertiesData = getAllProperties();
   const bannerData = getAllBannerData();
@@ -19,20 +21,22 @@ export async function getStaticProps(context) {
 const Home = (props) => {
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center py-2">
+    <div className={styles.container}>
       
       <Head>
         <title>Property Finder</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Banner title="Property FinderBD" />
-      {/* <NavBar /> */}
-      {/* { <Banner bannerData={props.bannerData} /> } */}
+
+      <NavBar />
+      <Banner bannerData={props.bannerData} />
+      <PropertyList properties={props.properties} />
       <CardHome />
       <footer className={footerStyle.footer}>
         <p>Author : CSE,BUET</p>
         <p><a href="www.cse.buet.ac.bd">www.cse.buet.ac.bd</a></p>
       </footer>
+
     </div>
   )
 }
