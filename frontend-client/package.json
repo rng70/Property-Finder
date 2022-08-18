@@ -1,15 +1,28 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "nextdev": "next dev",
     "build": "next build",
     "start": "next dev",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix frontend-client",
+    "dev": "concurrently \"npm run server\" \"npm run nextdev\"",
     "__comment__": " it should be 'next start' but it doesn't work"
   },
   "dependencies": {
+    "axios": "^0.27.2",
+    "bcryptjs": "^2.4.3",
+    "concurrently": "^7.3.0",
+    "config": "^3.3.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-validator": "^6.14.2",
+    "jsonwebtoken": "^8.5.1",
     "next": "latest",
     "react": "18.1.0",
-    "react-dom": "18.1.0"
+    "react-dom": "18.1.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/node": "17.0.35",

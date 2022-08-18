@@ -31,32 +31,42 @@ export const loadUser = () => async dispatch => {
     }
 };
 
-export const registerAgency = ({ name, email, license, password }) => async dispatch => {
+export const handelAFunction = async ({name}) => {
+        console.log("Dummy call", name);
+}
+// => async dispatch
+
+export const registerAgency = async ({ name, email, password, tradeLicenseNo, yearOfEstablishment })  => {
+    
+    console.log("=====================Request here======================");
     const config = {
         headers: {
             'Content-Type': 'application/json'
         }
     }
 
-    const body = JSON.stringify({ name, email, license, password, yearEs });
+    
+    const body = JSON.stringify({ name, email, password, tradeLicenseNo, yearOfEstablishment });
 
     try {
-        const res = await axios.post('/api/users/regAgency', body, config);
+        const res = await axios.post(`http://localhost:5000/api/users/regAgency`, body, config);
+        console.log(res);
 
-        dispatch({
-            type: REGISTER_SUCCESS,
-            payload: res.data
-        });
-        dispatch(loadUser());
+        // dispatch({
+        //     type: REGISTER_SUCCESS,
+        //     payload: res.data
+        // });
+        // dispatch(loadUser());
     } catch (err) {
         const errors = err.response.data.errors;
 
         if (errors) {
-            errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+            console.log(errors);
+            // errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
         }
-        dispatch({
-            type: REGISTER_FAIL
-        })
+        // dispatch({
+        //     type: REGISTER_FAIL
+        // })
     }
 };
 

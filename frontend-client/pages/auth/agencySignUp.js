@@ -3,12 +3,10 @@ import Image from 'next/image'
 import styles from "../../styles/UserSignUp.module.css";
 import {useState } from 'react';
 import { useRouter } from 'next/router';
-import { registerAgency } from '../../actions/auth';
-import { setAlert } from '../../actions/alert';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { registerAgency, handelAFunction } from '../../actions/auth';
 
-const UserSignUp = ({ setAlert, registerAgency, isAuthenticated }) => {
+
+const UserSignUp = () => {
 
     //for dispalying user message about valid email input
     // keeping state using react hooks
@@ -20,30 +18,33 @@ const UserSignUp = ({ setAlert, registerAgency, isAuthenticated }) => {
     const [year, setYear] = useState('');
     
     const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        password: '',
-        confirmPass: '',
-        license: '',
-        yearEs: ''
+        name: 'tafa',
+        email: 't@t.com',
+        password: '123456',
+        confirmPass: '123456',
+        tradeLicenseNo: 'asdfasdfasdfasdf',
+        yearOfEstablishment: '21/12/2008'
     })
 
     const router = useRouter();
-    const { name, email, license, password, confirmPass, yearEs } = formData;
+    const { name, email, tradeLicenseNo, password, confirmPass, yearOfEstablishment } = formData;
 
-    const handleSignUp = (event) =>{
+    
+
+    const handleSignUp = (event) => {
+        event.preventDefault();
         console.log("Handle login with email clalled!");
         // check if email exists from database
         if (!email) {
             setEmailMsg('Email is required');
         } else if (!name) {
             setNameMsg('Name is required');
-        } else if (!license) {
+        } else if (!tradeLicenseNo) {
             setLicenseMsg('License is required')
         } else if (!password || !confirmPass) {
             setPassMsg2('Password is required');
-        } else if (!yearEs) { 
-            setYear('Date is required'+yearEs+" t")
+        } else if (!yearOfEstablishment) { 
+            setYear('Date is required'+yearOfEstablishment+" t")
         } else{
             // route to dashboard
             // const emailFromDB = "tanin@gmail.com";
@@ -51,20 +52,22 @@ const UserSignUp = ({ setAlert, registerAgency, isAuthenticated }) => {
                 setPassMsg2('Password mismatch! Please enter valid password');
                 //route to dashboard
                 // router.push("/");
-            }else{
-                registerAgency({ name, email, password, license, yearEs });
+            } else {
+                console.log("API calls here");
+                handelAFunction({name});
+                registerAgency({ name, email, password, tradeLicenseNo, yearOfEstablishment });
                 router.push('/');
-                setAlert('Please confirm email address');
+                console.log("Registration Successfull")
+                // setAlert('Please confirm email address');
             }
-        }
-        event.preventDefault();  
+        }  
     }
 
     const onChange = async e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-    if (isAuthenticated) {
-        router.push('/dashboard');
-    }
+    // if (isAuthenticated) {
+        // router.push('/dashboard');
+    // }
 
     return( 
     <div className={styles.container}>
@@ -92,7 +95,7 @@ const UserSignUp = ({ setAlert, registerAgency, isAuthenticated }) => {
 
                         <h1 className={styles.signinHeader}>Sign Up as an Agency</h1>
                         
-                    <input type="text" name="email" placeholder="Email Address" className={styles.emailInput} onChange={e => onChange(e)}/>
+                    <input type="text" name="email" value={email} placeholder="Email Address" className={styles.emailInput} onChange={e => onChange(e)}/>
                     
                     <p className={styles.userMsg} >{emailMsg}</p>
                     
@@ -100,7 +103,7 @@ const UserSignUp = ({ setAlert, registerAgency, isAuthenticated }) => {
 
                     <p className={styles.userMsg} >{nameMsg}</p>
                     
-                    <input type="text" name="license" value={license} placeholder="Trade License" className={styles.emailInput} onChange={e => onChange(e)} />
+                    <input type="text" name="tradeLicenseNo" value={tradeLicenseNo} placeholder="Trade License" className={styles.emailInput} onChange={e => onChange(e)} />
 
                     <p className={styles.userMsg} >{licenseMsg}</p>
                             
@@ -109,7 +112,7 @@ const UserSignUp = ({ setAlert, registerAgency, isAuthenticated }) => {
                         
                     <input type="password" name="confirmPass" value={confirmPass}  placeholder="Confirm Pass" className={styles.emailInput} onChange={e => onChange(e)} />
                         <p className={styles.userMsg} >{passMsg2}</p>
-                        <input type="date" name="yearEs" value={yearEs} className={styles.emailInput} onChange={e => onChange(e)} />
+                        <input type="date" name="yearOfEstablishment" value={yearOfEstablishment} className={styles.emailInput} onChange={e => onChange(e)} />
                     <p className={styles.userMsg} >{year}</p>
 
                     <button onClick = {handleSignUp} className={styles.loginBtn}>Sign Up</button>
@@ -121,14 +124,4 @@ const UserSignUp = ({ setAlert, registerAgency, isAuthenticated }) => {
     )
 }
 
-UserSignUp.propTypes = {
-    setAlert: PropTypes.func.isRequired,
-    registerAgency: PropTypes.func.isRequired,
-    isAuthenticated: PropTypes.bool
-};
-
-const mapStateToProps = state => ({
-    isAuthenticated: state.auth.isAuthenticated
-});
-
-export default connect(mapStateToProps, { setAlert, registerAgency })(UserSignUp);
+export default UserSignUp;
