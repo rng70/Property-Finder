@@ -1,6 +1,8 @@
 import styles from "../styles/SingInType.module.css"
 import { getCardData } from "../data/card-data"
 import {Card} from "../Components"
+import Head from "next/head";
+import {  NavBar, Banner } from "../Components";
 
 export async function getStaticProps(context) {
 
@@ -20,7 +22,15 @@ const SingInType = (props) => {
     
     return (
         
-         <div>
+        <div className="flex min-h-screen flex-col items-center justify-center py-2">
+      
+        <Head>
+          <title>Property Finder</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <NavBar/>
+        
+        <div>
             
             <div className={styles.container}>
                 {props.cardInfo.length > 0 && <div className={styles.cardLayout}>
@@ -33,12 +43,14 @@ const SingInType = (props) => {
                             btnTitle={addStr(singleCard.buttonTitle, 5, 'in ')}
                             className={styles.card}
                         />
-                    )};
+                    )}
                 </div>
                 }
             </div>
+        </div>
 
-          </div>
+
+      </div>
     )      
 }
 

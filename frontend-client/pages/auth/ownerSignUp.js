@@ -71,7 +71,19 @@ const UserSignUp = (props) => {
 
                 <p className={styles.userMsg} >{userMsg}</p>
                 
-                <input type="text" placeholder="Last License" className={styles.emailInput} />
+                <input type="text" placeholder="Last Name" className={styles.emailInput} />
+
+                <p className={styles.userMsg} >{userMsg}</p>
+
+                <input type="text" placeholder="Contact Number" className={styles.emailInput} />
+
+                <p className={styles.userMsg} >{userMsg}</p>
+
+                <input type="text" placeholder="NID" className={styles.emailInput} />
+
+                <p className={styles.userMsg} >{userMsg}</p>
+
+                <input type="text" placeholder="Password" className={styles.emailInput} onChange={handleOnChnangeEmail}/>
 
                 <p className={styles.userMsg} >{userMsg}</p>
 
