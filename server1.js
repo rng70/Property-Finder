@@ -9,10 +9,10 @@ app.get('/', (req, res) => res.send('API Running Successfully'));
 /**
  *  Define routes 
  */
-app.use('/api/users', require('./routes/api/users'));
-app.use('/api/auth', require('./routes/api/auth'));
-app.use('/api/addProp', require('./routes/api/addProp'));
-app.use('/api/postInfo', require('./routes/api/postInfo'));
+app.use('/api/users', require('./frontend-client/server/routes/api/users'));
+app.use('/api/auth', require('./frontend-client/server/routes/api/auth'));
+app.use('/api/addProp', require('./frontend-client/server/routes/api/addProp'));
+app.use('/api/postInfo', require('./frontend-client/server/routes/api/postInfo'));
 // app.use('/api/search', require('./routes/api/search'));
 
 const PORT = process.env.PORT || 5000;
