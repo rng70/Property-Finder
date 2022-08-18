@@ -6,9 +6,8 @@ import AddressIcon from '../icons/address-icon';
 import ArrowRightIcon from '../icons/arrow-right-icon';
 
 
-function PropertyItem(props){
-    const {title,image,location,date,id} = props;
-    console.log("property image "+image);
+const PropertyItem = (props) => {
+    const {title, image, location, date, id} = props;
     const humanReadableDate = new Date(date).toLocaleDateString('en-Us',{
         day : 'numeric',
         month : 'long',
