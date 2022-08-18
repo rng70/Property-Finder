@@ -67,6 +67,10 @@ const OwnerSignIn = (props) => {
                 
                 <p className={styles.userMsg} >{userMsg}</p>
                 
+                <input type="text" placeholder="Password" className={styles.emailInput} onChange={handleOnChnangeEmail}/>
+                
+                <p className={styles.userMsg} >{userMsg}</p>
+
                 <button onClick = {handleLoginWIthEmail} className={styles.loginBtn}>Sign In</button>
             </div>
         </main>
