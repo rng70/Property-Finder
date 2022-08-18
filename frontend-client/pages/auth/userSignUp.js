@@ -75,6 +75,19 @@ const UserSignUp = (props) => {
 
                 <p className={styles.userMsg} >{userMsg}</p>
 
+                <input type="text" placeholder="Contact Number" className={styles.emailInput} onChange={handleOnChnangeEmail}/>
+
+                <p className={styles.userMsg} >{userMsg}</p>
+
+                <input type="text" placeholder="NID" className={styles.emailInput} onChange={handleOnChnangeEmail}/>
+
+                <p className={styles.userMsg} >{userMsg}</p>
+
+
+                <input type="text" placeholder="Password" className={styles.emailInput} onChange={handleOnChnangeEmail}/>
+
+                <p className={styles.userMsg} >{userMsg}</p>
+
                 <button onClick = {handleLoginWIthEmail} className={styles.loginBtn}>Sign Up</button>
             </div>
         </main>
