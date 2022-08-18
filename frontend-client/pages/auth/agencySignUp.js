@@ -55,7 +55,7 @@ const UserSignUp = () => {
             } else {
                 console.log("API calls here");
                 registerAgency({ name, email, password, tradeLicenseNo, yearOfEstablishment });
-                router.push('/');
+                router.push('/sellForm');
                 console.log("Registration Successfull")
                 // setAlert('Please confirm email address');
             }

@@ -10,6 +10,9 @@
     "__comment__": " it should be 'next start' but it doesn't work"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.0",
+    "@emotion/styled": "^11.10.0",
+    "@mui/material": "^5.10.1",
     "axios": "^0.27.2",
     "bcryptjs": "^2.4.3",
     "concurrently": "^7.3.0",

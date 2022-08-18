@@ -1,5 +1,6 @@
 import styles from '../styles/Banner.module.css';
 
+
 const Banner = ({ bannerData }) => {
     const { title, button, imgUrl } = bannerData;
     console.log(imgUrl);
@@ -10,15 +11,13 @@ const Banner = ({ bannerData }) => {
 
             <div className={styles.buttonWrapper}>
                 <button className={styles.button}>
-                    {button.sale.title}
+                    {/* {button.sale.title} */}
+                    Sign in
                 </button>
                  
-                <button className={styles.button}>
-                    {button.rent.title}
-                </button>
             </div>
 
-            <button className={styles.searchButton}>Search</button>
+            {/* <button className={styles.searchButton}>Search</button> */}
         </div>
     )
 }
