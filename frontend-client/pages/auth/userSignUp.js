@@ -38,6 +38,7 @@ const UserSignUp = (props) => {
         const email = event.target.value;
         setEmail(email);
     }
+    
     return( 
     <div className={styles.container}>
         <Head>

@@ -3,7 +3,7 @@ import Image from 'next/image'
 import styles from "../../styles/UserSignUp.module.css";
 import {useState } from 'react';
 import { useRouter } from 'next/router';
-import { registerAgency, handelAFunction } from '../../actions/auth';
+import { registerAgency} from '../../actions/auth';
 
 
 const UserSignUp = () => {
@@ -18,12 +18,12 @@ const UserSignUp = () => {
     const [year, setYear] = useState('');
     
     const [formData, setFormData] = useState({
-        name: 'tafa',
-        email: 't@t.com',
-        password: '123456',
-        confirmPass: '123456',
-        tradeLicenseNo: 'asdfasdfasdfasdf',
-        yearOfEstablishment: '21/12/2008'
+        name: '',
+        email: '',
+        password: '',
+        confirmPass: '',
+        tradeLicenseNo: '',
+        yearOfEstablishment: Date.now()
     })
 
     const router = useRouter();
@@ -54,7 +54,6 @@ const UserSignUp = () => {
                 // router.push("/");
             } else {
                 console.log("API calls here");
-                handelAFunction({name});
                 registerAgency({ name, email, password, tradeLicenseNo, yearOfEstablishment });
                 router.push('/');
                 console.log("Registration Successfull")

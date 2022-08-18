@@ -2,50 +2,56 @@ import Head from "next/head";
 import Image from 'next/image'
 import styles from "../../styles/UserSignIn.module.css";
 import {useState } from 'react';
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
+import { login } from '../../actions/auth';
 
 const UserSignIn = (props) => {
 
     //for dispalying user message about valid email input
     // keeping state using react hooks
-    const [email,setEmail] = useState('')
-    const [userMsg,setUserMsg] = useState('')
+    const [emailMsg, setEmailMsg] = useState('')
+    const [passwordMsg, setPasswordMsg] = useState('')
+    
+    const [fromData, setFormData] = useState({
+        email: '',
+        password: ''
+    })
 
     const router = useRouter();
 
     const handleLoginWIthEmail = (event) =>{
-        setUserMsg('');
+        event.preventDefault(); 
+
         console.log("Handle login with email clalled!");
         // check if email exists from database
-        if(email){
+        if (!email) {
+            setEmailMsg('Please enter a valid email address');
+        } else if (!password) {
+            setPasswordMsg('Please enter correct password');
+        } else{
             //route to dashboard
-            const emailFromDB = "tanin@gmail.com";
-            if(email==emailFromDB){
-                //route to dashboard
-                router.push("/");
-            }else{
-                setUserMsg('Something went wrong logging in');
+            login(email, password);
+
+            if (localStorage.getToken('token')) {
+                console.log("User token == ", localStorage.getToken('token'));
+                router.push('/userFeed');
+            } else {
+                setPasswordMsg('Something went wrong. Try again :(')
             }
-        }
-        else{
-            //if email is empty then show the error msg
-            setUserMsg("Enter a valid email address ")
-        }
-        event.preventDefault();  
+        } 
     }
 
-    const handleOnChnangeEmail = (event)  =>{
-        const email = event.target.value;
-        setEmail(email);
-    }
+    const onChange = async e => setFormData({ ...fromData, [e.target.name]: e.target.value });
+    
     return( 
     <div className={styles.container}>
         <Head>
             <title>
                 PropertyFinder User Sign In
             </title>
-        </Head>
-
+            </Head>
+            
+        
         <header className={styles.header}>
             <div className={styles.headerWrapper}>
                 <a className={styles.logoLink} href="/">
@@ -55,26 +61,28 @@ const UserSignIn = (props) => {
                     </div>
                 </a>
             </div>
-        </header>
+                </header>
+        
 
-
+<form className="form" onSubmit={e => onSubmit(e)}>
         <main className={styles.main}>
             <div className={styles.mainWrapper}>
 
                 <h1 className={styles.signinHeader}>Sign In as User</h1>
                 
-                <input type="text" placeholder="Email Address" className={styles.emailInput} onChange={handleOnChnangeEmail}/>
+                <input type="text" placeholder="Email Address" className={styles.emailInput} onChange={e => onChange(e)}/>
                 
-                <p className={styles.userMsg} >{userMsg}</p>
+                <p className={styles.userMsg} >{emailMsg}</p>
 
 
-                <input type="text" placeholder="Password" className={styles.emailInput} onChange={handleOnChnangeEmail}/>
+                <input type="password" placeholder="Password" className={styles.emailInput} onChange={e => onChange(e)}/>
                 
-                <p className={styles.userMsg} >{userMsg}</p>
+                <p className={styles.userMsg} >{passwordMsg}</p>
                 
                 <button onClick = {handleLoginWIthEmail} className={styles.loginBtn}>Sign In</button>
             </div>
-        </main>
+            </main>
+            </form>
     </div>
     )
 }
