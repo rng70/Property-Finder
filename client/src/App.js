@@ -16,6 +16,8 @@ import AddLand from './components/add/AddLand';
 import AddType from './components/add/AddType';
 import AddSpace from './components/add/AddSpace';
 import { getCardData } from './data/card-data';
+import AddHouse from './components/add/AddHouse';
+import NewsFeed from './components/feed/NewsFeed';
 
 if (localStorage.token) {
     setAuthToken(localStorage.token);
@@ -43,6 +45,8 @@ const App = () => {
                             <Route path='/add' element ={<AddType/>} />
                             <Route path='/addLand' element ={<AddLand/>} />
                             <Route path='/addSpace' element ={<AddSpace/>} />
+                            <Route path='/addHouse' element ={<AddHouse/>} />
+                            <Route path='/feed' element ={<NewsFeed/>} />
                             <Route path="/register" element={<SignUpType cardInfo={cardInfoData} />} />
                             <Route path="/login" element={<SignInType cardInfo={cardInfoData} />} />
                             <Route path="/login/agency" element={<AgencySignIn />} />
