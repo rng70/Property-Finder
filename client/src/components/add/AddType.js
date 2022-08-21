@@ -16,6 +16,9 @@ const AddType= ()=>{
             <Link to="/addHouse">
                 <button className="btn btn-outline-primary">Add House</button>
             </Link>
+            <Link to="/feed">
+                <button className="btn btn-outline-primary">News feed</button>
+            </Link>
         </div>
     )
 }
