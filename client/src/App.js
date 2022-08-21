@@ -12,6 +12,8 @@ import setAuthToken from './utils/setAuthToken';
 // import Post from './components/post/Post';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Footer from './components/layout/Footer';
+import AddLand from './components/add/AddLand';
+import AddType from './components/add/AddType';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -32,6 +34,9 @@ const App = () => {
                         {/* <Alert /> */}
                         <Routes>
                             <Route path='/' element={<Landing />} />
+                            <Route path='/add' element ={<AddType/>} />
+                          
+                            <Route path='/addLand' element ={<AddLand/>} />
                             {/* <Route path="/register" element={<Register />} />
                             <Route path="/login" element={<Login />} />
                             <Route path="/dashboard" element={<Dashboard />} />

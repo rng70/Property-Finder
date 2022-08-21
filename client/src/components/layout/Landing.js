@@ -6,9 +6,9 @@ const Landing = () => {
         <section className="landing">
             <div className="dark-overlay">
                 <div className="landing-inner">
-                    <h1 className="x-large">StudyMate</h1>
+                    <h1 className="x-large">Welcome to Property Fnder</h1>
                     <p className="lead">
-                        Create a student profile and find your study partner to make journey easier
+                    Property Finder makes it easy to browse homes. When you're ready, you can also connect with a local agent, explore financing solutions, schedule home tours, and more 
                     </p>
                     <div className="buttons">
                         <Link to="/register" className="btn btn-primary">Sign Up</Link>
