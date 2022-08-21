@@ -11,6 +11,7 @@ import setAuthToken from './utils/setAuthToken';
 // import Posts from './components/forum/Posts';
 // import Post from './components/post/Post';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Footer from './components/layout/Footer';
 
 if (localStorage.token) {
     setAuthToken(localStorage.token);
@@ -38,7 +39,8 @@ const App = () => {
                             <Route path="/posts" element={<Posts />} />
                             <Route path="/posts/:id" element={<Post />} /> */}
                         </Routes>
-                    </section> 
+                    </section>
+                    <Footer/>
                 </Fragment>
             </BrowserRouter>
         </Provider>
