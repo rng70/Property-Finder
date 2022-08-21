@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../../../../models/User');
-const Owner = require('../../../../models/Owner');
-const Agency = require('../../../../models/Agency');
-const Land = require('../../../../models/Land');
-const House = require('../../../../models/House');
-const Space = require('../../../../models/Space');
-const auth = require('../../../../middleware/auth');
+const User = require('../../models/User');
+const Owner = require('../../models/Owner');
+const Agency = require('../../models/Agency');
+const Land = require('../../models/Land');
+const House = require('../../models/House');
+const Space = require('../../models/Space');
+const auth = require('../../middleware/auth');
 const { check, validationResult } = require('express-validator');
 
 

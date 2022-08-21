@@ -1,8 +1,5 @@
 const express = require('express')
-const next = require('next')
 const connectDB = require('./utils/mongodb')
-const cors = require('cors')
-
 
 const port = process.env.PORT || 5000
 const dev = process.env.NODE_ENV !== 'production'
@@ -21,10 +18,10 @@ app.prepare().then(() => {
     server.get('/', (req, res) => res.send('API Running Successfully'));
     
 
-    server.use('/api/users', require('./server/routes/api/users'));
-    server.use('/api/auth', require('./server/routes/api/auth'));
-    server.use('/api/addProp', require('./server/routes/api/addProp'));
-    server.use('/api/postInfo', require('./server/routes/api/postInfo'));
+    server.use('/api/users', require('./routes/api/users'));
+    server.use('/api/auth', require('./routes/api/auth'));
+    server.use('/api/addProp', require('./routes/api/addProp'));
+    server.use('/api/postInfo', require('./routes/api/postInfo'));
     server.all('*', (req, res) => {
         return handle(req, res)
     })

@@ -4,9 +4,9 @@ const config = require('config');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const gravatar = require('gravatar');
-const User = require('../../../../models/User');
-const Agency = require('../../../../models/Agency');
-const Owner = require('../../../../models/Owner');
+const User = require('../../models/User');
+const Agency = require('../../models/Agency');
+const Owner = require('../../models/Owner');
 const { check, validationResult } = require('express-validator');
 
 /**
