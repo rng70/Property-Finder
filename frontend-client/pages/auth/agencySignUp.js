@@ -3,7 +3,7 @@ import Image from 'next/image'
 import styles from "../../styles/UserSignUp.module.css";
 import {useState } from 'react';
 import { useRouter } from 'next/router';
-import { registerAgency} from '../../actions/auth';
+import { registerAgency } from '../../actions/auth';
 
 
 const UserSignUp = () => {
@@ -18,11 +18,11 @@ const UserSignUp = () => {
     const [year, setYear] = useState('');
     
     const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        password: '',
-        confirmPass: '',
-        tradeLicenseNo: '',
+        name: 'jkjfasdfj',
+        email: 'sdfkjasldjf@gajg.com',
+        password: '123456',
+        confirmPass: '123456',
+        tradeLicenseNo: 'ertwertwertwert',
         yearOfEstablishment: Date.now()
     })
 
@@ -33,7 +33,7 @@ const UserSignUp = () => {
 
     const handleSignUp = (event) => {
         event.preventDefault();
-        console.log("Handle login with email clalled!");
+        
         // check if email exists from database
         if (!email) {
             setEmailMsg('Email is required');
@@ -54,6 +54,7 @@ const UserSignUp = () => {
                 // router.push("/");
             } else {
                 console.log("API calls here");
+                console.log("Year ==> ", yearOfEstablishment);
                 registerAgency({ name, email, password, tradeLicenseNo, yearOfEstablishment });
                 router.push('/sellForm');
                 console.log("Registration Successfull")

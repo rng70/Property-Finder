@@ -18,7 +18,7 @@ export const loadUser = () => async dispatch => {
     }
 
     try {
-        const res = await axios.get('/api/auth');
+        const res = await axios.get(`${process.env.EXPRESS_API_URL}/api/auth`);
 
         dispatch({
             type: USER_LOADED,
@@ -32,7 +32,6 @@ export const loadUser = () => async dispatch => {
 };
 
 export const registerAgency = ({ name, email, password, tradeLicenseNo, yearOfEstablishment }) => async dispatch => {
-
     const config = {
         headers: {
             'Content-Type': 'application/json'
@@ -42,9 +41,10 @@ export const registerAgency = ({ name, email, password, tradeLicenseNo, yearOfEs
     const body = JSON.stringify({ name, email, password, tradeLicenseNo, yearOfEstablishment });
 
     try {
-        const res = await axios.post(`http://localhost:5000/api/users/regAgency`, body, config);
-        console.log(res);
-
+        const res = await axios.post(`${process.env.NEXT_PUBLIC_EXPRESS_API_URL}/api/users/regAgency`, body, config);
+        console.log("=========================================================================================");
+        console.log("Response ", res);
+        console.log("=========================================================================================");
         dispatch({
             type: REGISTER_SUCCESS,
             payload: res.data

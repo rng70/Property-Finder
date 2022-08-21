@@ -29,7 +29,7 @@ const SingUpType = (props) => {
                             key={singleCard.title}
                             title={singleCard.title}
                             description={singleCard.description}
-                            href={`auth/${singleCard.hrefIdSignUp}`} 
+                            href={`/auth/${singleCard.hrefIdSignUp}`} 
                             btnTitle={addStr(singleCard.buttonTitle, 5, 'up ')}
                             className={styles.card}
                         />

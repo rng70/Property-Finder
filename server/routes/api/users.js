@@ -80,7 +80,8 @@ router.post('/regUser', [
 
         jwt.sign(
             payload,
-            config.get('jwtSecret'),
+            process.env.NEXT_PUBLIC_JWT_SECRET,
+            //config.get('jwtSecret'),
             {
                 expiresIn: 3600000
             },
@@ -156,8 +157,12 @@ router.post('/regAgency', [
         const salt = await bcrypt.genSalt(10);
         agecy.password = await bcrypt.hash(password, salt);
 
+        console.log("+++++++++++++++++++++Before save=============================");
+
         /* Now save the user to the database */
         await agecy.save();
+
+        console.log("+++++++++++++++++++++after save=============================");
 
         /* Case-4: Return jsonwebtokens */
         const payload = {
@@ -166,9 +171,12 @@ router.post('/regAgency', [
             }
         }
 
+        console.log("+++++++++++++++++++++Before before=============================");
+
         jwt.sign(
             payload,
-            config.get('jwtSecret'),
+            process.env.NEXT_PUBLIC_JWT_SECRET,
+            //config.get('jwtSecret'),
             {
                 expiresIn: 3600000
             },
@@ -178,6 +186,7 @@ router.post('/regAgency', [
                 }
                 res.json({ token });
             });
+        console.log("+++++++++++++++++++++Beforefdf asdf  save=============================");
         // res.send('User registered')
     } catch (err) {
         console.error(err.message);

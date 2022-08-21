@@ -8,6 +8,8 @@ const House = require('../../../../models/House');
 const Space = require('../../../../models/Space');
 const auth = require('../../../../middleware/auth');
 const { check, validationResult } = require('express-validator');
+
+
 var multer = require('multer');
 
 var storage = multer.memoryStorage();
