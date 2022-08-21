@@ -1,9 +1,6 @@
-import Head from "next/head";
-import Image from 'next/image'
-import styles from "../../styles/UserSignIn.module.css";
+import styles from "./SignInStyle.module.css";
 import {useState } from 'react';
-import { useRouter } from 'next/router';
-import { login } from '../../actions/auth';
+import { login } from '../../../actions/auth';
 
 const UserSignIn = (props) => {
 
@@ -17,8 +14,11 @@ const UserSignIn = (props) => {
         password: ''
     })
 
-    const router = useRouter();
+    const onSubmit = e => {
+        console.log("Submitting");
+    }
 
+    const { email, password } = FormData;
     const handleLoginWIthEmail = (event) =>{
         event.preventDefault(); 
 
@@ -34,7 +34,7 @@ const UserSignIn = (props) => {
 
             if (localStorage.getToken('token')) {
                 console.log("User token == ", localStorage.getToken('token'));
-                router.push('/userFeed');
+                // router.push('/userFeed');
             } else {
                 setPasswordMsg('Something went wrong. Try again :(')
             }
@@ -45,44 +45,36 @@ const UserSignIn = (props) => {
     
     return( 
     <div className={styles.container}>
-        <Head>
-            <title>
-                PropertyFinder User Sign In
-            </title>
-            </Head>
-            
-        
         <header className={styles.header}>
             <div className={styles.headerWrapper}>
                 <a className={styles.logoLink} href="/">
                     <div>
-                        <Image src="/static/logo.png" alt="PropertyFinder logo"
-                                width="128px" height="34px"/>    
+                        <img src="/static/logo.png" alt="PropertyFinder logo" width="128px" height="34px"/>    
                     </div>
                 </a>
             </div>
-                </header>
+        </header>
         
 
-<form className="form" onSubmit={e => onSubmit(e)}>
-        <main className={styles.main}>
-            <div className={styles.mainWrapper}>
+        <form className="form" onSubmit={e => onSubmit(e)}>
+            <main className={styles.main}>
+                <div className={styles.mainWrapper}>
 
-                <h1 className={styles.signinHeader}>Sign In as User</h1>
-                
-                <input type="text" placeholder="Email Address" className={styles.emailInput} onChange={e => onChange(e)}/>
-                
-                <p className={styles.userMsg} >{emailMsg}</p>
+                    <h1 className={styles.signinHeader}>Sign In as User</h1>
+                    
+                    <input type="text" placeholder="Email Address" className={styles.emailInput} onChange={e => onChange(e)}/>
+                    
+                    <p className={styles.userMsg} >{emailMsg}</p>
 
 
-                <input type="password" placeholder="Password" className={styles.emailInput} onChange={e => onChange(e)}/>
-                
-                <p className={styles.userMsg} >{passwordMsg}</p>
-                
-                <button onClick = {handleLoginWIthEmail} className={styles.loginBtn}>Sign In</button>
-            </div>
+                    <input type="password" placeholder="Password" className={styles.emailInput} onChange={e => onChange(e)}/>
+                    
+                    <p className={styles.userMsg} >{passwordMsg}</p>
+                    
+                    <button onClick = {handleLoginWIthEmail} className={styles.loginBtn}>Sign In</button>
+                </div>
             </main>
-            </form>
+        </form>
     </div>
     )
 }

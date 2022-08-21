@@ -1,4 +1,4 @@
-import styles from '../styles/Banner.module.css';
+import styles from './Banner.module.css';
 
 
 const Banner = ({ bannerData }) => {
@@ -14,9 +14,7 @@ const Banner = ({ bannerData }) => {
                     {/* {button.sale.title} */}
                     Sign in
                 </button>
-                 
             </div>
-
             {/* <button className={styles.searchButton}>Search</button> */}
         </div>
     )

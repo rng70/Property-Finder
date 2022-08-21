@@ -1,17 +1,12 @@
-import Head from "next/head";
-import Image from 'next/image'
-import styles from "../../styles/UserSignIn.module.css";
+import styles from "./SignInStyle.module.css";
 import {useState } from 'react';
-import {useRouter} from 'next/router';
 
-const OwnerSignIn = (props) => {
+const UserSignIn = (props) => {
 
     //for dispalying user message about valid email input
     // keeping state using react hooks
     const [email,setEmail] = useState('')
     const [userMsg,setUserMsg] = useState('')
-
-    const router = useRouter();
 
     const handleLoginWIthEmail = (event) =>{
         setUserMsg('');
@@ -20,9 +15,10 @@ const OwnerSignIn = (props) => {
         if(email){
             //route to dashboard
             const emailFromDB = "tanin@gmail.com";
-            if(email==emailFromDB){
-                //route to dashboard
-                router.push("/");
+            if(email===emailFromDB){
+                // route to dashboard
+                // router.push("/");
+                console.log("Need to redirect");
             }else{
                 setUserMsg('Something went wrong logging in');
             }
@@ -40,18 +36,11 @@ const OwnerSignIn = (props) => {
     }
     return( 
     <div className={styles.container}>
-        <Head>
-            <title>
-                PropertyFinder User Sign In
-            </title>
-        </Head>
-
         <header className={styles.header}>
             <div className={styles.headerWrapper}>
                 <a className={styles.logoLink} href="/">
                     <div>
-                        <Image src="/static/logo.png" alt="PropertyFinder logo"
-                                width="128px" height="34px"/>    
+                        <img src="/static/logo.png" alt="PropertyFinder logo" width="128px" height="34px"/>    
                     </div>
                 </a>
             </div>
@@ -61,16 +50,17 @@ const OwnerSignIn = (props) => {
         <main className={styles.main}>
             <div className={styles.mainWrapper}>
 
-                <h1 className={styles.signinHeader}>Sign In as an Owner</h1>
+                <h1 className={styles.signinHeader}>Sign In as Agency</h1>
                 
                 <input type="text" placeholder="Email Address" className={styles.emailInput} onChange={handleOnChnangeEmail}/>
                 
                 <p className={styles.userMsg} >{userMsg}</p>
-                
+
+
                 <input type="text" placeholder="Password" className={styles.emailInput} onChange={handleOnChnangeEmail}/>
                 
                 <p className={styles.userMsg} >{userMsg}</p>
-
+                
                 <button onClick = {handleLoginWIthEmail} className={styles.loginBtn}>Sign In</button>
             </div>
         </main>
@@ -78,4 +68,4 @@ const OwnerSignIn = (props) => {
     )
 }
 
-export default OwnerSignIn;
+export default UserSignIn;

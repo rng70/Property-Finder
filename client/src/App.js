@@ -13,13 +13,13 @@ import setAuthToken from './utils/setAuthToken';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 if (localStorage.token) {
-  setAuthToken(localStorage.token);
+    setAuthToken(localStorage.token);
 }
 
 const App = () => {
-  useEffect(() => {
-    store.dispatch(loadUser);
-  }, []);
+    useEffect(() => {
+        store.dispatch(loadUser);
+    }, []);
 
 
     return (

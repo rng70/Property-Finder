@@ -2,6 +2,7 @@
     justify-content: center;
     margin-top: 100px;
 }
+
 .cardLayout {
     display: grid;
     grid-template-columns: repeat(1, minmax(0, 1fr));

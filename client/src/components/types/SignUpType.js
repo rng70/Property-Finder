@@ -1,6 +1,6 @@
-import styles from "../styles/SingInType.module.css"
-import { getCardData } from "../data/card-data"
-import {Card} from "../Components"
+import styles from "./InTypeStyle.module.css"
+import { getCardData } from "../../data/card-data"
+import {Card} from "../../components"
 
 export async function getStaticProps(context) {
 
