@@ -13,6 +13,9 @@ const AddType= ()=>{
             <Link to="/addSpace">
                 <button className="btn btn-outline-primary">Add Space</button>
             </Link>
+            <Link to="/addHouse">
+                <button className="btn btn-outline-primary">Add House</button>
+            </Link>
         </div>
     )
 }
