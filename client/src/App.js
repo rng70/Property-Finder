@@ -12,6 +12,9 @@ import setAuthToken from './utils/setAuthToken';
 // import Post from './components/post/Post';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Footer from './components/layout/Footer';
+import AddLand from './components/add/AddLand';
+import AddType from './components/add/AddType';
+import AddSpace from './components/add/AddSpace';
 import { getCardData } from './data/card-data';
 
 if (localStorage.token) {
@@ -37,6 +40,9 @@ const App = () => {
                         {/* <Alert /> */}
                         <Routes>
                             <Route path='/' element={<Landing />} />
+                            <Route path='/add' element ={<AddType/>} />
+                            <Route path='/addLand' element ={<AddLand/>} />
+                            <Route path='/addSpace' element ={<AddSpace/>} />
                             <Route path="/register" element={<SignUpType cardInfo={cardInfoData} />} />
                             <Route path="/login" element={<SignInType cardInfo={cardInfoData} />} />
                             <Route path="/login/agency" element={<AgencySignIn />} />
