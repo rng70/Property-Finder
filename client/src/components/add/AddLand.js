@@ -28,7 +28,7 @@ const AddLand = () =>{
         setPrice(e.target.value)
     }
     const setPlotValue = e =>{
-        setPlotValue(e.target.value);
+        setPlot(e.target.value);
     }
     const setRoadValue= e =>{
         setRoad(e.target.value)
