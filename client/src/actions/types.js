@@ -25,3 +25,5 @@ export const ADD_SPACE_SUCCESS = 'ADD_SPACE_SUCCESS';
 export const ADD_LAND_FAIL = 'ADD_LAND_FAIL';
 export const ADD_HOUSE_FAIL = 'ADD_HOUSE_FAIL';
 export const ADD_SPACE_FAIL = 'ADD_SPACE_FAIL';
+export const GET_LAND = 'GET_LAND';
+export const GET_LAND_FAIL = 'GET_LAND_FAIL';

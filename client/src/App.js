@@ -3,13 +3,8 @@ import store from './store';
 import { Provider } from 'react-redux';
 import { loadUser } from './actions/auth';
 import { Fragment, useEffect } from 'react';
-// import Login from './components/auth/Login';
-// import Alert from './components/layout/Alert';
-import { Navbar, Landing, SignInType, SignUpType, AgencySignIn } from './components';
+import { Navbar, Landing, SignInType, SignUpType, AgencySignIn, OwnerSignIn, UserSignIn } from './components';
 import setAuthToken from './utils/setAuthToken';
-// import Register from './components/auth/Register';
-// import Posts from './components/forum/Posts';
-// import Post from './components/post/Post';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Footer from './components/layout/Footer';
 import AddLand from './components/add/AddLand';
@@ -50,6 +45,8 @@ const App = () => {
                             <Route path="/register" element={<SignUpType cardInfo={cardInfoData} />} />
                             <Route path="/login" element={<SignInType cardInfo={cardInfoData} />} />
                             <Route path="/login/agency" element={<AgencySignIn />} />
+                            <Route path="/login/owner" element={<OwnerSignIn />} />
+                            <Route path="/login/user" element={<UserSignIn />} />
                             {/* <Route path="/login" element={<Login />} />
                             <Route path="/dashboard" element={<Dashboard />} />
                             <Route path="/create-profile" element={<CreateProfile />} />

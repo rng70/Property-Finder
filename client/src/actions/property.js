@@ -7,7 +7,9 @@ import {
     ADD_SPACE,
     ADD_LAND_FAIL,
     ADD_HOUSE_FAIL,
-    ADD_SPACE_FAIL
+    ADD_SPACE_FAIL,
+    GET_LAND,
+    GET_LAND_FAIL
 } from './types';
 
 /*
@@ -100,6 +102,29 @@ export const addHouse = (props) => async dispatch => {
     }
 };
 
+// GET LAND
+export const getLand = () => async dispatch => {
+    try {
+        console.log("Before call")
+        const res = await axios.get(`http://localhost:5000/api/info/getLand`);
+        
+        console.log(res.data)
+        console.log("After call")
+
+        dispatch({
+        type: GET_LAND,
+        payload: res.data
+        });
+    } catch (err) {
+        console.log('IN error')
+        console.log(err)
+        dispatch({
+        type: GET_LAND_FAIL,
+        payload: { msg: err.response.statusText, status: err.response.status }
+    });
+}
+};
+
 // // Remove like
 // export const removeLike = (id) => async (dispatch) => {
 //   try {
@@ -152,23 +177,6 @@ export const addHouse = (props) => async dispatch => {
 //     });
 
 //     dispatch(setAlert('Post Created', 'success'));
-//   } catch (err) {
-//     dispatch({
-//       type: POST_ERROR,
-//       payload: { msg: err.response.statusText, status: err.response.status }
-//     });
-//   }
-// };
-
-// // Get post
-// export const getPost = (id) => async (dispatch) => {
-//   try {
-//     const res = await axios.get(`/api/posts/${id}`);
-
-//     dispatch({
-//       type: GET_POST,
-//       payload: res.data
-//     });
 //   } catch (err) {
 //     dispatch({
 //       type: POST_ERROR,

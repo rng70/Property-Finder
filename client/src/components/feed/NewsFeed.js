@@ -1,10 +1,20 @@
-import React,{useState,useEffect} from 'react';
+import React,{useEffect} from 'react';
 import Card from './Card';
 import Jumbo from './Jumbo';
+import { getLand } from '../../actions/property';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-const NewsFeed = ()=>{
+const NewsFeed = ({getLand, properties}) => {
+    useEffect(() => {
+        getLand();
+    }, [getLand])
+    
+
     //later will be fetched from database
-    const allProperties= [1,2,3,4]
+    const allProperties = [1, 2, 3, 4];
+    console.log(properties)
+    
     return (
         <div>
             <Jumbo/>
@@ -12,7 +22,27 @@ const NewsFeed = ()=>{
             {allProperties.map((property,i)=>{
                 return <Card key={i} property={property}/>
             })}
+            <div>
+            {properties.map((land, i) => {
+                return (<div>
+                    <p> Hello
+                        {land.ownerType}
+                    </p>
+                </div>)
+            })}</div>
         </div>
     )
 }
-export default NewsFeed;
+
+NewsFeed.propTypes = {
+    getLand: PropTypes.func.isRequired,
+    property: PropTypes.object.isRequired
+}
+
+const mapStateToProps = (state) => ({
+    properties: state.property.properties
+})
+
+export default connect(mapStateToProps, { getLand })(NewsFeed);
+
+// export default NewsFeed;
