@@ -3,12 +3,6 @@ import React from 'react';
 function Footer(props) {
     return(
     <div className="footer">
-        <link
-  rel="stylesheet"
-  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-  crossorigin="anonymous"
-/>
         <div className="container">
             <div className="row justify-content-center">             
                 <div className="col-4 offset-1 col-sm-2">
