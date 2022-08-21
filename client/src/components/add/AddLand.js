@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import Jumbo from "./Jumbo";
-// import {isAuthenticated} from '../add'
+import { addLand } from '../../actions/property';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-const AddLand = () =>{
-    const [error,setError] = useState(false);
-    const [success,setSuccess] = useState(false);
+const AddLand = ({addLand}) =>{
+    const [error, setError] = useState(false);
+    const [success, setSuccess] = useState(false);
 
     //form data
-    const [area,setArea] = useState('')
+    const [landArea,setArea] = useState('')
     const [price,setPrice] = useState('')
     const [plot,setPlot] = useState('')
     const [road,setRoad] = useState('')
@@ -15,10 +17,12 @@ const AddLand = () =>{
     const [postCode,setPostCode] = useState('')
     const [areaName,setAreaName] = useState('')
     const [district,setDistrict] = useState('')
-    const [division,setDivision] = useState('')
+    const [division, setDivision] = useState('')
+    const [isSold, setSoldState] = useState(true)
 
     const handleSubmit = (e)=>{
         e.preventDefault();
+        addLand({landArea, price, isSold})
     }
 
     const setAreaValue = e =>{
@@ -55,7 +59,7 @@ const AddLand = () =>{
             <div className="container">
                 <div className="form-group">
                     <label className="text-muted">Area(sq. ft)</label>
-                    <input type="text" className="form-control" value={area} autoFocus onChange={setAreaValue}></input>
+                    <input type="text" className="form-control" value={landArea} autoFocus onChange={setAreaValue}></input>
                     
                     <label className="text-muted">Price</label>
                     <input type="text" className="form-control"  autoFocus value={price} onChange={setPriceValue}></input>
@@ -94,4 +98,8 @@ const AddLand = () =>{
     )
 }
 
-export default AddLand;
+AddLand.propTypes = {
+    addLand: PropTypes.func.isRequired
+}
+
+export default connect(null, { addLand })(AddLand);

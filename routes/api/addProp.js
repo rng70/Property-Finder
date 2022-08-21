@@ -35,10 +35,13 @@ router.post('/addLand',
         ]
     ],
     async (req, res) => {
+        console.log("1")
         const errors = validationResult(req);
+        console.log("11")
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         }
+        console.log("111")
 
         try {
             console.log(req.user);
@@ -58,7 +61,7 @@ router.post('/addLand',
                 type = 'agency';
             }
 
-            console.log(owner);
+            console.log('Owner ==> ', owner);
             const newLand = new Land({
                 ownerType: type,
                 landArea: req.body.landArea,
@@ -68,13 +71,16 @@ router.post('/addLand',
                 owner: req.user.id
             });
 
-            const landImage = {
-                data: req.file.buffer,
-                contentType: 'image/jpg',
-            }
+            if (typeof req.file !== 'undefined') {
+                console.log("Undefined here")
+                const landImage = {
+                    data: req.file.buffer,
+                    contentType: 'image/jpg',
+                }
 
-            newLand.landImages.unshift(landImage);
-            console.log(newLand);
+                newLand.landImages.unshift(landImage);
+                console.log(newLand);
+            }
 
             const land = await newLand.save();
             return res.json(land);
