@@ -18,7 +18,7 @@ export const loadUser = () => async dispatch => {
     }
 
     try {
-        const res = await axios.get(`${process.env.EXPRESS_API_URL}/api/auth`);
+        const res = await axios.get(`http://localhost:5000/api/auth`);
 
         dispatch({
             type: USER_LOADED,
@@ -41,7 +41,8 @@ export const registerAgency = ({ name, email, password, tradeLicenseNo, yearOfEs
     const body = JSON.stringify({ name, email, password, tradeLicenseNo, yearOfEstablishment });
 
     try {
-        const res = await axios.post(`${process.env.NEXT_PUBLIC_EXPRESS_API_URL}/api/users/regAgency`, body, config);
+        const res = await axios.post(`http://localhost:5000/api/users/regAgency`, body, config);
+
         console.log("=========================================================================================");
         console.log("Response ", res);
         console.log("=========================================================================================");
@@ -73,7 +74,9 @@ export const login = (email, password) => async dispatch => {
     const body = JSON.stringify({ email, password });
 
     try {
-        const res = await axios.post('/api/auth', body, config);
+        const res = await axios.post(`http://localhost:5000/api/auth`, body, config);
+
+        console.log("RES ==> ", res);
 
         dispatch({
             type: LOGIN_SUCCESS,
@@ -82,6 +85,10 @@ export const login = (email, password) => async dispatch => {
 
         dispatch(loadUser());
     } catch (err) {
+        console.log("+++++++++++++++++++++++++++++++++++++++++++++++");
+        console.log(err);
+        console.log("+++++++++++++++++++++++++++++++++++++++++++++++");
+
         const errors = err.response.data.errors;
 
         if (errors) {

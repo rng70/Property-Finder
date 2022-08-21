@@ -1,11 +1,12 @@
 import React from 'react';
+import cls from 'classnames';
 import { Link } from 'react-router-dom';
-
+import styles from './Navbar.module.css';
 
 const Navbar = () => {
     
     return (
-        <nav className="navbar bg-dark">
+        <nav className={cls('bg-dark', styles.navbar)}>
             <h1>
                 <Link to="/">Property Finder</Link>
             </h1>

@@ -1,30 +1,38 @@
 import styles from "./SignInStyle.module.css";
 import {useState } from 'react';
 import { login } from '../../../actions/auth';
+import { useNavigate } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-const UserSignIn = (props) => {
+const UserSignIn = ({ login, isAuthenticated }) => {
 
     //for dispalying user message about valid email input
     // keeping state using react hooks
+    let navigation = useNavigate();
     const [emailMsg, setEmailMsg] = useState('')
     const [passwordMsg, setPasswordMsg] = useState('')
     
-    const [fromData, setFormData] = useState({
+    const [formData, setFormData] = useState({
         email: '',
         password: ''
     })
+
+    const { email, password } = formData;
 
     const onSubmit = e => {
         console.log("Submitting");
     }
 
-    const { email, password } = FormData;
-    const handleLoginWIthEmail = (event) =>{
-        event.preventDefault(); 
+    
+    const handleLoginWIthEmail = e =>{
+        e.preventDefault(); 
 
         console.log("Handle login with email clalled!");
+
         // check if email exists from database
         if (!email) {
+            console.log("Email" , email);
             setEmailMsg('Please enter a valid email address');
         } else if (!password) {
             setPasswordMsg('Please enter correct password');
@@ -32,16 +40,20 @@ const UserSignIn = (props) => {
             //route to dashboard
             login(email, password);
 
-            if (localStorage.getToken('token')) {
-                console.log("User token == ", localStorage.getToken('token'));
-                // router.push('/userFeed');
-            } else {
-                setPasswordMsg('Something went wrong. Try again :(')
-            }
+            // if (localStorage.getToken('token')) {
+            //     console.log("User token == ", localStorage.getToken('token'));
+            //     // router.push('/userFeed');
+            // } else {
+            //     setPasswordMsg('Something went wrong. Try again :(')
+            // }
         } 
     }
 
-    const onChange = async e => setFormData({ ...fromData, [e.target.name]: e.target.value });
+    const onChange = async e => setFormData({ ...formData, [e.target.name]: e.target.value });
+
+    if (isAuthenticated) {
+        navigation('/');
+    }
     
     return( 
     <div className={styles.container}>
@@ -62,12 +74,12 @@ const UserSignIn = (props) => {
 
                     <h1 className={styles.signinHeader}>Sign In as User</h1>
                     
-                    <input type="text" placeholder="Email Address" className={styles.emailInput} onChange={e => onChange(e)}/>
+                    <input type="text" name="email" value={email} placeholder="Email Address" className={styles.emailInput} onChange={e => onChange(e)}/>
                     
                     <p className={styles.userMsg} >{emailMsg}</p>
 
 
-                    <input type="password" placeholder="Password" className={styles.emailInput} onChange={e => onChange(e)}/>
+                    <input type="password" name="password" value={password} placeholder="Password" className={styles.emailInput} onChange={e => onChange(e)}/>
                     
                     <p className={styles.userMsg} >{passwordMsg}</p>
                     
@@ -79,4 +91,14 @@ const UserSignIn = (props) => {
     )
 }
 
-export default UserSignIn;
+UserSignIn.propTypes = {
+    login: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.bool
+}
+
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated
+})
+
+
+export default connect(mapStateToProps, { login })(UserSignIn);

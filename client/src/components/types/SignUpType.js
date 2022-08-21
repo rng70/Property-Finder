@@ -1,16 +1,5 @@
-import styles from "./InTypeStyle.module.css"
-import { getCardData } from "../../data/card-data"
-import {Card} from "../../components"
-
-export async function getStaticProps(context) {
-
-    const cardInfoData = getCardData();
-    return {
-        props: {
-            cardInfo: cardInfoData,
-        }
-    }
-}
+import styles from "./InTypeStyle.module.css";
+import { Card } from "../../components";
 
 const SingUpType = (props) => {
     //console.log(props.cardInfo);
@@ -20,8 +9,7 @@ const SingUpType = (props) => {
     }
     return (
         
-         <div>
-            
+        <div>
             <div className={styles.container}>
                 {props.cardInfo.length > 0 && <div className={styles.cardLayout}>
                     {props.cardInfo.map((singleCard) =>
@@ -29,7 +17,7 @@ const SingUpType = (props) => {
                             key={singleCard.title}
                             title={singleCard.title}
                             description={singleCard.description}
-                            href={`/auth/${singleCard.hrefIdSignUp}`} 
+                            href={`/register/${singleCard.hrefIdSignUp}`} 
                             btnTitle={addStr(singleCard.buttonTitle, 5, 'up ')}
                             className={styles.card}
                         />
@@ -37,8 +25,7 @@ const SingUpType = (props) => {
                 </div>
                 }
             </div>
-
-          </div>
+        </div>
     )      
 }
 
