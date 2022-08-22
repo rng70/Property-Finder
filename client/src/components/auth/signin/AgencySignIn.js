@@ -40,7 +40,7 @@ const AgencySignIn = ({ login, isAuthenticated }) => {
 
 
     if (isAuthenticated) {
-        navigation('/');
+        navigation('/dashboard');
     }
 
     return( 

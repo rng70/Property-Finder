@@ -5,8 +5,14 @@ import { GET_PROFILE, PROFILE_ERROR } from "./types";
 
 //get current users profile
 export const getCurrentProfile = () => async (dispatch) => {
+  const config = {
+    header: {
+      'Content-Type': 'application/json'
+    }
+  }
+  
   try {
-    const res = await axios.get("api/profile/me");
+    const res = await axios.get(`http://localhost:5000/api/profile/me`, config);
     dispatch({
       type: GET_PROFILE,
       payload: res.data,
@@ -42,7 +48,7 @@ export const createProfile =
       if (!edit) {
         history.push("/dashboard");
       }
-    } catch (error) {
+    } catch (err) {
       const errors = err.response.data.errors;
 
       if (errors) {

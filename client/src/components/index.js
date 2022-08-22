@@ -18,3 +18,4 @@ export { default as JumboS } from './feed/Jumbo';
 export { default as CardImage } from './feed/CardImage';
 export { default as FeedCard } from './feed/Card';
 export { default as Footer } from './layout/Footer';
+export { default as UserDashboard } from './dashboard/UserDashboard';

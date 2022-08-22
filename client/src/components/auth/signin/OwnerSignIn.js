@@ -44,7 +44,7 @@ const OwnerSignIn = ({login, isAuthenticated}) => {
 
 
     if (isAuthenticated) {
-        navigation('/');
+        navigation('/dashboard');
     }
 
     return( 

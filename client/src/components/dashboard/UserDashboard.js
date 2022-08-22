@@ -1,11 +1,18 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Jumbo from "./Jumbo";
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { getCurrentProfile } from '../../actions/profile';
 
-const UserDashboard = (props) => {
-    var {name,email,type} = props;
-    name = "Buet CSE";
-    email = "buet@gmail.com"
-    type = "General User"
+
+const UserDashboard = ({ getCurrentProfile, profile }) => {
+    useEffect(() => {
+        getCurrentProfile()
+    }, [getCurrentProfile])
+    const {name, email} = profile;
+    //name = "Buet CSE";
+    // email = "buet@gmail.com"
+    const type = "Agency"
     return (
         <div>
             <Jumbo/>
@@ -13,9 +20,9 @@ const UserDashboard = (props) => {
             <div className="card mb-5">
                 <h3 className="card-header">My Profile</h3>
                 <ul className="list-group">
-                    <li className="list-group-item">{name}</li>
-                    <li className="list-group-item">{email}</li>
-                    <li className="list-group-item">{type}</li>
+                        {name && <li className="list-group-item">{name}</li>}
+                        {email && <li className="list-group-item">{email}</li>}
+                        {type && <li className="list-group-item">{type}</li>}
                 </ul>
             </div>
             </div>
@@ -32,7 +39,15 @@ const UserDashboard = (props) => {
             </div>
         </div>
     )
-
 }
 
-export default UserDashboard;
+UserDashboard.propTypes = {
+    profile: PropTypes.object.isRequired,
+    getCurrentProfile: PropTypes.func.isRequired
+}
+
+const mapStateToProps = state => ({
+    profile: state.profile
+})
+
+export default connect(mapStateToProps, {getCurrentProfile})(UserDashboard);

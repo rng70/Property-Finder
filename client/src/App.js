@@ -18,7 +18,7 @@ import {
     AddHouse,
     NewsFeed,
     PrivateOutlet,
-    Dashboard
+    UserDashboard
 } from './components';
 import setAuthToken from './utils/setAuthToken';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -35,9 +35,6 @@ const App = () => {
 
     const cardInfoData = getCardData();
 
-    console.log(cardInfoData);
-
-
     return (
         <Provider store={store}>
             <BrowserRouter>
@@ -46,7 +43,7 @@ const App = () => {
                     <section>
                         {/* <Alert /> */}
                         <Routes>
-                            <Route path='/' element={<Landing />} />
+                            <Route path='/' element={<Landing />} exact/>
                             <Route path='/add' element ={<AddType/>} />
                             <Route path='/addLand' element ={<AddLand/>} />
                             <Route path='/addSpace' element ={<AddSpace/>} />
@@ -58,11 +55,9 @@ const App = () => {
                             <Route path='/login/owner' element={<OwnerSignIn />} />
                             <Route path='/login/user' element={<UserSignIn />} />
                             <Route path='/*' element={<PrivateOutlet/>}>
-                                <Route path='/dashboard' element={<Dashboard/>}/>
+                                <Route path='dashboard' element={<UserDashboard/>}/>
                             </Route>
-                            {/* <Route path="/login" element={<Login />} />
-                            <Route path="/dashboard" element={<Dashboard />} />
-                            <Route path="/create-profile" element={<CreateProfile />} />
+                            {/* <Route path="/create-profile" element={<CreateProfile />} />
                             <Route path="/posts" element={<Posts />} />
                             <Route path="/posts/:id" element={<Post />} /> */}
                         </Routes>

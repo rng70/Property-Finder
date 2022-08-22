@@ -104,9 +104,15 @@ export const addHouse = (props) => async dispatch => {
 
 // GET LAND
 export const getLand = () => async dispatch => {
+    const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+
     try {
         console.log("Before call")
-        const res = await axios.get(`http://localhost:5000/api/info/getLand`);
+        const res = await axios.get(`http://localhost:5000/api/info/getLand`, config);
         
         console.log(res.data)
         console.log("After call")
