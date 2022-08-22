@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import {MDBBtn} from 'mdb-react-ui-kit'
 import CardImage from "./CardImage";
 
-const Card =(props) =>{
+const FeedCard =(props) =>{
     const property = props.property;
 
     const title ="This is a dummy card";
@@ -35,4 +35,4 @@ const Card =(props) =>{
     )
 }
 
-export default Card;
+export default FeedCard;

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Jumbo from "./Jumbo";
 // import {isAuthenticated} from '../add'
 
-const AddLand = () =>{
+const AddSpace = () =>{
     const [error,setError] = useState(false);
     const [success,setSuccess] = useState(false);
 
@@ -179,4 +179,4 @@ const AddLand = () =>{
     )
 }
 
-export default AddLand;
+export default AddSpace;
