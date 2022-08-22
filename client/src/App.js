@@ -23,6 +23,12 @@ import {
 import setAuthToken from './utils/setAuthToken';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { getCardData } from './data/card-data';
+<<<<<<< HEAD
+=======
+import AddHouse from './components/add/AddHouse';
+import NewsFeed from './components/feed/NewsFeed';
+import UserDashboard from './components/dashboard/UserDashboard';
+>>>>>>> 4f7b4d2a4747b7f46b92d2500e56ba998743caf3
 
 if (localStorage.token) {
     setAuthToken(localStorage.token);
@@ -52,6 +58,7 @@ const App = () => {
                             <Route path='/addSpace' element ={<AddSpace/>} />
                             <Route path='/addHouse' element ={<AddHouse/>} />
                             <Route path='/feed' element ={<NewsFeed/>} />
+<<<<<<< HEAD
                             <Route path='/register' element={<SignUpType cardInfo={cardInfoData} />} />
                             <Route path='/login' element={<SignInType cardInfo={cardInfoData} />} />
                             <Route path='/login/agency' element={<AgencySignIn />} />
@@ -60,6 +67,14 @@ const App = () => {
                             <Route path='/*' element={<PrivateOutlet/>}>
                                 <Route path='/dashboard' element={<Dashboard/>}/>
                             </Route>
+=======
+                            <Route path="/register" element={<SignUpType cardInfo={cardInfoData} />} />
+                            <Route path="/login" element={<SignInType cardInfo={cardInfoData} />} />
+                            <Route path="/login/agency" element={<AgencySignIn />} />
+                            <Route path="/login/owner" element={<OwnerSignIn />} />
+                            <Route path="/login/user" element={<UserSignIn />} />
+                            <Route path="/dashboard" element={<UserDashboard />} />
+>>>>>>> 4f7b4d2a4747b7f46b92d2500e56ba998743caf3
                             {/* <Route path="/login" element={<Login />} />
                             <Route path="/dashboard" element={<Dashboard />} />
                             <Route path="/create-profile" element={<CreateProfile />} />
