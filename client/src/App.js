@@ -13,6 +13,7 @@ import AddSpace from './components/add/AddSpace';
 import { getCardData } from './data/card-data';
 import AddHouse from './components/add/AddHouse';
 import NewsFeed from './components/feed/NewsFeed';
+import UserDashboard from './components/dashboard/UserDashboard';
 
 if (localStorage.token) {
     setAuthToken(localStorage.token);
@@ -47,6 +48,7 @@ const App = () => {
                             <Route path="/login/agency" element={<AgencySignIn />} />
                             <Route path="/login/owner" element={<OwnerSignIn />} />
                             <Route path="/login/user" element={<UserSignIn />} />
+                            <Route path="/dashboard" element={<UserDashboard />} />
                             {/* <Route path="/login" element={<Login />} />
                             <Route path="/dashboard" element={<Dashboard />} />
                             <Route path="/create-profile" element={<CreateProfile />} />
