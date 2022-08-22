@@ -16,7 +16,7 @@ const AddType = ({getLand}) => {
 
     // console.log("Before useeffect", data);
     // useEffect(() => {
-    //     datafetcher();
+    //     datafetcher();npm
     // }, [datafetcher, data]);
 
     // console.log("After useeffect", data);
