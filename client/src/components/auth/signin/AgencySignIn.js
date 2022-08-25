@@ -6,8 +6,6 @@ import PropTypes from 'prop-types';
 import { login } from '../../../actions/auth';
 
 const AgencySignIn = ({ login, isAuthenticated }) => {
-
-    //for dispalying user message about valid email input
     // keeping state using react hooks
     let navigation = useNavigate();
 

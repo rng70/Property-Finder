@@ -10,8 +10,6 @@ const UserDashboard = ({ getCurrentProfile, profile }) => {
         getCurrentProfile()
     }, [getCurrentProfile])
     const {name, email} = profile;
-    //name = "Buet CSE";
-    // email = "buet@gmail.com"
     const type = "Agency"
     return (
         <div>

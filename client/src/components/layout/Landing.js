@@ -1,18 +1,20 @@
+import cls from 'classnames';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import styles from './Landing.module.css';
 
 const Landing = () => {
     return (
-        <section className="landing">
-            <div className="dark-overlay">
-                <div className="landing-inner">
-                    <h1 className="x-large">Welcome to Property Fnder</h1>
-                    <p className="lead">
+        <section className={styles.landing}>
+            <div className={styles.overlay}>
+                <div className={styles.inner}>
+                    <h1 className={styles.heading}>Welcome to Property Fnder</h1>
+                    <p className={styles.lead}>
                     Property Finder makes it easy to browse homes. When you're ready, you can also connect with a local agent, explore financing solutions, schedule home tours, and more 
                     </p>
-                    <div className="buttons">
-                        <Link to="/register" className="btn btn-primary">Sign Up</Link>
-                        <Link to="/login" className="btn btn-light">Login</Link>
+                    <div className={styles.btn}>
+                        <Link to="/register" className={cls(styles.btn, styles.primary)}>Sign Up</Link>
+                        <Link to="/login" className={cls(styles.btn, styles.light)}>Login</Link>
                     </div>
                 </div>
             </div>
