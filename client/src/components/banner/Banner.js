@@ -3,7 +3,6 @@ import styles from './Banner.module.css';
 
 const Banner = ({ bannerData }) => {
     const { title, button, imgUrl } = bannerData;
-    console.log(imgUrl);
 
     return (
         <div className={styles.container}  style={{ backgroundImage: `url(${imgUrl})` }}>

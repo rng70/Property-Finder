@@ -21,8 +21,14 @@ import {
 
 // Get posts
 export const getPosts = () => async (dispatch) => {
+  const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+  }
+  
   try {
-    const res = await axios.get('/api/posts');
+    const res = await axios.get(`http://localhost:5000/api/posts`, config);
 
     dispatch({
       type: GET_POSTS,

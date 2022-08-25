@@ -15,15 +15,9 @@ const { response } = require('express');
  */ 
 router.get('/me', auth, async (req, res) => {
     try {
-        console.log("============================");
-        console.log(req.id)
-        console.log("============================")
         const profile = await Agency.findOne({
             user: req.id
-        });//.populate(['name', 'email']);
-
-        
-        console.log("Profile ==> ", profile)
+        });
 
         if (!profile) {
             return res.status(400).json({ msg: 'Profile not found' });
@@ -132,10 +126,8 @@ router.get('/me', auth, async (req, res) => {
 //             await profile.save();
 //             return res.json(profile);
 //         } catch (err) {
-//             console.log(err.message);
 //             res.status(500).send('Server Error');
 //         }
-//         console.log(profileFields.skills);
 //         res.send("Hello");
 //     }
 // );

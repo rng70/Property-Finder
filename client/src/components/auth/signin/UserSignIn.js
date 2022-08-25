@@ -28,24 +28,15 @@ const UserSignIn = ({ login, isAuthenticated }) => {
     const handleLoginWIthEmail = e =>{
         e.preventDefault(); 
 
-        console.log("Handle login with email clalled!");
 
         // check if email exists from database
         if (!email) {
-            console.log("Email" , email);
             setEmailMsg('Please enter a valid email address');
         } else if (!password) {
             setPasswordMsg('Please enter correct password');
         } else{
             //route to dashboard
             login(email, password);
-
-            // if (localStorage.getToken('token')) {
-            //     console.log("User token == ", localStorage.getToken('token'));
-            //     // router.push('/userFeed');
-            // } else {
-            //     setPasswordMsg('Something went wrong. Try again :(')
-            // }
         } 
     }
 

@@ -14,13 +14,9 @@ const AddType = ({getLand}) => {
     //     getLand();
     // })
 
-    // console.log("Before useeffect", data);
     // useEffect(() => {
     //     datafetcher();npm
     // }, [datafetcher, data]);
-
-    // console.log("After useeffect", data);
-
 
     return(
         <div>
@@ -35,7 +31,6 @@ const AddType = ({getLand}) => {
                 <button className="btn btn-outline-primary">Add House</button>
             </Link>
             <Link to="/feed">
-                {/* {console.log("From location", data)} */}
                 <button className="btn btn-outline-primary">News feed</button>
             </Link>
         </div>

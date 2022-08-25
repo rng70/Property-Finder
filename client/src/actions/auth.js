@@ -17,8 +17,14 @@ export const loadUser = () => async dispatch => {
         setAuthToken(localStorage.token);
     }
 
+    const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+
     try {
-        const res = await axios.get(`http://localhost:5000/api/auth`);
+        const res = await axios.get(`http://localhost:5000/api/auth`, config);
 
         dispatch({
             type: USER_LOADED,
@@ -43,9 +49,6 @@ export const registerAgency = ({ name, email, password, tradeLicenseNo, yearOfEs
     try {
         const res = await axios.post(`http://localhost:5000/api/users/regAgency`, body, config);
 
-        console.log("=========================================================================================");
-        console.log("Response ", res);
-        console.log("=========================================================================================");
         dispatch({
             type: REGISTER_SUCCESS,
             payload: res.data
@@ -55,7 +58,6 @@ export const registerAgency = ({ name, email, password, tradeLicenseNo, yearOfEs
         const errors = err.response.data.errors;
 
         if (errors) {
-            console.log(errors);
             errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
         }
         dispatch({
@@ -76,8 +78,6 @@ export const login = (email, password) => async dispatch => {
     try {
         const res = await axios.post(`http://localhost:5000/api/auth`, body, config);
 
-        console.log("RES ==> ", res);
-
         dispatch({
             type: LOGIN_SUCCESS,
             payload: res.data
@@ -85,10 +85,6 @@ export const login = (email, password) => async dispatch => {
 
         dispatch(loadUser());
     } catch (err) {
-        console.log("+++++++++++++++++++++++++++++++++++++++++++++++");
-        console.log(err);
-        console.log("+++++++++++++++++++++++++++++++++++++++++++++++");
-
         const errors = err.response.data.errors;
 
         if (errors) {

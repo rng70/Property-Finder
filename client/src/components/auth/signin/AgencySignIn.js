@@ -23,10 +23,8 @@ const AgencySignIn = ({ login, isAuthenticated }) => {
 
     const handleLoginWIthEmail = e =>{
         e.preventDefault();
-        console.log("Handle login with email clalled!");
         // check if email exists from database
         if (!email) {
-            console.log("Email" , email);
             setEmailMsg('Please enter a valid email address');
         } else if (!password) {
             setPasswordMsg('Please enter correct password');

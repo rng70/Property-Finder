@@ -7,7 +7,6 @@ const Jumbo = () =>{
             <h2>My profile</h2>
 
             <Link to="/feed">
-                {/* {console.log("From location", data)} */}
                 <button className="btn btn-outline-primary">News feed</button>
             </Link>
         </div>

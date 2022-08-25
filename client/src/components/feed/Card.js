@@ -9,7 +9,6 @@ const FeedCard =(props) =>{
     const title ="This is a dummy card";
     const description = "This is description"
     const price = "500$"
-    console.log("card called");
     return(
         <div className="col-4 mb-3 ml-3 mt-3">
             <div className="card">

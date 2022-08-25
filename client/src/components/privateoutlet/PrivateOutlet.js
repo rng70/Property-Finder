@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { Outlet, Navigate } from 'react-router-dom';
 
 const PrivateOutlet = ({ auth: { isAuthenticated } }) => {
-    console.log("Value of is auth =>", isAuthenticated);
     return isAuthenticated ? <Outlet /> : <Navigate to='/login' />;
 }
 

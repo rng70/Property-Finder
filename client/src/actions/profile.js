@@ -35,7 +35,8 @@ export const createProfile =
           "Content-Type": "application/json",
         },
       };
-      const res = await axios.post("api/profile", formData, config);
+      
+      const res = await axios.post(`http://localhost:5000/api/profile`, formData, config);
       dispatch({
         type: GET_PROFILE,
         payload: res.data,

@@ -35,19 +35,13 @@ router.post('/addLand',
         ]
     ],
     async (req, res) => {
-        console.log("1")
         const errors = validationResult(req);
-        console.log("11")
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         }
-        console.log("111")
 
         try {
-            console.log(req.user);
-            console.log("Files in requ: ", req.file);
             let owner = await Owner.findById(req.user.id).select('-password');
-            console.log(owner);
             let type = 'person';
             let ownerName;
             if (owner) {
@@ -61,7 +55,6 @@ router.post('/addLand',
                 type = 'agency';
             }
 
-            console.log('Owner ==> ', owner);
             const newLand = new Land({
                 ownerType: type,
                 landArea: req.body.landArea,
@@ -72,14 +65,12 @@ router.post('/addLand',
             });
 
             if (typeof req.file !== 'undefined') {
-                console.log("Undefined here")
                 const landImage = {
                     data: req.file.buffer,
                     contentType: 'image/jpg',
                 }
 
                 newLand.landImages.unshift(landImage);
-                console.log(newLand);
             }
 
             const land = await newLand.save();
@@ -112,7 +103,6 @@ router.post('/addHouse',
 
         try {
             let owner = await Owner.findById(req.user.id).select('-password');
-            console.log(owner);
             let type = 'person';
             let ownerName;
             if (owner) {
@@ -169,7 +159,6 @@ router.post('/addSpace',
 
         try {
             let owner = await Owner.findById(req.user.id).select('-password');
-            console.log(owner);
             let type = 'person';
             let ownerName;
             if (owner) {

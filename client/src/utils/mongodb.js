@@ -20,7 +20,6 @@ const connectDB = async () => {
 
         connection.isConnected = db.connections[0].readState;
 
-        console.log('MongoDB Connected inside nextjs...');
     } catch (err) {
         console.error(err.message);
         process.exit(1)

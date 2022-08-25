@@ -2,7 +2,6 @@ import styles from "./InTypeStyle.module.css";
 import { Card } from "../../components";
 
 const SingUpType = (props) => {
-    //console.log(props.cardInfo);
 
     const addStr = (str,index,strintToAdd)=>{
         return str.substring(0,index)+strintToAdd+str.substring(index,str.length);

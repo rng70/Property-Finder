@@ -13,7 +13,6 @@ const NewsFeed = ({getLand, properties}) => {
 
     //later will be fetched from database
     const allProperties = [1, 2, 3, 4];
-    console.log(properties)
     
     return (
         <div>

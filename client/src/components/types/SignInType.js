@@ -2,7 +2,6 @@ import styles from "./InTypeStyle.module.css"
 import {  Navbar, Banner, Card } from "../../components";
 
 const SingInType = (props) => {
-    //console.log(props.cardInfo);
     const addStr = (str,index,strintToAdd)=>{
         return str.substring(0,index)+strintToAdd+str.substring(index,str.length);
     }

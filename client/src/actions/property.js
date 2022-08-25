@@ -1,6 +1,5 @@
 //import api from '../utils/api';
 import axios from 'axios';
-import { setAlert } from './alert';
 import {
     ADD_LAND,
     ADD_HOUSE,
@@ -34,12 +33,6 @@ export const addSpace = (props) => async dispatch => {
     try {
         const res = await axios.posts(`http://localhost:5000/api/addProp/addSpace`, body, config);
 
-        console.log("=========================================================================================");
-        console.log("Response from add space");
-        console.log(res);
-        console.log("=========================================================================================");
-
-
         dispatch({
             type: ADD_SPACE,
             payload: res.data
@@ -66,15 +59,12 @@ export const addLand = (props) => async dispatch => {
     try {
         
         const res = await axios.post(`http://localhost:5000/api/addProp/addLand`, body, config);
-
-        console.log(res)
         
         dispatch({
             type: ADD_LAND,
             payload: res.data
         });
     } catch (err) {
-        console.log(err)
         dispatch({
             type: ADD_LAND_FAIL,
             payload: { msg: err.response.statusText, status: err.response.status }
@@ -111,19 +101,13 @@ export const getLand = () => async dispatch => {
     }
 
     try {
-        console.log("Before call")
         const res = await axios.get(`http://localhost:5000/api/info/getLand`, config);
-        
-        console.log(res.data)
-        console.log("After call")
 
         dispatch({
         type: GET_LAND,
         payload: res.data
         });
     } catch (err) {
-        console.log('IN error')
-        console.log(err)
         dispatch({
         type: GET_LAND_FAIL,
         payload: { msg: err.response.statusText, status: err.response.status }
