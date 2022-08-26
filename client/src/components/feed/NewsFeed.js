@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import Card from './Card';
 import { Jumbo } from '../';
-import { getLand } from '../../actions/property';
+import { getLands} from '../../actions/property';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-const NewsFeed = ({ getLand, properties }) => {
+const NewsFeed = ({ getLands, properties }) => {
   useEffect(() => {
-    getLand();
-  }, [getLand]);
+    getLands();
+  }, [getLands]);
 
   //later will be fetched from database
   const allProperties = [1, 2, 3, 4];
@@ -48,6 +48,6 @@ const mapStateToProps = (state) => ({
   properties: state.property.properties,
 });
 
-export default connect(mapStateToProps, { getLand })(NewsFeed);
+export default connect(mapStateToProps, { getLands })(NewsFeed);
 
 // export default NewsFeed;
