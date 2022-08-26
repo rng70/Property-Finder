@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import Jumbo from "./Jumbo";
-// import {isAuthenticated} from '../add'
+import { addSpace } from '../../actions/property';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-const AddSpace = () =>{
+const AddSpace = ({addSpace}) =>{
     const [error,setError] = useState(false);
     const [success,setSuccess] = useState(false);
 
@@ -18,23 +20,49 @@ const AddSpace = () =>{
     const [division,setDivision] = useState('')
     const [type,setType] = useState('')
     const [sellType,setSellType] = useState('')
-    const [numRooms,setNumRooms] = useState('')
-    const [numWahsrooms,setNumWashRooms] = useState('')
-    const [numLivingRooms,setNumLivingRooms] = useState('')
+    const [noOfRooms,setNumRooms] = useState('')
+    const [noOfWashrooms,setNumWashRooms] = useState('')
+    const [noOfLivingRooms,setNumLivingRooms] = useState('')
     const [apartmentNo,setApartmentNo] = useState('')
-    const [numBalcony,setNumBalcony] = useState('')
-    const [hasLift,setHasLift] = useState('')
-    const [hasParkingSpace,setHasParkingSpace]=useState('')
-
+    const [noOfBalcony,setNumBalcony] = useState('')
+    const [hasLift,setHasLift] = useState(true)
+    const [parkingSpace,setHasParkingSpace]=useState(true)
+    const [noOfKitchens,setNoOfKitcehns] = useState('')
+    const [noOfDiningRooms,setnoOfDiningRooms] = useState('')
+    const [noOfServentRooms,setnoOfServentRooms] = useState('')
+    const [noOfFloors,setnoOfFloors] = useState('')
+    const [whichFloors,setWhichfloors] = useState('')
+    const isAvailable = true;
+    const hasSecurityGuard = true;
+    const location = null;
+    const spaceDetails = " ";
     const handleSubmit = (e)=>{
         e.preventDefault();
+        //const { location, price, sellType, type, area, noOfRooms, noOfKitchens, noOfWashrooms, noOfDiningRooms, noOfLivingRooms, noOfServentRooms, apartmentNo, noOfFloors, hasLift, hasSecurityGuard, noOfBalcony, parkingSpace, isAvailable, spaceDetails, whichFloors } = props;
+        addSpace({ price, sellType, type, area, noOfRooms, isAvailable, whichFloors });
     }
 
+    const setWhichfloorsValue = e =>{
+        const t = e.target.value
+        setWhichfloors(t);
+    }
     const setSellTypeValue =e =>{
         setSellType(e.target.value);
     }
+    const noOfServentRoomsValue = e =>{
+        setnoOfServentRooms(e.target.value);
+    }
+    const setnoOfFloorsValue = e =>{
+        setnoOfFloors(e.target.value);
+    }
     const setNumRoomsValue = e=>{
         setNumRooms(e.target.value);
+    }
+    const setNoOfKitchensValue = e=>{
+        setNoOfKitcehns(e.target.value);
+    }
+    const noOfDiningRoomsValue = e =>{
+        setnoOfDiningRooms(e.target.value);
     }
     const setNumWashRoomsValue =e=>{
         setNumWashRooms(e.target.value)
@@ -93,8 +121,8 @@ const AddSpace = () =>{
                    
                     <label className="text-muted">Space Type(Residential/Commercial)</label>
                     <select value={type} onChange={setTypeValue} >
-                        <option value="Residential">Residential</option>
-                        <option value="Commercial">Commercial</option>
+                        <option value="residential">Residential</option>
+                        <option value="commercial">Commercial</option>
                     </select><p></p>
 {/* 
                     <label className="text-muted">Space Type(Residential/Commercial)</label>
@@ -102,8 +130,8 @@ const AddSpace = () =>{
 
                     <label className="text-muted">Type(Sell/Rent)</label>
                     <select value={sellType} onChange={setSellTypeValue} >
-                        <option value="Sell">Sell</option>
-                        <option value="Rent">Rent</option>
+                        <option value="sale">Sell</option>
+                        <option value="rent">Rent</option>
                     </select><p></p>
 {/* 
                     <label className="text-muted">Type(Sell/Rent)</label>
@@ -113,30 +141,47 @@ const AddSpace = () =>{
                     <input type="text" className="form-control" value={area} autoFocus onChange={setAreaValue}></input>
                     
                     <label className="text-muted">Number of Bedrooms</label>
-                    <input type="text" className="form-control" value={numRooms} autoFocus onChange={setNumRoomsValue}></input>
+                    <input type="text" className="form-control" value={noOfRooms} autoFocus onChange={setNumRoomsValue}></input>
+                    
+                    <label className="text-muted">Number of Kitchens</label>
+                    <input type="text" className="form-control" value={noOfKitchens} autoFocus onChange={setNoOfKitchensValue}></input>
                     
                     <label className="text-muted">Number of Washrooms</label>
-                    <input type="text" className="form-control" value={numWahsrooms} autoFocus onChange={setNumWashRoomsValue}></input>
+                    <input type="text" className="form-control" value={noOfWashrooms} autoFocus onChange={setNumWashRoomsValue}></input>
+                    
+                    <label className="text-muted">Number of Dining Rooms</label>
+                    <input type="text" className="form-control" value={noOfDiningRooms} autoFocus onChange={noOfDiningRoomsValue}></input>
                     
                     <label className="text-muted">Number of Living Rooms</label>
-                    <input type="text" className="form-control" value={numLivingRooms} autoFocus onChange={setNumLivingRoomsValue}></input>
+                    <input type="text" className="form-control" value={noOfLivingRooms} autoFocus onChange={setNumLivingRoomsValue}></input>
+                    
+                    <label className="text-muted">Number of Servent Rooms</label>
+                    <input type="text" className="form-control" value={noOfServentRooms} autoFocus onChange={noOfServentRoomsValue}></input>
                     
                     <label className="text-muted">Number of Balcony</label>
-                    <input type="text" className="form-control" value={numBalcony} autoFocus onChange={setNumBalconyValue}></input>
+                    <input type="text" className="form-control" value={noOfBalcony} autoFocus onChange={setNumBalconyValue}></input>
+                    
+                    <label className="text-muted">Number of Floors</label>
+                    <input type="text" className="form-control" value={noOfFloors} autoFocus onChange={setnoOfFloorsValue}></input>
+                    
+                    <label className="text-muted">Floor Number</label>
+                    <input type="text" className="form-control" value={whichFloors} autoFocus onChange={setWhichfloorsValue}></input>
+                    
+                    
                     <p></p>
                     <label className="text-muted">Is there any elevator?</label>
                     <select value={hasLift} onChange={setHasLiftValue} >
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
+                        <option value={true}>Yes</option>
+                        <option value={false}>No</option>
                     </select><p></p>
                     
                     <label className="text-muted">Apartment No</label>
                     <input type="text" className="form-control" value={apartmentNo} autoFocus onChange={setApartmentNoValue}></input>
                     <p></p>
                     <label className="text-muted">Is there parking space available?</label>
-                    <select value={hasParkingSpace} onChange={setHasParkingSpaceValue} >
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
+                    <select value={parkingSpace} onChange={setHasParkingSpaceValue} >
+                        <option value={true}>Yes</option>
+                        <option value={false}>No</option>
                     </select><p></p>
 
                     <label className="text-muted">Price</label>
@@ -179,4 +224,9 @@ const AddSpace = () =>{
     )
 }
 
-export default AddSpace;
+AddSpace.propTypes = {
+    addSpace : PropTypes.func.isRequired
+}
+
+export default connect(null, { addSpace })(AddSpace);
+//export default AddSpace;

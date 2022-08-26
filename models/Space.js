@@ -68,7 +68,7 @@ const spaceSchema = new mongoose.Schema({
         type: Number,
     },
     parkingSpace: {
-        type: Number,
+        type: Boolean,
     },
     image: {
         type: [
@@ -87,7 +87,7 @@ const spaceSchema = new mongoose.Schema({
         type: String,
     },
     whichFloors: {
-        type: [Number],
+        type: Number,
         required: true
     }
 });
