@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Card from './Card';
-import Jumbo from './Jumbo';
+import { Jumbo } from '../';
 import { getLand } from '../../actions/property';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -12,10 +12,12 @@ const NewsFeed = ({ getLand, properties }) => {
 
   //later will be fetched from database
   const allProperties = [1, 2, 3, 4];
+  const description =
+    'See what are posted by our community to find your suitable place!';
 
   return (
     <div>
-      <Jumbo />
+      <Jumbo description={description} />
       <h2 className='mb-4'>Latest Posted</h2>
       {properties.map((property, i) => {
         return <Card key={i} property={property} />;
