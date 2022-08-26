@@ -76,7 +76,7 @@ export const addLand = (props) => async dispatch => {
 
 
 // GET LAND
-export const getLand = () => async dispatch => {
+export const getLands = () => async dispatch => {
     const config = {
         headers: {
             'Content-Type': 'application/json'
@@ -84,7 +84,7 @@ export const getLand = () => async dispatch => {
     }
 
     try {
-        const res = await axios.get(`http://localhost:5000/api/info/getLand`, config);
+        const res = await axios.get(`http://localhost:5000/api/info/getLands`, config);
 
         dispatch({
         type: GET_LAND,

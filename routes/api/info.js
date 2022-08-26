@@ -30,7 +30,7 @@ router.get('/', auth, async (req, res) => {
     }
 });
 
-router.get('/getLand', auth, async (req, res) => {
+router.get('/getLands', auth, async (req, res) => {
     try {
         const lands = await Land.find().sort({ date: -1 });        
 
