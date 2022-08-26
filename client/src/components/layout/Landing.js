@@ -2,9 +2,12 @@ import cls from 'classnames';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Landing.module.css';
-import { Card, Carousel } from '../';
+import { Card, Carousel, HomeCard } from '../';
+import { getIndexCardData } from '../../data/index-card-data';
 
 const Landing = () => {
+  const indexCardData = getIndexCardData();
+
   return (
     <section className={styles.landing}>
       <Carousel />
@@ -25,6 +28,20 @@ const Landing = () => {
             </Link>
           </div>
         </div>
+      </div>
+      <div className={styles.cardSection}>
+        {indexCardData.map((cardData, i) => {
+          return (
+            <HomeCard
+              key={i}
+              title={cardData.title}
+              description={cardData.description}
+              buttonTitle={cardData.buttonTitle}
+              href={cardData.href}
+              image={cardData.image}
+            />
+          );
+        })}
       </div>
     </section>
   );

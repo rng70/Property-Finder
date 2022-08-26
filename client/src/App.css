@@ -13,6 +13,8 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   color: #373b64;
+  min-height: 100%;
+  position: relative;
   height: 100%;
 }
 
@@ -80,16 +82,16 @@ button:focus {
 }
 
 :root {
-  --primary-color: #17a2b8;
-  --dark-color: #343a40;
-  --light-color: #f4f4f4;
-  --danger-color: #dc3545;
-  --success-color: #28a745;
-  --text-purple: rgb(51, 45, 128);
-  --text-purple-dark: rgb(10, 8, 48);
-  --text-black: rgba(17, 24, 39, 1);
-  --text-white-100: rgba(229, 231, 235, 1);
-  --text-navy-blue: rgb(3, 3, 85);
+    --primary-color: #17a2b8;
+    --dark-color: #343a40;
+    --light-color: #f4f4f4;
+    --danger-color: #dc3545;
+    --success-color: #28a745;
+    --text-purple: rgb(51, 45, 128);
+    --text-purple-dark: rgb(10, 8, 48);
+    --text-black: rgba(17, 24, 39, 1);
+    --text-white-100: rgba(229, 231, 235, 1);
+    --text-navy-blue: rgb(3, 3, 85);
 
   /* =====>>  Font Color  <<===== */
     --f1-color: #fff;
@@ -137,4 +139,20 @@ button:focus {
     --p-0-5: 0.5rem;
     --p-0-4: 0.4rem;
     --p-0-3: 0.3rem;
+
+    /* ======>> Cards <<===== */
+    --card-primary: #0004d5;
+    --card-primary-hover: #29e6a7;
+    --card-primary-dark: #039d69;
+    --card-gray100: #f9fbff;
+    --card-gray150: #f4f6fb;
+    --card-gray200: #eef1f6;
+    --card-gray300: #e1e5ee;
+    --card-gray400: #767b91;
+    --card-gray500: #4f546c;
+    --card-gray600: #2a324b;
+    --card-gray700: #161d34;
+
+    --card-radius: 0.2rem;
+
 }
