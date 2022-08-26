@@ -7,8 +7,10 @@ import {
     ADD_LAND_FAIL,
     ADD_HOUSE_FAIL,
     ADD_SPACE_FAIL,
-    GET_LAND,
-    GET_LAND_FAIL
+    GET_LANDS,
+    GET_LANDS_FAIL,
+    GET_HOUSES,
+    GET_HOUSES_FAIL
 } from './types';
 
 /*
@@ -75,7 +77,7 @@ export const addLand = (props) => async dispatch => {
 };
 
 
-// GET LAND
+// GET LANDS
 export const getLands = () => async dispatch => {
     const config = {
         headers: {
@@ -87,12 +89,35 @@ export const getLands = () => async dispatch => {
         const res = await axios.get(`http://localhost:5000/api/info/getLands`, config);
 
         dispatch({
-        type: GET_LAND,
+        type: GET_LANDS,
         payload: res.data
         });
     } catch (err) {
         dispatch({
-        type: GET_LAND_FAIL,
+        type: GET_LANDS_FAIL,
+        payload: { msg: err.response.statusText, status: err.response.status }
+    });
+}
+};
+
+// GET houses
+export const getHouses = () => async dispatch => {
+    const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+
+    try {
+        const res = await axios.get(`http://localhost:5000/api/info/getHouses`, config);
+
+        dispatch({
+        type: GET_HOUSES,
+        payload: res.data
+        });
+    } catch (err) {
+        dispatch({
+        type: GET_HOUSES_FAIL,
         payload: { msg: err.response.statusText, status: err.response.status }
     });
 }
