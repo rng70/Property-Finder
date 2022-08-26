@@ -21,23 +21,24 @@ import {
 // ADD SPACE
 export const addSpace = (props) => async dispatch => {
     const config = {
-        header: {
+        headers: {
             'Content-Type': 'application/json'
         }
     }
 
-    const { location, price, sellType, type, area, noOfRooms, noOfKitchens, noOfWashrooms, noOfDiningRooms, noOfLivingRooms, noOfServentRooms, apartmentNo, noOfFloors, hasLift, hasSecurityGuard, noOfBalcony, parkingSpace, isAvailable, spaceDetails, whichFloors } = props;
-
-    const body = JSON.stringify({ location, price, sellType, type, area, noOfRooms, noOfKitchens, noOfWashrooms, noOfDiningRooms, noOfLivingRooms, noOfServentRooms, apartmentNo, noOfFloors, hasLift, hasSecurityGuard, noOfBalcony, parkingSpace, isAvailable, spaceDetails, whichFloors })
-
+    const {  price, sellType, type, area, noOfRooms, isAvailable,  whichFloors } = props;
+    console.log("eikhane propps ",props);
+    //price, sellType, type, area, noOfRooms, noOfKitchens, noOfWashrooms, noOfDiningRooms, noOfLivingRooms, noOfServentRooms, apartmentNo, noOfFloors, hasLift, hasSecurityGuard, noOfBalcony, parkingSpace, isAvailable, spaceDetails, whichFloors
+    const body = JSON.stringify({ price, sellType, type, area, noOfRooms, isAvailable,  whichFloors});
     try {
-        const res = await axios.posts(`http://localhost:5000/api/addProp/addSpace`, body, config);
-
+        console.log("property inside try",body);
+        const res = await axios.post(`http://localhost:5000/api/addProp/addSpace`, body, config);
+        console.log("response after sending post request",res);
         dispatch({
             type: ADD_SPACE,
             payload: res.data
         });
-    } catch (err) {
+    } catch (err) {console.log("error ",err);
         dispatch({
         type: ADD_SPACE_FAIL,
         payload: { msg: err.response.statusText, status: err.response.status }
@@ -73,25 +74,6 @@ export const addLand = (props) => async dispatch => {
     }
 };
 
-// ADD HOUSE
-// export const addHouse = (props) => async dispatch => {
-//     try {
-
-//         const { id } = props;
-//         const res = await axios.put(`/api/posts/like/${id}`);
-        
-
-//         dispatch({
-//         type: ADD_HOUSE,
-//         payload: { id, likes: res.data }
-//         });
-//     } catch (err) {
-//         dispatch({
-//         type: ADD_HOUSE_FAIL,
-//         payload: { msg: err.response.statusText, status: err.response.status }
-//         });
-//     }
-// };
 
 // GET LAND
 export const getLand = () => async dispatch => {

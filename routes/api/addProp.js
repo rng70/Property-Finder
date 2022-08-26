@@ -148,18 +148,22 @@ router.post('/addSpace',
         [
             check('area', 'Land Area is required').not().isEmpty().isNumeric(),
             check('price', 'Price is required').not().isEmpty().isNumeric(),
-            check('isSold', 'Is Sold is required').not().isEmpty(),
+            check('isAvailable', 'Is Sold is required').not().isEmpty(),
             check('noOfRooms', 'No of Rooms is required').not().isEmpty().isNumeric(),
-            check('type', 'Type of House is required').not().isEmpty()
+            check('sellType', 'Type of House is required').not().isEmpty()
         ]
     ],
     async (req, res) => {
+        console.log("Checking error body request ",req.body);
         const errors = validationResult(req);
+        console.log("Checking error is done");
         if (!errors.isEmpty()) {
+            console.log("ashse req ",req);
             return res.status(400).json({ errors: errors.array() });
         }
 
         try {
+            console.log("here");
             let owner = await Owner.findById(req.user.id).select('-password');
             let type = 'person';
             let ownerName;
@@ -179,9 +183,10 @@ router.post('/addSpace',
                 type: req.body.type,
                 noOfRooms: req.body.noOfRooms,
                 area: req.body.area,
-                sellTyep: req.body.sellType,
+                sellType: req.body.sellType,
                 price: req.body.price,
-                isSold: req.body.isSold,
+                isAvailable: req.body.isAvailable,
+                whichFloors: req.body.whichFloors
             });
 
             const space = await newSpace.save();
