@@ -19,3 +19,7 @@ export { default as FeedCard } from './feed/Card';
 export { default as Footer } from './layout/Footer';
 export { default as UserDashboard } from './dashboard/UserDashboard';
 export {default as Carousel} from './layout/Carousel';
+
+
+
+export {default as Dashboard} from './dashboard/Dashboard';
