@@ -30,3 +30,6 @@ export const GET_LANDS_FAIL = 'GET_LANDS_FAIL';
 
 export const GET_HOUSES = 'GET_HOUSES';
 export const GET_HOUSES_FAIL = 'GET_HOUSES_FAIL';
+
+export const GET_SPACES = 'GET_SPACES';
+export const GET_SPACES_FAIL = 'GET_SPACES_FAIL';
