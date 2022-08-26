@@ -58,12 +58,13 @@ const AddLand = ({addLand}) =>{
             <form onSubmit={handleSubmit}>
             <div className="container">
                 <div className="form-group">
-                    <label className="text-muted">Area(sq. ft)</label>
-                    <input type="text" className="form-control" value={landArea} autoFocus onChange={setAreaValue}></input>
+                    <div>
+                    <label style={ {display: "inline-block"} } className="text-muted">Area(sq. ft)</label>
+                    <input style={ {display: "inline-block"} } type="text" className="form-control" value={landArea} autoFocus onChange={setAreaValue}></input>
                     
-                    <label className="text-muted">Price</label>
-                    <input type="text" className="form-control"  autoFocus value={price} onChange={setPriceValue}></input>
-                    
+                    <label style={ {display: "inline-block"} } className="text-muted">Price</label>
+                    <input style={ {display: "inline-block"} } type="text" className="form-control"  autoFocus value={price} onChange={setPriceValue}></input>
+                    </div>
                     <label className="text-muted">Plot no</label>
                     <input type="text" className="form-control"  autoFocus value={plot} onChange={setPlotValue}></input>
                     

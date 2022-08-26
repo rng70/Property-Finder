@@ -18,7 +18,8 @@ import {
     AddHouse,
     NewsFeed,
     PrivateOutlet,
-    UserDashboard
+    UserDashboard,
+    Dashboard
 } from './components';
 import setAuthToken from './utils/setAuthToken';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -55,7 +56,7 @@ const App = () => {
                             <Route path='/login/owner' element={<OwnerSignIn />} />
                             <Route path='/login/user' element={<UserSignIn />} />
                             <Route path='/*' element={<PrivateOutlet/>}>
-                                <Route path='dashboard' element={<UserDashboard/>}/>
+                            <Route path='dashboard' element={<Dashboard/>}/>
                             </Route>
                             {/* <Route path="/create-profile" element={<CreateProfile />} />
                             <Route path="/posts" element={<Posts />} />
