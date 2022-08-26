@@ -30,11 +30,22 @@ router.get('/', auth, async (req, res) => {
     }
 });
 
-router.get('/getLand', auth, async (req, res) => {
+router.get('/getLands', auth, async (req, res) => {
     try {
         const lands = await Land.find().sort({ date: -1 });        
 
         res.json(lands);
+    } catch (err) {
+        console.err(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+router.get('/getHouses', auth, async (req, res) => {
+    try {
+        const houses = await House.find().sort({ date: -1 });        
+
+        res.json(houses);
     } catch (err) {
         console.err(err.message);
         res.status(500).send('Server Error');
