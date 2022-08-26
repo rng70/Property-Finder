@@ -8,13 +8,16 @@ import {
     GET_LANDS,
     GET_LANDS_FAIL,
     GET_HOUSES,
-    GET_HOUSES_FAIL
+    GET_HOUSES_FAIL,
+    GET_SPACES,
+    GET_SPACES_FAIL
 } from "../actions/types";
 
 const initialState = {
     propertyVal: null,
     lands: [],
     houses : [],
+    spaces : [],
     error: {},
     loading: true
 };
@@ -49,11 +52,22 @@ export default function (state = initialState, action) {
                 houses: payload,
                 loading: false
             };
+        case GET_SPACES:
+            return {
+                ...state,
+                spaces: payload,
+                loading: false
+            };
         case GET_LANDS_FAIL:
             return {
                 ...state,
                 error: payload
             };
+        case GET_SPACES_FAIL:
+        return {
+            ...state,
+            error: payload
+        };
         case GET_HOUSES_FAIL:
             return {
                 ...state,
