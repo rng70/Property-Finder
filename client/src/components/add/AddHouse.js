@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import Jumbo from "./Jumbo";
+import { addHouse } from '../../actions/property';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-const AddHouse =()=>{
+const AddHouse =({addHouse})=>{
     const [error,setError] = useState(false);
     const [success,setSuccess] = useState(false);
 
     //form data
-    const [area,setArea] = useState('')
+    const [landArea,setArea] = useState('')
     const [price,setPrice] = useState('')
     const [plot,setPlot] = useState('')
     const [road,setRoad] = useState('')
@@ -16,10 +19,12 @@ const AddHouse =()=>{
     const [district,setDistrict] = useState('')
     const [division,setDivision] = useState('')
     const [type,setType] = useState('')
-    const [numFloors,setNumFloors] = useState('')
-
+    const [noOfFloors,setNumFloors] = useState('')
+    const isSold = false;
     const handleSubmit = (e)=>{
+        console.log("handle submit called")
         e.preventDefault();
+        addHouse({ price, noOfFloors,type,landArea,isSold})
     }
 
     const setNumFloorsValue = e=>{
@@ -64,15 +69,15 @@ const AddHouse =()=>{
                    
                     <label className="text-muted">Space Type(Residential/Commercial)</label>
                     <select value={type} onChange={setTypeValue} >
-                        <option value="Residential">Residential</option>
-                        <option value="Commercial">Commercial</option>
+                        <option value="residential">Residential</option>
+                        <option value="commercial">Commercial</option>
                     </select><p></p>
           
                     <label className="text-muted">Area(sq. ft)</label>
-                    <input type="text" className="form-control" value={area} autoFocus onChange={setAreaValue}></input>
+                    <input type="text" className="form-control" value={landArea} autoFocus onChange={setAreaValue}></input>
                     
                     <label className="text-muted">Number of Floors</label>
-                    <input type="text" className="form-control" value={area} autoFocus onChange={setNumFloorsValue}></input>
+                    <input type="text" className="form-control" value={noOfFloors} autoFocus onChange={setNumFloorsValue}></input>
 
                     <label className="text-muted">Price</label>
                     <input type="text" className="form-control"  autoFocus value={price} onChange={setPriceValue}></input>
@@ -114,4 +119,10 @@ const AddHouse =()=>{
     )
 }
 
-export default AddHouse;
+
+AddHouse.propTypes = {
+    addHouse : PropTypes.func.isRequired
+}
+
+export default connect(null, { addHouse })(AddHouse);
+//export default AddHouse;

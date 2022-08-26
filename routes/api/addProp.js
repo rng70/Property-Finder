@@ -116,6 +116,8 @@ router.post('/addHouse',
                 type = 'agency';
             }
 
+            console.log("in addProp routes ",owner);
+
 
             const newHouse = new House({
                 type: req.body.type,
