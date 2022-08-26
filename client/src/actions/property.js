@@ -47,6 +47,7 @@ export const addSpace = (props) => async dispatch => {
 
 // ADD LAND
 export const addLand = (props) => async dispatch => {
+    //console.log("add land calleed")
     const config = {
         headers: {
             'Content-Type': 'application/json'
@@ -73,24 +74,24 @@ export const addLand = (props) => async dispatch => {
 };
 
 // ADD HOUSE
-export const addHouse = (props) => async dispatch => {
-    try {
+// export const addHouse = (props) => async dispatch => {
+//     try {
 
-        const { id } = props;
-        const res = await axios.put(`/api/posts/like/${id}`);
+//         const { id } = props;
+//         const res = await axios.put(`/api/posts/like/${id}`);
         
 
-        dispatch({
-        type: ADD_HOUSE,
-        payload: { id, likes: res.data }
-        });
-    } catch (err) {
-        dispatch({
-        type: ADD_HOUSE_FAIL,
-        payload: { msg: err.response.statusText, status: err.response.status }
-        });
-    }
-};
+//         dispatch({
+//         type: ADD_HOUSE,
+//         payload: { id, likes: res.data }
+//         });
+//     } catch (err) {
+//         dispatch({
+//         type: ADD_HOUSE_FAIL,
+//         payload: { msg: err.response.statusText, status: err.response.status }
+//         });
+//     }
+// };
 
 // GET LAND
 export const getLand = () => async dispatch => {
@@ -218,3 +219,31 @@ export const getLand = () => async dispatch => {
 //     });
 //   }
 // };
+// ADD House
+export const addHouse = (props) => async dispatch => {
+    console.log("Add house called");
+    const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+
+    const { owner, location, ownerType, price, noOfFloors,type,landArea, isSold } = props;
+    
+    const body = JSON.stringify({ owner, location, ownerType, price, noOfFloors,type,landArea, isSold });
+    try {
+        
+        const res = await axios.post(`http://localhost:5000/api/addProp/addHouse`, body, config);
+        console.log("in add house ",res);
+        
+        dispatch({
+            type: ADD_HOUSE,
+            payload: res.data
+        });
+    } catch (err) {
+        dispatch({
+            type: ADD_HOUSE_FAIL,
+            payload: { msg: err.response.statusText, status: err.response.status }
+        });
+    }
+};
