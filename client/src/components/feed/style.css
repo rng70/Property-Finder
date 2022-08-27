@@ -1,0 +1,10 @@
+.search {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+  }
+  .dropdown-container {
+    width: 300px;
+  }
