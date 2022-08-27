@@ -80,7 +80,7 @@ router.post('/regUser', [
 
         jwt.sign(
             payload,
-            config.get('jwtSecret'),
+            config.get('JWT_SECRET'),
             {
                 expiresIn: 3600000
             },
@@ -168,7 +168,7 @@ router.post('/regAgency', [
 
         jwt.sign(
             payload,
-            config.get('jwtSecret'),
+            config.get('JWT_SECRET'),
             {
                 expiresIn: 3600000
             },
@@ -256,7 +256,7 @@ router.post('/regOwner', [
 
         jwt.sign(
             payload,
-            config.get('jwtSecret'),
+            config.get('JWT_SECRET'),
             {
                 expiresIn: 3600000
             },

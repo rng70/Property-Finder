@@ -30,12 +30,12 @@ export const addSpace = (props) => async dispatch => {
         }
     }
 
-    const {  price, sellType, type, area, noOfRooms, isAvailable,  whichFloors } = props;
+    const {  price, sellType, type, area, noOfRooms, isAvailable,  whichFloors, previewSource } = props;
     console.log("eikhane propps ",props);
     //price, sellType, type, area, noOfRooms, noOfKitchens, noOfWashrooms, noOfDiningRooms, noOfLivingRooms, noOfServentRooms, apartmentNo, noOfFloors, hasLift, hasSecurityGuard, noOfBalcony, parkingSpace, isAvailable, spaceDetails, whichFloors
-    const body = JSON.stringify({ price, sellType, type, area, noOfRooms, isAvailable,  whichFloors});
+    const body = JSON.stringify({ price, sellType, type, area, noOfRooms, isAvailable,  whichFloors, previewSource});
     try {
-        console.log("property inside try",body);
+        //console.log("property inside try",body);
         const res = await axios.post(`http://localhost:5000/api/addProp/addSpace`, body, config);
         console.log("response after sending post request",res);
         dispatch({

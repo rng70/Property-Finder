@@ -17,7 +17,7 @@ const spaceSchema = new mongoose.Schema({
     },
     sellType: {
         type: String,
-        enum: ['rent', 'sale'],
+        enum: ['rent', 'sell'],
         default: 'rent',
         required: true
     },
@@ -72,10 +72,7 @@ const spaceSchema = new mongoose.Schema({
     },
     image: {
         type: [
-            {
-                data: Buffer,
-                type: String,
-            }
+            String,
         ],
     },
     isAvailable: {

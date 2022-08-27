@@ -395,7 +395,7 @@ router.get('/me', auth, async (req, res) => {
 // router.get('/github/:username', async (req, res) => {
 //     try {
 //         const options = {
-//             uri: `https://api.github.com/users/${req.params.username}/repos?per_pages=5&sort=creared:asc&client_id=${config.get('githubClientId')}&client_secret=${config.get('githubSecret')}`,
+//             uri: `https://api.github.com/users/${req.params.username}/repos?per_pages=5&sort=creared:asc&client_id=${config.get('GITHUB_CLIENT_ID')}&client_secret=${config.get('GITHUB_SECRET')}`,
 //             method: 'GET',
 //             headers: { 'user-agent': 'node.js' }
 //         };

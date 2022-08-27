@@ -1,23 +1,8 @@
 import React from "react";
 import Jumbo from "./Jumbo";
 import { Link } from 'react-router-dom';
-// import { getLand } from '../../actions/property';
-// import PropTypes from 'prop-types';
-// import { connect, useDispatch } from 'react-redux';
-
 
 const AddType = ({getLand}) => {
-
-    // let data = '';
-    
-    // const datafetcher = useCallback(() => {
-    //     getLand();
-    // })
-
-    // useEffect(() => {
-    //     datafetcher();npm
-    // }, [datafetcher, data]);
-
     return(
         <div>
             <Jumbo/>
@@ -37,10 +22,4 @@ const AddType = ({getLand}) => {
     )
 }
 
-
-// AddType.propTypes = {
-//     getLand: PropTypes.func.isRequired
-// }
-
-// export default connect(null, { getLand })(AddType);
 export default AddType;
