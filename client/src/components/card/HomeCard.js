@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './HomeCard.module.css';
+import { Button } from '../';
 
 const HomeCard = (props) => {
   return (
@@ -17,7 +18,7 @@ const HomeCard = (props) => {
           <div className={styles.description}>
             <p className={styles.descriptionDetails}>{props.description}</p>
           </div>
-          <button className={styles.cardButton}>{props.buttonTitle}</button>
+          <Button buttonTitle={props.buttonTitle}/>
         </div>
       </div>
     </div>

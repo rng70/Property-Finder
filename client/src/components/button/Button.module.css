@@ -1,11 +1,4 @@
-.wrapper {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(12rem, 16rem));
-    gap: 3rem;
-    justify-content: center;
-}
-
-.card {
+.container {
     overflow: hidden;
     box-shadow: 0 2px 20px var(--card-gray300);
     border-radius: var(--card-radius);
@@ -15,29 +8,6 @@
     cursor: pointer;
     transition: transform 200ms ease-in;
 }
-
-.card:hover {
-    transform: scale(1.02);
-}
-
-.cardImage{
-    height: 12rem;
-    width: 100%;
-    object-fit: cover;
-}
-
-.title {
-    padding: 1rem;
-}
-
-.description{
-    height: 150px;
-}
-
-.descriptionDetails {
-    padding: 0 1rem;
-}
-
 .cardButton {
     padding: 1rem;
     font-family: inherit;
@@ -51,7 +21,7 @@
     transition: background 200ms ease-in, color 200ms ease-in;
 }
 
-.cardButton:hover{
+.cardButton:hover {
     background: var(--card-primary);
     color: white;
 }

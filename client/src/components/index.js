@@ -1,4 +1,4 @@
-export { default as Card } from './card/Card';
+export { default as Card } from './card/Card'; //TODO organize
 export { default as Banner } from './banner/Banner';
 export { default as Navbar } from './layout/Navbar';
 export { default as Landing } from './layout/Landing';
@@ -21,3 +21,5 @@ export { default as UserDashboard } from './dashboard/UserDashboard';
 export { default as Carousel } from './layout/Carousel';
 export { default as HomeCard } from './card/HomeCard';
 export { default as Dashboard } from './dashboard/Dashboard';
+export { default as Button } from './button/Button';
+

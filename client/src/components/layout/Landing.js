@@ -1,8 +1,6 @@
-import cls from 'classnames';
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styles from './Landing.module.css';
-import { Card, Carousel, HomeCard } from '../';
+import { Carousel, HomeCard, Button } from '../';
 import { getIndexCardData } from '../../data/index-card-data';
 
 const Landing = () => {
@@ -20,12 +18,8 @@ const Landing = () => {
             solutions, schedule home tours, and more
           </p>
           <div className={styles.btn}>
-            <Link to='/register' className={cls(styles.btn, styles.primary)}>
-              Sign Up
-            </Link>
-            <Link to='/login' className={cls(styles.btn, styles.light)}>
-              Login
-            </Link>
+            <Button href='/register' buttonTitle="Sign Up"/>
+            <Button href='/login' buttonTitle="Sign In"/>
           </div>
         </div>
       </div>

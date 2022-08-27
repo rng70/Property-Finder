@@ -1,5 +1,5 @@
 import styles from './InTypeStyle.module.css';
-import { Navbar, Banner, Card } from '../../components';
+import { Card } from '../../components';
 
 const SingInType = (props) => {
   const addStr = (str, index, strintToAdd) => {
@@ -13,10 +13,10 @@ const SingInType = (props) => {
       <div className={styles.container}>
         {props.cardInfo.length > 0 && (
           <div className={styles.cardLayout}>
-            {props.cardInfo.map((singleCard) => {
+            {props.cardInfo.map((singleCard, i) => {
               return (
                 <Card
-                  key={singleCard.title}
+                  key={i}
                   title={singleCard.title}
                   description={singleCard.description}
                   href={`/login/${singleCard.hrefIdSignIn}`}

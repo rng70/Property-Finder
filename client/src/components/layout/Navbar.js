@@ -8,20 +8,45 @@ const Navbar = () => {
     return (
         <nav className={cls('bg-dark', styles.navbar)}>
             <h1>
-                <Link to="/">Property Finder</Link>
+                <Link
+                    to="/"
+                    style={{ textDecoration: 'none' }}
+                >
+                    Property Finder
+                </Link>
             </h1>
             <ul>
                 <li className='nav-item'>
-                    <Link  to="#">Buy</Link>
+                    <Link
+                        to="#"
+                        style={{ textDecoration: 'none' }}
+                    >
+                        Buy
+                    </Link>
                 </li>
                 <li className='nav-item'>
-                    <Link  to="/add">Sell</Link>
+                    <Link
+                        to="/add"
+                        style={{ textDecoration: 'none' }}
+                    >
+                        Sell
+                    </Link>
                 </li>
                 <li className='nav-item'>
-                    <Link  to="/register">Register </Link>
+                    <Link
+                        to="/register"
+                        style={{ textDecoration: 'none' }}
+                    >
+                        Register
+                    </Link>
                 </li>
                 <li >
-                    <Link  to="/login">Login</Link>
+                    <Link
+                        to="/login"
+                        style={{ textDecoration: 'none' }}
+                    >
+                        Login
+                    </Link>
                 </li>
             </ul>
         </nav>
