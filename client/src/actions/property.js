@@ -12,7 +12,9 @@ import {
     GET_HOUSES,
     GET_HOUSES_FAIL,
     GET_SPACES,
-    GET_SPACES_FAIL
+    GET_SPACES_FAIL,
+    GET_SINGLE_ITEM_FAIL,
+    GET_SINGLE_ITEM
 } from './types';
 
 /*
@@ -144,6 +146,28 @@ export const getSpaces = () => async dispatch => {
         dispatch({
         type: GET_SPACES_FAIL,
         payload: { msg: err.response.statusText, status: err.response.status }
+        });
+    }
+};
+
+export const getSingleItem = (id) => async dispatch => {
+    const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+
+    try {
+        const res = await axios.get(`http://localhost:5000/api/info/${id}`, config);
+
+        dispatch({
+            type: GET_SINGLE_ITEM,
+            payload: res.data
+        })
+    } catch (err) {
+        dispatch({
+            type: GET_SINGLE_ITEM_FAIL,
+            payload: { msg: err.response.statusText, status: err.response.status }
         });
     }
 };

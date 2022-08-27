@@ -33,3 +33,6 @@ export const GET_HOUSES_FAIL = 'GET_HOUSES_FAIL';
 
 export const GET_SPACES = 'GET_SPACES';
 export const GET_SPACES_FAIL = 'GET_SPACES_FAIL';
+
+export const GET_SINGLE_ITEM = 'GET_SINGLE_ITEM';
+export const GET_SINGLE_ITEM_FAIL = 'GET_SINGLE_ITEM_FAIL';

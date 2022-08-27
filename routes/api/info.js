@@ -30,6 +30,27 @@ router.get('/', auth, async (req, res) => {
     }
 });
 
+router.get('/:id', auth, async (req, res) => {
+    try {
+        const id = req.params.id;
+        let item = await Land.findById(id);
+        if (!item) {
+            item = await House.findById(id);
+            if (!item) {
+                item = await Space.findById(id);
+                if (!item) {
+                    return res.status(404).json({ msg: 'Item not found' });
+                }
+            }
+        }
+
+        res.json(item);
+    } catch (err) {
+        console.err(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
 router.get('/getLands', auth, async (req, res) => {
     try {
         const lands = await Land.find().sort({ date: -1 });        

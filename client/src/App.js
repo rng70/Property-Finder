@@ -18,7 +18,6 @@ import {
   AddHouse,
   NewsFeed,
   PrivateOutlet,
-  UserDashboard,
   Dashboard,
 } from './components';
 import setAuthToken from './utils/setAuthToken';
@@ -42,7 +41,6 @@ const App = () => {
         <Fragment>
           <Navbar />
           <section>
-            {/* <Alert /> */}
             <Routes>
               <Route path='/' element={<Landing />} exact />
               <Route path='/add' element={<AddType />} />
@@ -50,6 +48,7 @@ const App = () => {
               <Route path='/addSpace' element={<AddSpace />} />
               <Route path='/addHouse' element={<AddHouse />} />
               <Route path='/feed' element={<NewsFeed />} />
+              <Route path='/feed/:id' element={<NewsFeed/>} />
               <Route
                 path='/register'
                 element={<SignUpType cardInfo={cardInfoData} />}

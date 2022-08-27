@@ -10,7 +10,9 @@ import {
     GET_HOUSES,
     GET_HOUSES_FAIL,
     GET_SPACES,
-    GET_SPACES_FAIL
+    GET_SPACES_FAIL,
+    GET_SINGLE_ITEM_FAIL,
+    GET_SINGLE_ITEM
 } from "../actions/types";
 
 const initialState = {
@@ -58,6 +60,17 @@ export default function (state = initialState, action) {
                 spaces: payload,
                 loading: false
             };
+        case GET_SINGLE_ITEM:
+            return {
+                ...state,
+                propertyVal: payload,
+                loading: false
+            }
+        case GET_SINGLE_ITEM_FAIL:
+            return {
+                ...state,
+                error: payload
+            }
         case GET_LANDS_FAIL:
             return {
                 ...state,
