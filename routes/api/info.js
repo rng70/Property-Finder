@@ -52,6 +52,17 @@ router.get('/getHouses', auth, async (req, res) => {
     }
 });
 
+router.get('/getSpaces', auth, async (req, res) => {
+    try {
+        const spaces = await Space.find().sort({ date: -1 });        
+
+        res.json(spaces);
+    } catch (err) {
+        console.err(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
 /**
  * @route   GET api/post/:id
  * @desc    Get all post

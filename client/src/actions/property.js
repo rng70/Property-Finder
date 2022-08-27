@@ -10,7 +10,9 @@ import {
     GET_LANDS,
     GET_LANDS_FAIL,
     GET_HOUSES,
-    GET_HOUSES_FAIL
+    GET_HOUSES_FAIL,
+    GET_SPACES,
+    GET_SPACES_FAIL
 } from './types';
 
 /*
@@ -119,8 +121,31 @@ export const getHouses = () => async dispatch => {
         dispatch({
         type: GET_HOUSES_FAIL,
         payload: { msg: err.response.statusText, status: err.response.status }
-    });
-}
+        });
+    }
+};
+
+// GET spaces
+export const getSpaces = () => async dispatch => {
+    const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+
+    try {
+        const res = await axios.get(`http://localhost:5000/api/info/getSpaces`, config);
+
+        dispatch({
+        type: GET_SPACES,
+        payload: res.data
+        });
+    } catch (err) {
+        dispatch({
+        type: GET_SPACES_FAIL,
+        payload: { msg: err.response.statusText, status: err.response.status }
+        });
+    }
 };
 
 // // Remove like
