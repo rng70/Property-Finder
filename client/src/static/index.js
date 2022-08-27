@@ -6,3 +6,6 @@ export { default as Carousel3 } from './carousel-3.jpg';
 export { default as BuyHome } from './Buy_a_home.jpg';
 export { default as RentHome } from './Rent_a_home.jpg';
 export { default as FinanceHome } from './Finance_a_home.jpg';
+export {default as AddTypeSpace} from './space.avif';
+export {default as AddTypeHouse} from './house.avif';
+export {default as AddTypeLand} from './land.jpeg';

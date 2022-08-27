@@ -32,7 +32,7 @@ const Navbar = () => {
                         Sell
                     </Link>
                 </li>
-                <li className='nav-item'>
+                {/* <li className='nav-item'>
                     <Link
                         to="/register"
                         style={{ textDecoration: 'none' }}
@@ -47,7 +47,7 @@ const Navbar = () => {
                     >
                         Login
                     </Link>
-                </li>
+                </li> */}
             </ul>
         </nav>
     )
