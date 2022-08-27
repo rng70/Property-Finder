@@ -4,7 +4,8 @@ const cors = require('cors');
 
 const app = express();
 connectDB();
-app.use(express.json({ extended: false }));
+app.use(express.json({ limit: '200mb', extended: false }));
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use(cors())
 app.get('/', (req, res) => res.send('API Running Successfully'));
 

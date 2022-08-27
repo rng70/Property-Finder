@@ -5,53 +5,29 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 const AddLand = ({addLand}) =>{
-    const [error, setError] = useState(false);
-    const [success, setSuccess] = useState(false);
+    const [formData, setFormData] = useState({
+        landArea: '',
+        price: '',
+        plot: '',
+        road: '',
+        block: '',
+        postCode: '',
+        areaName: '',
+        district: '',
+        division: '',
+        isSold: false,
+        
+    })
 
-    //form data
-    const [landArea,setArea] = useState('')
-    const [price,setPrice] = useState('')
-    const [plot,setPlot] = useState('')
-    const [road,setRoad] = useState('')
-    const [block,setBlock] = useState('')
-    const [postCode,setPostCode] = useState('')
-    const [areaName,setAreaName] = useState('')
-    const [district,setDistrict] = useState('')
-    const [division, setDivision] = useState('')
-    const [isSold, setSoldState] = useState(true)
+    const onChange = async (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+
+    const { landArea, price, plot, road, block, postCode, areaName, district, division, isSold } = formData;
 
     const handleSubmit = (e)=>{
         e.preventDefault();
         addLand({landArea, price, isSold})
     }
 
-    const setAreaValue = e =>{
-        setArea(e.target.value);
-    }
-    const setPriceValue = e =>{
-        setPrice(e.target.value)
-    }
-    const setPlotValue = e =>{
-        setPlot(e.target.value);
-    }
-    const setRoadValue= e =>{
-        setRoad(e.target.value)
-    }
-    const setBlockValue = e =>{
-        setBlock(e.target.value)
-    }
-    const setPostCodeValue = e =>{
-        setPostCode(e.target.value)
-    }
-    const setAreaNameValue = e =>{
-        setAreaName(e.target.value)
-    }
-    const setDistrictValue = e =>{
-        setDistrict(e.target.value)
-    }
-    const setDivisionValue = e =>{
-        setDivision(e.target.value)
-    }
     return (
         <div >
             <Jumbo/>
@@ -60,35 +36,35 @@ const AddLand = ({addLand}) =>{
                 <div className="form-group">
                     <div>
                     <label style={ {display: "inline-block"} } className="text-muted">Area(sq. ft)</label>
-                    <input style={ {display: "inline-block"} } type="text" className="form-control" value={landArea} autoFocus onChange={setAreaValue}></input>
+                    <input style={ {display: "inline-block"} } type="text" className="form-control" name='landArea' value={landArea} autoFocus onChange={(e) => onChange(e)}></input>
                     
                     <label style={ {display: "inline-block"} } className="text-muted">Price</label>
-                    <input style={ {display: "inline-block"} } type="text" className="form-control"  autoFocus value={price} onChange={setPriceValue}></input>
+                    <input style={ {display: "inline-block"} } type="text" className="form-control"  autoFocus name='price' value={price} onChange={(e) => onChange(e)}></input>
                     </div>
                     <label className="text-muted">Plot no</label>
-                    <input type="text" className="form-control"  autoFocus value={plot} onChange={setPlotValue}></input>
+                    <input type="text" className="form-control"  autoFocus name='plot' value={plot} onChange={(e) => onChange(e)}></input>
                     
                     <label className="text-muted">Road no</label>
-                    <input type="text" className="form-control" value={road} autoFocus onChange={setRoadValue}></input>
+                    <input type="text" className="form-control" name='road' value={road} autoFocus onChange={(e) => onChange(e)}></input>
                     
                     <label className="text-muted">Block</label>
-                    <input type="text" className="form-control" value={block} autoFocus onChange={setBlockValue}></input>
+                    <input type="text" className="form-control" name='block' value={block} autoFocus onChange={(e) => onChange(e)}></input>
                     
 
                     <label className="text-muted">Post Code</label>
-                    <input type="text" className="form-control" value={postCode} autoFocus onChange={setPostCodeValue}></input>
+                    <input type="text" className="form-control" name='postCode' value={postCode} autoFocus onChange={(e) => onChange(e)}></input>
                     
 
                     <label className="text-muted">Area Name</label>
-                    <input type="text" className="form-control" value={areaName} autoFocus onChange={setAreaNameValue}></input>
+                    <input type="text" className="form-control" name='areaName' value={areaName} autoFocus onChange={(e) => onChange(e)}></input>
                     
 
                     <label className="text-muted">District</label>
-                    <input type="text" className="form-control" value={district} autoFocus onChange={setDistrictValue}></input>
+                    <input type="text" className="form-control" name='district' value={district} autoFocus onChange={(e) => onChange(e)}></input>
                     
 
                     <label className="text-muted">Division</label>
-                    <input type="text" className="form-control" value={division} autoFocus onChange={setDivisionValue}></input>
+                    <input type="text" className="form-control" name='division' value={division} autoFocus onChange={(e) => onChange(e)}></input>
                     
                     <p></p>
                     <button className="btn btn-outline-primary">Create Post</button>

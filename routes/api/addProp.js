@@ -8,6 +8,7 @@ const House = require('../../models/House');
 const Space = require('../../models/Space');
 const auth = require('../../middleware/auth');
 const { check, validationResult } = require('express-validator');
+const { cloudinary } = require('../../config/cloudinary');
 
 
 var multer = require('multer');
@@ -137,7 +138,20 @@ router.post('/addHouse',
             console.error(err.message);
             return res.status(500).send('Server Error');
         }
-    }); 
+    });
+
+const Upload = async fileStr => {
+    try {
+        const uploadResponse = await cloudinary.uploader.upload(fileStr, {
+            upload_preset: 'property_finder',
+        });
+        //console.log("Upload Response ==> ", uploadResponse);
+        return uploadResponse;
+
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 /**
  * @desc adding Space
@@ -154,16 +168,16 @@ router.post('/addSpace',
         ]
     ],
     async (req, res) => {
-        console.log("Checking error body request ",req.body);
+        // console.log("Checking error body request ",req.body); //TODO delete
         const errors = validationResult(req);
-        console.log("Checking error is done");
+        console.log("Checking error is done"); // TODO delete
         if (!errors.isEmpty()) {
-            console.log("ashse req ",req);
+            //console.log("ashse req ",req); // TODO delete
             return res.status(400).json({ errors: errors.array() });
         }
 
         try {
-            console.log("here");
+            console.log("here"); //TODO delete
             let owner = await Owner.findById(req.user.id).select('-password');
             let type = 'person';
             let ownerName;
@@ -178,7 +192,22 @@ router.post('/addSpace',
                 type = 'agency';
             }
 
+            const promises = [];
+            const publicIds = [];
+            if (req.body.previewSource !== undefined) {
+                const fileStr = req.body.previewSource;
+                
+                for (let i = 0; i < fileStr.length; i++){
+                    //console.log("Uploading files");
+                    promises.push(Upload(fileStr[i]))
+                }
+            }
 
+            await Promise.all(promises).then(values => {
+                values.map((value) => publicIds.push(value.public_id))
+            })
+
+            console.log("Public ids", publicIds);
             const newSpace = new Space({
                 type: req.body.type,
                 noOfRooms: req.body.noOfRooms,
@@ -186,10 +215,12 @@ router.post('/addSpace',
                 sellType: req.body.sellType,
                 price: req.body.price,
                 isAvailable: req.body.isAvailable,
-                whichFloors: req.body.whichFloors
+                whichFloors: req.body.whichFloors,
+                image: publicIds,
             });
-
+            
             const space = await newSpace.save();
+            
             return res.json(space);
         } catch (err) {
             console.error(err.message);
