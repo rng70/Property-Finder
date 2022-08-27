@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import {MDBBtn} from 'mdb-react-ui-kit'
 import CardImage from "./CardImage";
+import { Image } from 'cloudinary-react';
 
 // const FeedCard =(props) =>{
 //     const property = props.property;
@@ -52,13 +53,23 @@ const FeedCard = (props) => {
     return (
         <div className="col-md-3 col-sm-4 col-xs-12">
             <div className="card">
-                <img
+                {/* <img
                     //src={`${API}/product/photo/${product._id}`}
                     src="https://picsum.photos/seed/picsum/200/300"
                     alt={product.price}
                     style={imgStyle}
                     className="card-img-top"
-                />
+                /> */}
+                {product.image && product.image.map((im, i) => (
+                    <Image
+                        key={i}
+                        cloudName={"dj33aqcp1"}
+                        publicId={im}
+                        width="300"
+                        crop="scale"
+                        style={imgStyle}
+                    />))
+                }
                 <div className="card-body">
                     <div style={{ minHeight: "3em" }}>
                         <p style={titleStyle}>{product.area}</p>
