@@ -3,12 +3,14 @@ import styles from "./SignUpStyle.module.css";
 import {useState } from 'react';
 import { registerAgency } from '../../../actions/auth';
 import { useNavigate } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 
-const UserSignUp = () => {
+const AgencySignUp = ({registerAgency, isAuthenticated}) => {
     let navigation = useNavigate();
+    
     //for dispalying user message about valid email input
-    // keeping state using react hooks
     const [emailMsg,setEmailMsg] = useState('')
     const [nameMsg, setNameMsg] = useState('');
     const [passMsg2, setPassMsg2] = useState('');
@@ -43,25 +45,19 @@ const UserSignUp = () => {
         } else if (!yearOfEstablishment) { 
             setYear('Date is required'+yearOfEstablishment+" t")
         } else{
-            // route to dashboard
-            // const emailFromDB = "tanin@gmail.com";
             if (password !== confirmPass) {
                 setPassMsg2('Password mismatch! Please enter valid password');
-                //route to dashboard
-                // router.push("/");
             } else {
                 registerAgency({ name, email, password, tradeLicenseNo, yearOfEstablishment });
-                //router.push('/sellForm');
-                // setAlert('Please confirm email address');
             }
         }  
     }
 
     const onChange = async e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-    // if (isAuthenticated) {
-        // router.push('/dashboard');
-    // }
+    if (isAuthenticated) {
+        navigation('/dashboard');
+    }
 
     return( 
     <div className={styles.container}>
@@ -116,4 +112,13 @@ const UserSignUp = () => {
     )
 }
 
-export default UserSignUp;
+AgencySignUp.propTypes = {
+    registerAgency: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.bool,
+}
+
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated,
+})
+
+export default connect(mapStateToProps, { registerAgency })(AgencySignUp);

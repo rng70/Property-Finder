@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 
 const UserSignUp = (props) => {
     let navigation = useNavigate();
+    
     //for dispalying user message about    valid email input
-    // keeping state using react hooks
     const [userMsg,setUserMsg] = useState('')
 
 

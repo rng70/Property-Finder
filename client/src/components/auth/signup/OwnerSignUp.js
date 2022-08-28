@@ -3,14 +3,13 @@ import {useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 const UserSignUp = (props) => {
     let navigation = useNavigate();
-    //for dispalying user message about valid email input
-    // keeping state using react hooks
 
+    //for dispalying user message about valid email input
     // const [emailMsg,setEmailMsg] = useState('')
     // const [nameMsg, setNameMsg] = useState('');
     // const [passMsg2, setPassMsg2] = useState('');
     // const [licenseMsg, setLicenseMsg] = useState('');
-    const [userMsg,setUserMsg] = useState('')
+    const [userMsg, setUserMsg] = useState('')
 
     const [formData, setFormData] = useState({
         firstName: '',
