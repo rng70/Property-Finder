@@ -97,7 +97,8 @@ router.post('/addLand',
                 postCode : req.body.postCode,
                 areaName: req.body.areaName,
                 district : req.body.district,
-                division : req.body.division
+                division : req.body.division,
+                contactNo : req.body.contactNo
             });
 
             const land = await newLand.save();
@@ -170,7 +171,15 @@ router.post('/addHouse',
                 name: owner.name,
                 avatar: owner.avatar,
                 owner: req.user.id,
-                image: publicIds
+                image: publicIds,
+                parkingSpaceArea : req.body.parkingSpaceArea,
+                plot : req.body.plot,
+                road : req.body.road,
+                postCode : req.body.postCode,
+                areaName : req.body.areaName,
+                district : req.body.district,
+                division : req.body.division,
+                contactNo : req.body.contactNo
             });
 
             const house = await newHouse.save();
@@ -239,6 +248,27 @@ router.post('/addSpace',
                 isAvailable: req.body.isAvailable,
                 whichFloors: req.body.whichFloors,
                 image: publicIds,
+                noOfKitchens : req.body.noOfKitchens,
+                noOfWashrooms : req.body.noOfWashrooms,
+                noOfDiningRooms : req.body.noOfDiningRooms,
+                noOfLivingRooms : req.body.noOfLivingRooms,
+                noOfServentRooms : req.body.noOfServentRooms,
+                apartmentNo : req.body.apartmentNo,
+                noOfFloors: req.body.noOfFloors,
+                hasLift: req.body.hasLift,
+                noOfBalcony: req.body.noOfBalcony,
+                parkingSpace: req.body.parkingSpace,
+                isAvailable : req.body.isAvailable,
+                spaceDetails : req.body.spaceDetails,
+                whichFloors : req.body.whichFloors,
+                plot : req.body.plot,
+                road :  req.body.road,
+                block : req.body.block,
+                postCode : req.body.postCode,
+                areaName : req.body.postCode,
+                district : req.body.district,
+                division : req.body.division,
+                contactNo : req.body.contactNo
             });
             
             const space = await newSpace.save();

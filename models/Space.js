@@ -107,6 +107,9 @@ const spaceSchema = new mongoose.Schema({
     },
     division : {
         type : String
+    },
+    contactNo:{
+        type : String
     }
 });
 
