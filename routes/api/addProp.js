@@ -22,13 +22,26 @@ var upload = multer({ dest: 'storage/' });
  * @access  Private
  */ 
 
+
+const Upload = async fileStr => {
+    try {
+        const uploadResponse = await cloudinary.uploader.upload(fileStr, {
+            upload_preset: 'property_finder',
+        });
+        //console.log("Upload Response ==> ", uploadResponse);
+        return uploadResponse;
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 /**
  * @desc adding Land
  */
 router.post('/addLand',
     [
         auth,
-        upload.single('image'),
         [
             check('landArea', 'Land Area is required').not().isEmpty().isNumeric(),
             check('price', 'Price is required').not().isEmpty().isNumeric(),
@@ -56,23 +69,29 @@ router.post('/addLand',
                 type = 'agency';
             }
 
+            const promises = [];
+            const publicIds = [];
+            if (req.body.previewSource !== undefined) {
+                const fileStr = req.body.previewSource;
+                
+                for (let i = 0; i < fileStr.length; i++){
+                    promises.push(Upload(fileStr[i]))
+                }
+            }
+
+            await Promise.all(promises).then(values => {
+                values.map((value) => publicIds.push(value.public_id))
+            })
+
             const newLand = new Land({
                 ownerType: type,
                 landArea: req.body.landArea,
                 price: req.body.price,
                 isSold: req.body.isSold,
                 name: ownerName,
-                owner: req.user.id
+                owner: req.user.id,
+                image: publicIds
             });
-
-            if (typeof req.file !== 'undefined') {
-                const landImage = {
-                    data: req.file.buffer,
-                    contentType: 'image/jpg',
-                }
-
-                newLand.landImages.unshift(landImage);
-            }
 
             const land = await newLand.save();
             return res.json(land);
@@ -117,7 +136,21 @@ router.post('/addHouse',
                 type = 'agency';
             }
 
-            console.log("in addProp routes ",owner);
+            console.log("in addProp routes ", owner);
+            
+            const promises = [];
+            const publicIds = [];
+            if (req.body.previewSource !== undefined) {
+                const fileStr = req.body.previewSource;
+                
+                for (let i = 0; i < fileStr.length; i++){
+                    promises.push(Upload(fileStr[i]))
+                }
+            }
+
+            await Promise.all(promises).then(values => {
+                values.map((value) => publicIds.push(value.public_id))
+            })
 
 
             const newHouse = new House({
@@ -129,7 +162,8 @@ router.post('/addHouse',
                 ownerType: type,
                 name: owner.name,
                 avatar: owner.avatar,
-                owner: req.user.id
+                owner: req.user.id,
+                image: publicIds
             });
 
             const house = await newHouse.save();
@@ -139,19 +173,6 @@ router.post('/addHouse',
             return res.status(500).send('Server Error');
         }
     });
-
-const Upload = async fileStr => {
-    try {
-        const uploadResponse = await cloudinary.uploader.upload(fileStr, {
-            upload_preset: 'property_finder',
-        });
-        //console.log("Upload Response ==> ", uploadResponse);
-        return uploadResponse;
-
-    } catch (error) {
-        console.log(error)
-    }
-}
 
 /**
  * @desc adding Space
@@ -168,16 +189,12 @@ router.post('/addSpace',
         ]
     ],
     async (req, res) => {
-        // console.log("Checking error body request ",req.body); //TODO delete
         const errors = validationResult(req);
-        console.log("Checking error is done"); // TODO delete
         if (!errors.isEmpty()) {
-            //console.log("ashse req ",req); // TODO delete
             return res.status(400).json({ errors: errors.array() });
         }
 
         try {
-            console.log("here"); //TODO delete
             let owner = await Owner.findById(req.user.id).select('-password');
             let type = 'person';
             let ownerName;
@@ -198,7 +215,6 @@ router.post('/addSpace',
                 const fileStr = req.body.previewSource;
                 
                 for (let i = 0; i < fileStr.length; i++){
-                    //console.log("Uploading files");
                     promises.push(Upload(fileStr[i]))
                 }
             }
@@ -207,7 +223,6 @@ router.post('/addSpace',
                 values.map((value) => publicIds.push(value.public_id))
             })
 
-            console.log("Public ids", publicIds);
             const newSpace = new Space({
                 type: req.body.type,
                 noOfRooms: req.body.noOfRooms,

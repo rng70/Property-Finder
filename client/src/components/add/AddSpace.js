@@ -44,14 +44,6 @@ const AddSpace = ({addSpace}) =>{
     const [successMsg, setSuccessMsg] = useState('');
     const [errMsg, setErrMsg] = useState('');
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        //console.log('PreviewSources', previewSource);
-        addSpace({ price, sellType, type, area, noOfRooms, isAvailable, whichFloors, previewSource });
-    }
-
-    const onChange = async (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
-
     const handleFileInputChange = (e) => {
         const files = [...e.target.files];
         previewFile(files);
@@ -70,6 +62,13 @@ const AddSpace = ({addSpace}) =>{
     const previewFile = (files) => {
         files.map((file, i) =>  ReadFile(file));
     };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        addSpace({ price, sellType, type, area, noOfRooms, isAvailable, whichFloors, previewSource });
+    }
+
+    const onChange = async (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
     // const handleSubmitFile = (e) => {
     //     e.preventDefault();

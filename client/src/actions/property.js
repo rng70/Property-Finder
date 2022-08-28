@@ -61,9 +61,9 @@ export const addLand = (props) => async dispatch => {
         }
     }
 
-    const { owner, location, ownerType, landArea, price, isSold, landDetails } = props;
+    const { owner, location, ownerType, landArea, price, isSold, landDetails, previewSource } = props;
     
-    const body = JSON.stringify({ owner, location, ownerType, landArea, price, isSold, landDetails });
+    const body = JSON.stringify({ owner, location, ownerType, landArea, price, isSold, landDetails, previewSource });
     try {
         
         const res = await axios.post(`http://localhost:5000/api/addProp/addLand`, body, config);
@@ -286,9 +286,9 @@ export const addHouse = (props) => async dispatch => {
         }
     }
 
-    const { owner, location, ownerType, price, noOfFloors, type, landArea, isSold } = props;
+    const { owner, location, ownerType, price, noOfFloors, type, landArea, isSold, previewSource } = props;
     
-    const body = JSON.stringify({ owner, location, ownerType, price, noOfFloors, type, landArea, isSold });
+    const body = JSON.stringify({ owner, location, ownerType, price, noOfFloors, type, landArea, isSold, previewSource });
     try {
         
         const res = await axios.post(`http://localhost:5000/api/addProp/addHouse`, body, config);

@@ -19,13 +19,38 @@ const AddLand = ({addLand}) =>{
         
     })
 
+    const [fileInputState, setFileInputState] = useState('');
+    const [previewSource, setPreviewSource] = useState([]);
+    const [selectedFiles, setSelectedFiles] = useState([]);
+    const [successMsg, setSuccessMsg] = useState('');
+    const [errMsg, setErrMsg] = useState('');
+
+    const handleFileInputChange = (e) => {
+        const files = [...e.target.files];
+        previewFile(files);
+        setSelectedFiles(arr => [...arr, ...files]);
+        setFileInputState(e.target.value);
+    };
+
+    const ReadFile = (file) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+            setPreviewSource(arr => [...arr, reader.result]);
+        }
+    }
+
+    const previewFile = (files) => {
+        files.map((file, i) =>  ReadFile(file));
+    };
+
     const onChange = async (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
     const { landArea, price, plot, road, block, postCode, areaName, district, division, isSold } = formData;
 
     const handleSubmit = (e)=>{
         e.preventDefault();
-        addLand({landArea, price, isSold})
+        addLand({landArea, price, isSold, previewSource})
     }
 
     return (
@@ -67,6 +92,11 @@ const AddLand = ({addLand}) =>{
                     <input type="text" className="form-control" name='division' value={division} autoFocus onChange={(e) => onChange(e)}></input>
                     
                     <p></p>
+                        
+                    <label className="text-muted">Upload photos</label>
+                    <input type="file" id="myfile" name="myfile" value={fileInputState} onChange={handleFileInputChange}  className="form-control" multiple="multiple"/> 
+                    <p></p>
+                        
                     <button className="btn btn-outline-primary">Create Post</button>
                 </div>
             </div>

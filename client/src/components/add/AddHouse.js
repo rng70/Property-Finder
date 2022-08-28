@@ -21,10 +21,36 @@ const AddHouse =({addHouse})=>{
     const [type,setType] = useState('residential')
     const [noOfFloors,setNumFloors] = useState('')
     const isSold = false;
+
+    const [fileInputState, setFileInputState] = useState('');
+    const [previewSource, setPreviewSource] = useState([]);
+    const [selectedFiles, setSelectedFiles] = useState([]);
+    const [successMsg, setSuccessMsg] = useState('');
+    const [errMsg, setErrMsg] = useState('');
+
+    const handleFileInputChange = (e) => {
+        const files = [...e.target.files];
+        previewFile(files);
+        setSelectedFiles(arr => [...arr, ...files]);
+        setFileInputState(e.target.value);
+    };
+
+    const ReadFile = (file) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+            setPreviewSource(arr => [...arr, reader.result]);
+        }
+    }
+
+    const previewFile = (files) => {
+        files.map((file, i) =>  ReadFile(file));
+    };
+
     const handleSubmit = (e)=>{
         console.log("handle submit called")
         e.preventDefault();
-        addHouse({ price, noOfFloors, type, landArea, isSold})
+        addHouse({ price, noOfFloors, type, landArea, isSold, previewSource})
     }
 
     const setNumFloorsValue = e=>{
@@ -110,7 +136,10 @@ const AddHouse =({addHouse})=>{
                     <label className="text-muted">Upload photos</label>
                     <input type="file" id="myfile" name="myfile" className="form-control" multiple="multiple"/> 
                     <p></p>
-
+                    
+                    <label className="text-muted">Upload photos</label>
+                    <input type="file" id="myfile" name="myfile" value={fileInputState} onChange={handleFileInputChange}  className="form-control" multiple="multiple"/> 
+                    <p></p>
                     <button className="btn btn-outline-primary">Create Post</button>
                 </div>
             </div>

@@ -41,6 +41,11 @@ const houseSchema = new mongoose.Schema({
         type: Boolean,
         default: false,
         required: true
+    },
+    image: {
+        type: [
+            String,
+        ],
     }
 });
 
