@@ -1,22 +1,17 @@
-import {useEffect,useState} from 'react';
+import {useEffect, useState} from 'react';
 import Sidebar from './Sidebar';
+import { getCurrentProfile } from '../../actions/profile';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
  
  
- 
-const Dashboard = () => {
-   
-   //const[record,setRecord] = useState([])
- 
-//    const getData = () =>
-//    {
-//        fetch('https://jsonplaceholder.typicode.com/users')
-//        .then(resposne=> resposne.json())
-//        .then(res=>setRecord(res))
-//    }
- 
-//    useEffect(() => {
-//       getData();
-//    },)
+const Dashboard = ({getCurrentProfile, profile}) => {
+    useEffect(() => {
+        getCurrentProfile()
+    }, [getCurrentProfile])
+
+    console.log("Profile ==> ", profile);
+
     const record = [
         {
             id : "1705070",
@@ -26,11 +21,9 @@ const Dashboard = () => {
             website : 70
         }
     ]
- 
-    return (
 
+    return (
     <div class="col main pt-5 mt-3">
-         
         <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -39,7 +32,6 @@ const Dashboard = () => {
         </ol>
         </nav>
         <p class="lead d-none d-sm-block">Add Employee Details and Records</p>
- 
         <div class="alert alert-warning fade collapse" role="alert" id="myAlert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">×</span>
@@ -74,7 +66,7 @@ const Dashboard = () => {
                 <div class="card text-white bg-info h-100">
                     <div class="card-body bg-info">
                         <div class="rotate">
-                          <i class="fab fa-twitter fa-4x"></i>
+                        <i class="fab fa-twitter fa-4x"></i>
                         </div>
                         <h6 class="text-uppercase">Tweets</h6>
                         <h1 class="display-4">125</h1>
@@ -93,15 +85,13 @@ const Dashboard = () => {
                 </div>
             </div>
         </div>
- 
         <hr/>
         
-       
         <div class="row ">
             <div class="col-lg-7 col-md-6 col-sm-12">
-              <h5 class="mt-3 mb-3 text-secondary">
-               Check More Records of Employees
-              </h5>
+            <h5 class="mt-3 mb-3 text-secondary">
+            Check More Records of Employees
+            </h5>
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead class="thead-light">
@@ -114,7 +104,7 @@ const Dashboard = () => {
                             </tr>
                         </thead>
                         <tbody>
-                         {record.slice(0, 5).map((output)=>
+                        {record.slice(0, 5).map((output)=>
                             <tr>
                                 <td>{output.id}</td>
                                 <td>{output.name}</td>
@@ -123,19 +113,24 @@ const Dashboard = () => {
                                 <td>{output.website}</td>
                                 <td></td>
                             </tr>
-                           )}
+                        )}
                         </tbody>
                     </table>
                 </div>
             </div>
             <div className="col-lg-5 col-md-6 col-sm-12 col-sm-offset-5">
                 <h4 className='title mt-3 mb-3 text-center text-secondary'>Data in Chart</h4>
-                 <div className="mb-5" style={{height:"300px",width:"400px"}}> </div></div>
+                <div className="mb-5" style={{height:"300px",width:"400px"}}> </div></div>
         </div>
-       
- 
     </div>
     )
 }
- 
-export default Dashboard;
+
+Dashboard.propTypes = {
+    getCurrentProfile: PropTypes.func.isRequired,
+}
+
+const mapStateToProps = state => ({
+    profile: state.profile.profile
+})
+export default connect(mapStateToProps, { getCurrentProfile })(Dashboard);

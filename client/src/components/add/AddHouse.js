@@ -147,10 +147,8 @@ const AddHouse =({addHouse})=>{
     )
 }
 
-
 AddHouse.propTypes = {
     addHouse : PropTypes.func.isRequired
 }
 
 export default connect(null, { addHouse })(AddHouse);
-//export default AddHouse;
