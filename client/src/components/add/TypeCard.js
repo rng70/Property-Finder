@@ -34,7 +34,7 @@ import {MDBBtn} from 'mdb-react-ui-kit'
 // }
 const TypeCard = (props) => {
     const data = props.data;
-    console.log("here  ",data)
+    //console.log("here  ",data)
     const titleStyle = {
         display: "block",
         textOverflow: "ellipsis",

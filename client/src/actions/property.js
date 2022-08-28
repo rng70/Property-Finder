@@ -33,13 +33,13 @@ export const addSpace = (props) => async dispatch => {
     }
 
     const {  price, sellType, type, area, noOfRooms, isAvailable,  whichFloors, previewSource } = props;
-    console.log("eikhane propps ",props);
+    //console.log("eikhane propps ",props);
     //price, sellType, type, area, noOfRooms, noOfKitchens, noOfWashrooms, noOfDiningRooms, noOfLivingRooms, noOfServentRooms, apartmentNo, noOfFloors, hasLift, hasSecurityGuard, noOfBalcony, parkingSpace, isAvailable, spaceDetails, whichFloors
     const body = JSON.stringify({ price, sellType, type, area, noOfRooms, isAvailable,  whichFloors, previewSource});
     try {
         //console.log("property inside try",body);
         const res = await axios.post(`http://localhost:5000/api/addProp/addSpace`, body, config);
-        console.log("response after sending post request",res);
+        //console.log("response after sending post request",res);
         dispatch({
             type: ADD_SPACE,
             payload: res.data
@@ -61,18 +61,22 @@ export const addLand = (props) => async dispatch => {
         }
     }
 
-    const { owner, location, ownerType, landArea, price, isSold, landDetails, previewSource } = props;
+    const { owner, location, ownerType, landArea, price, isSold, landDetails, plot, road, block, postCode, areaName, district, division, previewSource } = props;
+
+    //const { landArea, price, plot, road, block, postCode, areaName, district, division, isSold } = formData;
     
-    const body = JSON.stringify({ owner, location, ownerType, landArea, price, isSold, landDetails, previewSource });
+    const body = JSON.stringify({ owner, location, ownerType, landArea, price, isSold, landDetails, plot, road, block, postCode, areaName, district, division, previewSource });
+    console.log("body here ",body);
     try {
         
         const res = await axios.post(`http://localhost:5000/api/addProp/addLand`, body, config);
-        
+        console.log("response here ",res)
         dispatch({
             type: ADD_LAND,
             payload: res.data
         });
     } catch (err) {
+        console.log("error here ",err);
         dispatch({
             type: ADD_LAND_FAIL,
             payload: { msg: err.response.statusText, status: err.response.status }
@@ -292,7 +296,7 @@ export const addHouse = (props) => async dispatch => {
     try {
         
         const res = await axios.post(`http://localhost:5000/api/addProp/addHouse`, body, config);
-        console.log("in add house ",res);
+        //console.log("in add house ",res);
         
         dispatch({
             type: ADD_HOUSE,

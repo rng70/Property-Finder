@@ -1,7 +1,7 @@
 import React from "react";
 import Jumbo from "./Jumbo";
 import  TypeCard  from "./TypeCard";
-import { AddTypeHouse,AddTypeLand,AddTypeSpace } from "../../static";
+import { AddTypeHouse,AddTypeLand,AddTypeSpace,newsFeed } from "../../static";
 
 
 const AddType = () => {
@@ -26,6 +26,13 @@ const AddType = () => {
             btnTitle : "Post Now",
             link : "/addHouse",
             imgSrc : AddTypeHouse
+        },
+        {
+            title : "News Feed",
+            description : "Nothing to add? So let's see what out community have posted to find your suitable place",
+            btnTitle : "See Posts",
+            link : "/feed",
+            imgSrc : newsFeed
         }
     ];
 

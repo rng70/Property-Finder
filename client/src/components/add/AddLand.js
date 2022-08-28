@@ -8,15 +8,16 @@ import { useNavigate } from 'react-router-dom';
 const AddLand = ({addLand}) =>{
     let navigation = useNavigate();
     const [formData, setFormData] = useState({
-        landArea: '',
-        price: '',
-        plot: '',
-        road: '',
-        block: '',
-        postCode: '',
-        areaName: '',
-        district: '',
-        division: '',
+        landArea: '5700',
+        price: '100000000',
+        plot: '12',
+        road: '7',
+        block: 'C',
+        postCode: '1219',
+        areaName: 'Banasree',
+        district: 'Dhaka',
+        division: 'Dhaka',
+        landDetails : 'Cornenr plot',
         isSold: false,
         
     })
@@ -48,11 +49,11 @@ const AddLand = ({addLand}) =>{
 
     const onChange = async (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-    const { landArea, price, plot, road, block, postCode, areaName, district, division, isSold } = formData;
+    const { landArea, price, plot, road, block, postCode, areaName, district, division, isSold,landDetails } = formData;
 
     const handleSubmit = (e)=>{
         e.preventDefault();
-        addLand({landArea, price, isSold, previewSource})
+        addLand({landArea, price, plot, road, block, postCode, areaName, district, division, isSold,landDetails})
         navigation("/feed")
     }
 
@@ -93,6 +94,9 @@ const AddLand = ({addLand}) =>{
 
                     <label className="text-muted">Division</label>
                     <input type="text" className="form-control" name='division' value={division} autoFocus onChange={(e) => onChange(e)}></input>
+                    
+                    <label className="text-muted">Additional Description</label>
+                    <input type="text" className="form-control" name='landDetails' value={landDetails} autoFocus onChange={(e) => onChange(e)}></input>
                     
                     <p></p>
                         
