@@ -3,8 +3,10 @@ import Jumbo from "./Jumbo";
 import { addSpace } from '../../actions/property';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 
 const AddSpace = ({addSpace}) =>{
+    let navigation = useNavigate();
     const [formData, setFormData] = useState({
         area: '54321',
         price: '12345',
@@ -66,6 +68,7 @@ const AddSpace = ({addSpace}) =>{
     const handleSubmit = (e) => {
         e.preventDefault();
         addSpace({ price, sellType, type, area, noOfRooms, isAvailable, whichFloors, previewSource });
+        navigation("/feed");
     }
 
     const onChange = async (e) => setFormData({ ...formData, [e.target.name]: e.target.value });

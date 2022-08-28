@@ -3,8 +3,10 @@ import Jumbo from "./Jumbo";
 import { addHouse } from '../../actions/property';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 
 const AddHouse =({addHouse})=>{
+    let navigation = useNavigate();
     const [error,setError] = useState(false);
     const [success,setSuccess] = useState(false);
 
@@ -51,6 +53,7 @@ const AddHouse =({addHouse})=>{
         console.log("handle submit called")
         e.preventDefault();
         addHouse({ price, noOfFloors, type, landArea, isSold, previewSource})
+        navigation("/feed")
     }
 
     const setNumFloorsValue = e=>{
