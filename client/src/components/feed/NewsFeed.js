@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import Card from './Card';
+import FeedCard from './FeedCard';
 import { Jumbo } from '../';
-import { getLands,getHouses,getSpaces} from '../../actions/property';
+import { getLands, getHouses, getSpaces} from '../../actions/property';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Select from 'react-select'
@@ -56,12 +56,12 @@ const NewsFeed = ({ getLands, getHouses, getSpaces, lands, houses , spaces }) =>
       </div>
       <h2 className='mb-4'>Latest Posted</h2>
       <div className='row' style={CardDivStyle}>
-        {lands.map((property, i) => {
-          return <Card key={i} property={property} />;
+        {lands && lands.map((property, i) => {
+          return <FeedCard key={i} property={property} />;
         })}
       </div>
       <div>
-        {houses.map((land, i) => {
+        {houses && houses.map((land, i) => {
           return (
             <div>
               <p>
@@ -79,7 +79,6 @@ const NewsFeed = ({ getLands, getHouses, getSpaces, lands, houses , spaces }) =>
 
 NewsFeed.propTypes = {
   getLands: PropTypes.func.isRequired,
-  //property: PropTypes.object.isRequired,
   getHouses : PropTypes.func.isRequired,
   getSpaces : PropTypes.func.isRequired
 };
@@ -91,5 +90,3 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, { getLands, getHouses, getSpaces })(NewsFeed);
-
-// export default NewsFeed;

@@ -286,9 +286,9 @@ export const addHouse = (props) => async dispatch => {
         }
     }
 
-    const { owner, location, ownerType, price, noOfFloors,type,landArea, isSold } = props;
+    const { owner, location, ownerType, price, noOfFloors, type, landArea, isSold } = props;
     
-    const body = JSON.stringify({ owner, location, ownerType, price, noOfFloors,type,landArea, isSold });
+    const body = JSON.stringify({ owner, location, ownerType, price, noOfFloors, type, landArea, isSold });
     try {
         
         const res = await axios.post(`http://localhost:5000/api/addProp/addHouse`, body, config);

@@ -18,13 +18,13 @@ const AddHouse =({addHouse})=>{
     const [areaName,setAreaName] = useState('')
     const [district,setDistrict] = useState('')
     const [division,setDivision] = useState('')
-    const [type,setType] = useState('')
+    const [type,setType] = useState('residential')
     const [noOfFloors,setNumFloors] = useState('')
     const isSold = false;
     const handleSubmit = (e)=>{
         console.log("handle submit called")
         e.preventDefault();
-        addHouse({ price, noOfFloors,type,landArea,isSold})
+        addHouse({ price, noOfFloors, type, landArea, isSold})
     }
 
     const setNumFloorsValue = e=>{

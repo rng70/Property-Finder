@@ -5,7 +5,7 @@ import { getSingleItem } from '../../actions/property';
 import { useParams } from 'react-router-dom';
 
 const SingleComponent = ({ getSingleItem, singleItem }) => {
-    const { id } = useParams;
+    const { id } = useParams();
 
     useEffect(() => {
         getSingleItem(id);

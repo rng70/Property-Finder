@@ -18,7 +18,7 @@ export { default as AddHouse } from './add/AddHouse';
 export { default as AddSpace } from './add/AddSpace';
 export { default as NewsFeed } from './feed/NewsFeed';
 export { default as CardImage } from './feed/CardImage';
-export { default as FeedCard } from './feed/Card';
+export { default as FeedCard } from './feed/FeedCard';
 export { default as Footer } from './layout/Footer';
 export { default as UserDashboard } from './dashboard/UserDashboard';
 export { default as Carousel } from './layout/Carousel';

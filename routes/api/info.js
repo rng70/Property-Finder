@@ -10,8 +10,8 @@ const auth = require('../../middleware/auth');
 const { check, validationResult } = require('express-validator');
 
 /**
- * @route   GET api/posts
- * @desc    Get all post
+ * @route   GET api/info
+ * @desc    Get all posts related to lands, houses, and spaces
  * @access  Conditionaloy Public
  */
 router.get('/', auth, async (req, res) => {
@@ -30,33 +30,14 @@ router.get('/', auth, async (req, res) => {
     }
 });
 
-router.get('/:id', auth, async (req, res) => {
-    try {
-        const id = req.params.id;
-        let item = await Land.findById(id);
-        if (!item) {
-            item = await House.findById(id);
-            if (!item) {
-                item = await Space.findById(id);
-                if (!item) {
-                    return res.status(404).json({ msg: 'Item not found' });
-                }
-            }
-        }
-
-        res.json(item);
-    } catch (err) {
-        console.error(err.message);
-        res.status(500).send('Server Error');
-    }
-});
-
 router.get('/getLands', auth, async (req, res) => {
     try {
         const lands = await Land.find().sort({ date: -1 });        
 
+        console.log("Lands ", lands);
         res.json(lands);
     } catch (err) {
+        console.log("WTF going on")
         console.error(err.message);
         res.status(500).send('Server Error');
     }
@@ -264,5 +245,28 @@ router.delete('/space/:id', auth, async (req, res) => {
         res.status(500).send('Server Error');
     }
 });
+
+
+router.get('/:id', auth, async (req, res) => {
+    try {
+        const id = req.params.id;
+        let item = await Land.findById(id);
+        if (!item) {
+            item = await House.findById(id);
+            if (!item) {
+                item = await Space.findById(id);
+                if (!item) {
+                    return res.status(404).json({ msg: 'Item not found' });
+                }
+            }
+        }
+
+        res.json(item);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
 
 module.exports = router;
