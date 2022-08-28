@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types';
-import { connect } from 'redux-thunk';
+import { connect } from 'react-redux';
 import { getSingleItem } from '../../actions/property';
 import { useParams } from 'react-router-dom';
 

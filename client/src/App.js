@@ -19,6 +19,9 @@ import {
   NewsFeed,
   PrivateOutlet,
   Dashboard,
+  AgencySignUp,
+  UserSignUp,
+  OwnerSignUp
 } from './components';
 import setAuthToken from './utils/setAuthToken';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -60,6 +63,9 @@ const App = () => {
               <Route path='/login/agency' element={<AgencySignIn />} />
               <Route path='/login/owner' element={<OwnerSignIn />} />
               <Route path='/login/user' element={<UserSignIn />} />
+              <Route path='/register/agency' element={<AgencySignUp />} />
+              <Route path='/register/owner' element={<OwnerSignUp />} />
+              <Route path='/register/user' element={<UserSignUp />} />
               <Route path='/*' element={<PrivateOutlet />}>
                 <Route path='dashboard' element={<Dashboard />} />
               </Route>

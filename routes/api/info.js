@@ -25,7 +25,7 @@ router.get('/', auth, async (req, res) => {
 
         res.json(allPosts);
     } catch (err) {
-        console.err(err.message);
+        console.error(err.message);
         res.status(500).send('Server Error');
     }
 });
@@ -46,7 +46,7 @@ router.get('/:id', auth, async (req, res) => {
 
         res.json(item);
     } catch (err) {
-        console.err(err.message);
+        console.error(err.message);
         res.status(500).send('Server Error');
     }
 });
@@ -57,7 +57,7 @@ router.get('/getLands', auth, async (req, res) => {
 
         res.json(lands);
     } catch (err) {
-        console.err(err.message);
+        console.error(err.message);
         res.status(500).send('Server Error');
     }
 });
@@ -68,7 +68,7 @@ router.get('/getHouses', auth, async (req, res) => {
 
         res.json(houses);
     } catch (err) {
-        console.err(err.message);
+        console.error(err.message);
         res.status(500).send('Server Error');
     }
 });
@@ -79,7 +79,7 @@ router.get('/getSpaces', auth, async (req, res) => {
 
         res.json(spaces);
     } catch (err) {
-        console.err(err.message);
+        console.error(err.message);
         res.status(500).send('Server Error');
     }
 });
@@ -107,7 +107,7 @@ router.get('/post/:id', auth, async (req, res) => {
 
         return res.json(post);
     } catch (err) {
-        console.err(err.message);
+        console.error(err.message);
         if (err.kind === 'ObjectId') {
             return res.status(404).json({ msg: 'Post not found with this id' });
         }
@@ -128,7 +128,7 @@ router.get('/land/:id', auth, async (req, res) => {
         }
         res.json(post);
     } catch (err) {
-        console.err(err.message);
+        console.error(err.message);
         if (err.kind === 'ObjectId') {
             return res.status(404).json({ msg: 'Land not found' });
         }
@@ -149,7 +149,7 @@ router.get('/house/:id', auth, async (req, res) => {
         }
         res.json(post);
     } catch (err) {
-        console.err(err.message);
+        console.error(err.message);
         if (err.kind === 'ObjectId') {
             return res.status(404).json({ msg: 'House not found' });
         }
@@ -170,7 +170,7 @@ router.get('/space/:id', auth, async (req, res) => {
         }
         res.json(post);
     } catch (err) {
-        console.err(err.message);
+        console.error(err.message);
         if (err.kind === 'ObjectId') {
             return res.status(404).json({ msg: 'Space not found' });
         }

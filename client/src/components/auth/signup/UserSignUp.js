@@ -1,8 +1,5 @@
-import Head from "next/head";
-import Image from 'next/image'
-import styles from "../../styles/UserSignUp.module.css";
+import styles from "./SignUpStyle.module.css";
 import {useState } from 'react';
-import {useRouter} from 'next/router';
 
 const UserSignUp = (props) => {
 

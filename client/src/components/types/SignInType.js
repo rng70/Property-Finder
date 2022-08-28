@@ -19,7 +19,7 @@ const SingInType = (props) => {
                   key={i}
                   title={singleCard.title}
                   description={singleCard.description}
-                  href={`/login/${singleCard.hrefIdSignIn}`}
+                  href={`/login/${singleCard.href}`}
                   btnTitle={addStr(singleCard.buttonTitle, 5, 'in ')}
                   className={styles.card}
                 />

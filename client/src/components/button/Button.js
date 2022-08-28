@@ -7,6 +7,7 @@ const Button = (props) => {
   const navigationTo = props.href;
 
   const handleClick = () => {
+    // console.log("navigation to ===> ", navigationTo)
     navigation(navigationTo);
   }
     

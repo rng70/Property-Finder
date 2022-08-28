@@ -1,9 +1,8 @@
-import Head from "next/head";
-import Image from 'next/image'
-import styles from "../../styles/UserSignUp.module.css";
+
+import styles from "./SignUpStyle.module.css";
 import {useState } from 'react';
-import { useRouter } from 'next/router';
 import { registerAgency } from '../../actions/auth';
+import { useRouter } from 'react-router-dom';
 
 
 const UserSignUp = () => {
@@ -68,12 +67,6 @@ const UserSignUp = () => {
 
     return( 
     <div className={styles.container}>
-        <Head>
-            <title>
-                PropertyFinder User Sign Up
-            </title>
-        </Head>
-
         <header className={styles.header}>
             <div className={styles.headerWrapper}>
                 <a className={styles.logoLink} href="/">
@@ -85,7 +78,7 @@ const UserSignUp = () => {
             </div>
         </header>
 
-        <form className="form" onSubmit={e => onSubmit(e)}>
+        <form className="form">
             <main className={styles.main}>
                 
                 <div className={styles.mainWrapper}>

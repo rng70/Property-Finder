@@ -1,12 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Card from './Card';
 import { Jumbo } from '../';
 import { getLands,getHouses,getSpaces} from '../../actions/property';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Select from 'react-select'
-import './style.css'
-import { useState } from 'react';
+import './style.css';
 
 const NewsFeed = ({ getLands, getHouses, getSpaces, lands, houses , spaces }) => {
   useEffect(() => {
@@ -19,8 +18,8 @@ const NewsFeed = ({ getLands, getHouses, getSpaces, lands, houses , spaces }) =>
   //later will be fetched from database
   const description = 'See what are posted by our community to find your suitable place!';
   console.log("lands here ",lands);
-  //console.log("houses here ",houses);
-  //console.log("spaces herer ",spaces);
+  console.log("houses here ", houses);
+  console.log("spaces herer ",spaces);
 
 
   const [selectedArea, setSelectedArea] = useState();
@@ -35,7 +34,6 @@ const NewsFeed = ({ getLands, getHouses, getSpaces, lands, houses , spaces }) =>
   const  handleSelect= (data)=> {
     setSelectedArea(data);
   }
-
 
   const CardDivStyle = {
     objectFit: "cover",
@@ -81,7 +79,7 @@ const NewsFeed = ({ getLands, getHouses, getSpaces, lands, houses , spaces }) =>
 
 NewsFeed.propTypes = {
   getLands: PropTypes.func.isRequired,
-  property: PropTypes.object.isRequired,
+  //property: PropTypes.object.isRequired,
   getHouses : PropTypes.func.isRequired,
   getSpaces : PropTypes.func.isRequired
 };

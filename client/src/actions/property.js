@@ -137,12 +137,14 @@ export const getSpaces = () => async dispatch => {
 
     try {
         const res = await axios.get(`http://localhost:5000/api/info/getSpaces`, config);
+        console.log(res)
 
         dispatch({
         type: GET_SPACES,
         payload: res.data
         });
     } catch (err) {
+        console.log(err);
         dispatch({
         type: GET_SPACES_FAIL,
         payload: { msg: err.response.statusText, status: err.response.status }

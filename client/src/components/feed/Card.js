@@ -53,14 +53,14 @@ const FeedCard = (props) => {
     return (
         <div className="col-md-3 col-sm-4 col-xs-12">
             <div className="card">
-                {/* <img
+                <img
                     //src={`${API}/product/photo/${product._id}`}
                     src="https://picsum.photos/seed/picsum/200/300"
                     alt={product.price}
                     style={imgStyle}
                     className="card-img-top"
-                /> */}
-                {product.image && product.image.map((im, i) => (
+                />
+                {/* {product.image && product.image.map((im, i) => (
                     <Image
                         key={i}
                         cloudName={"dj33aqcp1"}
@@ -69,7 +69,7 @@ const FeedCard = (props) => {
                         crop="scale"
                         style={imgStyle}
                     />))
-                }
+                } */}
                 <div className="card-body">
                     <div style={{ minHeight: "3em" }}>
                         <p style={titleStyle}>{product.area}</p>
