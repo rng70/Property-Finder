@@ -1,13 +1,17 @@
 import styles from "./SignUpStyle.module.css";
 import {useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-const UserSignUp = (props) => {
+import { registerOwner } from '../../../actions/auth'
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
+const OwnerSignUp = ({registerOwner, isAuthenticated}) => {
     let navigation = useNavigate();
 
     //for dispalying user message about valid email input
-    // const [emailMsg,setEmailMsg] = useState('')
-    // const [nameMsg, setNameMsg] = useState('');
-    // const [passMsg2, setPassMsg2] = useState('');
+    const [emailMsg,setEmailMsg] = useState('')
+    const [nameMsg, setNameMsg] = useState('');
+    const [passMsg2, setPassMsg2] = useState('');
     // const [licenseMsg, setLicenseMsg] = useState('');
     const [userMsg, setUserMsg] = useState('')
 
@@ -21,30 +25,34 @@ const UserSignUp = (props) => {
         confirmPass: ''
     })
 
-    const { firstName,lastName, email,phone,nid,password } = formData;
+    const { firstName,lastName, email,phone,nid,password,confirmPass } = formData;
 
     const onChange = async e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
 
-    const handleSignup = (event) =>{
-        //setUserMsg('');
-        // check if email exists from database
-        if(email){
-            //route to dashboard
-            const emailFromDB = "tanin@gmail.com";
-            if(email===emailFromDB){
-                //route to dashboard
-                //router.push("/");
-            }else{
-                setUserMsg('Something went wrong logging in');
-            }
-        }
-        else{
-            //if email is empty then show the error msg
-            setUserMsg("Enter a valid email address ")
-        }
-        event.preventDefault();  
-    }
+    const handleSignup = (event) => {
+      event.preventDefault();
+      
+      // check if email exists from database
+      if (!email) {
+          setEmailMsg('Email is required');
+      } else if (!firstName) {
+          setNameMsg('Name is required');
+      } else if (!password || !confirmPass) {
+          setPassMsg2('Password is required');
+      } else{
+          if (password !== confirmPass) {
+              setPassMsg2('Password mismatch! Please enter valid password');
+          } else {
+            console.log("calling")
+              registerOwner({ firstName, lastName, email,phone,nid,password });
+          }
+      }  
+  }
+
+  if (isAuthenticated) {
+    navigation('/feed');
+  }
 
     return( 
     <div className={styles.container}>
@@ -88,11 +96,13 @@ const UserSignUp = (props) => {
 
                 <input type="text" name="nid" value={nid} placeholder="NID" className={styles.emailInput} onChange={e => onChange(e)}/>
 
-                <p className={styles.userMsg} ></p>
+                <input type="password" name="password" value={password} placeholder="Password" className={styles.emailInput} onChange={e => onChange(e)}/>
 
-                <input type="text" name="password" value={password} placeholder="Password" className={styles.emailInput} onChange={e => onChange(e)}/>
+                <p className={styles.userMsg} >{passMsg2}</p>
 
-                <p className={styles.userMsg} ></p>
+                <input type="password" name="confirmPass" value={confirmPass} placeholder="Confirm Password" className={styles.emailInput} onChange={e => onChange(e)}/>
+
+                <p className={styles.userMsg} >{passMsg2}</p>
 
                 <button onClick = {handleSignup} className={styles.loginBtn}>Sign Up</button>
             </div>
@@ -101,4 +111,13 @@ const UserSignUp = (props) => {
     )
 }
 
-export default UserSignUp;
+OwnerSignUp.propTypes = {
+  registerOwner: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
+}
+
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated,
+})
+
+export default connect(mapStateToProps, { registerOwner })(OwnerSignUp);
