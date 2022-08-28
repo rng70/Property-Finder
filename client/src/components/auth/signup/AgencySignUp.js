@@ -1,8 +1,8 @@
 
 import styles from "./SignUpStyle.module.css";
 import {useState } from 'react';
-import { registerAgency } from '../../actions/auth';
-import { useRouter } from 'react-router-dom';
+import { registerAgency } from '../../../actions/auth';
+//import { useRouter } from 'react-router-dom';
 
 
 const UserSignUp = () => {
@@ -25,7 +25,7 @@ const UserSignUp = () => {
         yearOfEstablishment: Date.now()
     })
 
-    const router = useRouter();
+    //const router = useRouter();
     const { name, email, tradeLicenseNo, password, confirmPass, yearOfEstablishment } = formData;
 
     
@@ -53,7 +53,7 @@ const UserSignUp = () => {
                 // router.push("/");
             } else {
                 registerAgency({ name, email, password, tradeLicenseNo, yearOfEstablishment });
-                router.push('/sellForm');
+                //router.push('/sellForm');
                 // setAlert('Please confirm email address');
             }
         }  
@@ -68,15 +68,19 @@ const UserSignUp = () => {
     return( 
     <div className={styles.container}>
         <header className={styles.header}>
-            <div className={styles.headerWrapper}>
-                <a className={styles.logoLink} href="/">
-                    <div>
-                        <Image src="/static/logo.png" alt="PropertyFinder logo"
-                                width="128px" height="34px"/>    
-                    </div>
-                </a>
+        <div className={styles.headerWrapper}>
+          <a className={styles.logoLink} href='/'>
+            <div>
+              <img
+                src='/static/logo.png'
+                alt='PropertyFinder logo'
+                width='128px'
+                height='34px'
+              />
             </div>
-        </header>
+          </a>
+        </div>
+      </header>
 
         <form className="form">
             <main className={styles.main}>

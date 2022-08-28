@@ -8,7 +8,6 @@ const UserSignUp = (props) => {
     const [email,setEmail] = useState('')
     const [userMsg,setUserMsg] = useState('')
 
-    const router = useRouter();
 
     const handleLoginWIthEmail = (event) =>{
         setUserMsg('');
@@ -18,7 +17,7 @@ const UserSignUp = (props) => {
             const emailFromDB = "tanin@gmail.com";
             if(email==emailFromDB){
                 //route to dashboard
-                router.push("/");
+                //router.push("/");
             }else{
                 setUserMsg('Something went wrong logging in');
             }
@@ -37,23 +36,21 @@ const UserSignUp = (props) => {
     
     return( 
     <div className={styles.container}>
-        <Head>
-            <title>
-                PropertyFinder User Sign In
-            </title>
-        </Head>
-
+        
         <header className={styles.header}>
-            <div className={styles.headerWrapper}>
-                <a className={styles.logoLink} href="/">
-                    <div>
-                        <Image src="/static/logo.png" alt="PropertyFinder logo"
-                                width="128px" height="34px"/>    
-                    </div>
-                </a>
+        <div className={styles.headerWrapper}>
+          <a className={styles.logoLink} href='/'>
+            <div>
+              <img
+                src='/static/logo.png'
+                alt='PropertyFinder logo'
+                width='128px'
+                height='34px'
+              />
             </div>
-        </header>
-
+          </a>
+        </div>
+      </header>
 
         <main className={styles.main}>
             <div className={styles.mainWrapper}>
