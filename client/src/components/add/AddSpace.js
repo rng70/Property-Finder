@@ -8,36 +8,36 @@ import { useNavigate } from 'react-router-dom';
 const AddSpace = ({addSpace}) =>{
     let navigation = useNavigate();
     const [formData, setFormData] = useState({
-        area: '54321',
-        price: '12345',
-        plot: '',
-        road: '',
-        block: '',
-        postCode: '',
-        areaName: '',
-        district: '',
-        division: '',
+        area: '5432001',
+        price: '123450000',
+        plot: '12',
+        road: '15',
+        block: 'E',
+        postCode: '1200',
+        areaName: 'Kakrail',
+        district: 'Chittagong',
+        division: 'Rajshahi',
         type: 'residential',
         sellType: 'rent',
         noOfRooms: '1',
-        noOfWashrooms: '',
-        noOfLivingRooms: '',
-        apartmentNo: '',
-        noOfBalcony: '',
+        noOfWashrooms: '2',
+        noOfLivingRooms: '1',
+        apartmentNo: '4',
+        noOfBalcony: '3',
         hasLift: true,
         parkingSpace: true,
-        noOfKitchens: '',
-        noOfDiningRooms: '',
-        noOfServentRooms: '',
-        noOfFloors: '',
+        noOfKitchens: '1',
+        noOfDiningRooms: '2',
+        noOfServentRooms: '1',
+        noOfFloors: '12',
         whichFloors: '2',
         isAvailable: true,
         hasSecurityGuard: true,
         location: null,
-        spaceDetails: " ",
+        spaceDetails: "South facing apartment ",
     })
 
-    const { location, price, sellType, type, area, noOfRooms, noOfKitchens, noOfWashrooms, noOfDiningRooms, noOfLivingRooms, noOfServentRooms, apartmentNo, noOfFloors, hasLift, hasSecurityGuard, noOfBalcony, parkingSpace, isAvailable, spaceDetails, whichFloors, plot, road, block, district, division, postCode, areaName } = formData;
+    const { area, price, sellType, type,  noOfRooms, noOfKitchens, noOfWashrooms, noOfDiningRooms, noOfLivingRooms, noOfServentRooms, apartmentNo, noOfFloors, hasLift, hasSecurityGuard, noOfBalcony, parkingSpace, isAvailable, spaceDetails, whichFloors, plot, road, block, district, division, postCode, areaName } = formData;
 
     
     const [fileInputState, setFileInputState] = useState('');
@@ -67,7 +67,7 @@ const AddSpace = ({addSpace}) =>{
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        addSpace({ price, sellType, type, area, noOfRooms, isAvailable, whichFloors, previewSource });
+        addSpace({ area, price, sellType, type,  noOfRooms, noOfKitchens, noOfWashrooms, noOfDiningRooms, noOfLivingRooms, noOfServentRooms, apartmentNo, noOfFloors, hasLift, hasSecurityGuard, noOfBalcony, parkingSpace, isAvailable, spaceDetails, whichFloors, plot, road, block, district, division, postCode, areaName });
         navigation("/feed");
     }
 
@@ -180,6 +180,9 @@ const AddSpace = ({addSpace}) =>{
 
                     <label className="text-muted">Division</label>
                     <input type="text" className="form-control" name='division' value={division} autoFocus onChange={(e) => onChange(e)}></input>
+                    
+                    <label className="text-muted">Additional Description</label>
+                    <input type="text" className="form-control" name='spaceDetails' value={spaceDetails} autoFocus onChange={(e) => onChange(e)}></input>
                     
                     <label className="text-muted">Upload photos</label>
                         <input type="file" id="myfile" name="myfile" value={fileInputState} onChange={handleFileInputChange}  className="form-control" multiple="multiple"/> 

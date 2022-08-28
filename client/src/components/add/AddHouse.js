@@ -11,17 +11,19 @@ const AddHouse =({addHouse})=>{
     const [success,setSuccess] = useState(false);
 
     //form data
-    const [landArea,setArea] = useState('')
-    const [price,setPrice] = useState('')
-    const [plot,setPlot] = useState('')
-    const [road,setRoad] = useState('')
-    const [block,setBlock] = useState('')
-    const [postCode,setPostCode] = useState('')
-    const [areaName,setAreaName] = useState('')
-    const [district,setDistrict] = useState('')
-    const [division,setDivision] = useState('')
+    const [landArea,setArea] = useState('1250')
+    const [price,setPrice] = useState('12000000')
+    const [plot,setPlot] = useState('22')
+    const [road,setRoad] = useState('25')
+    const [block,setBlock] = useState('B')
+    const [postCode,setPostCode] = useState('1219')
+    const [areaName,setAreaName] = useState('Dhanmondi')
+    const [district,setDistrict] = useState('Dhaka')
+    const [division,setDivision] = useState('Dhaka')
     const [type,setType] = useState('residential')
-    const [noOfFloors,setNumFloors] = useState('')
+    const [contactNo,setContactNo] = useState('017546456131')
+    const [parkingSpaceArea,setparkingSpaceArea] = useState('1200')
+    const [noOfFloors,setNumFloors] = useState('12')
     const isSold = false;
 
     const [fileInputState, setFileInputState] = useState('');
@@ -52,12 +54,15 @@ const AddHouse =({addHouse})=>{
     const handleSubmit = (e)=>{
         console.log("handle submit called")
         e.preventDefault();
-        addHouse({ price, noOfFloors, type, landArea, isSold, previewSource})
+        addHouse({ price, noOfFloors, type, landArea, isSold,parkingSpaceArea,plot,road,postCode,areaName,district,division,contactNo, previewSource})
         navigation("/feed")
     }
 
     const setNumFloorsValue = e=>{
         setNumFloors(e.target.value);
+    }
+    const setContactNoValue = e=>{
+        setContactNo(e.target.value);
     }
     const setTypeValue = e =>{
         setType(e.target.value);
@@ -89,6 +94,9 @@ const AddHouse =({addHouse})=>{
     const setDivisionValue = e =>{
         setDivision(e.target.value)
     }
+    const setparkingSpaceAreaValue = e =>{
+        setparkingSpaceArea(e.target.value);
+    }
     return (
         <div >
             <Jumbo/>
@@ -107,6 +115,9 @@ const AddHouse =({addHouse})=>{
                     
                     <label className="text-muted">Number of Floors</label>
                     <input type="text" className="form-control" value={noOfFloors} autoFocus onChange={setNumFloorsValue}></input>
+                    
+                    <label className="text-muted">Parking Area(sq.feet)</label>
+                    <input type="text" className="form-control" value={parkingSpaceArea} autoFocus onChange={setparkingSpaceAreaValue}></input>
 
                     <label className="text-muted">Price</label>
                     <input type="text" className="form-control"  autoFocus value={price} onChange={setPriceValue}></input>
@@ -135,6 +146,9 @@ const AddHouse =({addHouse})=>{
 
                     <label className="text-muted">Division</label>
                     <input type="text" className="form-control" value={division} autoFocus onChange={setDivisionValue}></input>
+                    
+                    <label className="text-muted">Contact Number</label>
+                    <input type="text" className="form-control" value={contactNo} autoFocus onChange={setContactNoValue}></input>
                     
                     <label className="text-muted">Upload photos</label>
                     <input type="file" id="myfile" name="myfile" value={fileInputState} onChange={handleFileInputChange}  className="form-control" multiple="multiple"/> 

@@ -44,6 +44,9 @@ const userSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'location'
     },
+    userType: {
+        type : String
+    },
 });
 
 module.exports = User = mongoose.model('user', userSchema);

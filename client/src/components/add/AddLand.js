@@ -18,6 +18,7 @@ const AddLand = ({addLand}) =>{
         district: 'Dhaka',
         division: 'Dhaka',
         landDetails : 'Cornenr plot',
+        contactNo : '0171115987',
         isSold: false,
         
     })
@@ -49,11 +50,11 @@ const AddLand = ({addLand}) =>{
 
     const onChange = async (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-    const { landArea, price, plot, road, block, postCode, areaName, district, division, isSold,landDetails } = formData;
+    const { landArea, price, plot, road, block, postCode, areaName, district, division, isSold, contactNo, landDetails } = formData;
 
     const handleSubmit = (e)=>{
         e.preventDefault();
-        addLand({landArea, price, plot, road, block, postCode, areaName, district, division, isSold,landDetails})
+        addLand({landArea, price, plot, road, block, postCode, areaName, district, division, isSold, contactNo, landDetails,previewSource})
         navigation("/feed")
     }
 
@@ -91,9 +92,11 @@ const AddLand = ({addLand}) =>{
                     <label className="text-muted">District</label>
                     <input type="text" className="form-control" name='district' value={district} autoFocus onChange={(e) => onChange(e)}></input>
                     
-
                     <label className="text-muted">Division</label>
                     <input type="text" className="form-control" name='division' value={division} autoFocus onChange={(e) => onChange(e)}></input>
+                    
+                    <label className="text-muted">Contact Number</label>
+                    <input type="text" className="form-control" name='contactNo' value={contactNo} autoFocus onChange={(e) => onChange(e)}></input>
                     
                     <label className="text-muted">Additional Description</label>
                     <input type="text" className="form-control" name='landDetails' value={landDetails} autoFocus onChange={(e) => onChange(e)}></input>
