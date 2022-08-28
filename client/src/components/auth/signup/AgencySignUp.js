@@ -2,30 +2,28 @@
 import styles from "./SignUpStyle.module.css";
 import {useState } from 'react';
 import { registerAgency } from '../../../actions/auth';
-//import { useRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 const UserSignUp = () => {
-
+    let navigation = useNavigate();
     //for dispalying user message about valid email input
     // keeping state using react hooks
     const [emailMsg,setEmailMsg] = useState('')
     const [nameMsg, setNameMsg] = useState('');
-    const [passMsg, setPassMsg] = useState('');
     const [passMsg2, setPassMsg2] = useState('');
     const [licenseMsg, setLicenseMsg] = useState('');
-    const [year, setYear] = useState('');
+    const [year, setYear] = useState('')
     
     const [formData, setFormData] = useState({
-        name: 'jkjfasdfj',
-        email: 'sdfkjasldjf@gajg.com',
+        name: 'Homeland',
+        email: 'homeland@gmail.com',
         password: '123456',
         confirmPass: '123456',
-        tradeLicenseNo: 'ertwertwertwert',
+        tradeLicenseNo: '170506817050',
         yearOfEstablishment: Date.now()
     })
 
-    //const router = useRouter();
     const { name, email, tradeLicenseNo, password, confirmPass, yearOfEstablishment } = formData;
 
     
@@ -102,7 +100,7 @@ const UserSignUp = () => {
                     <p className={styles.userMsg} >{licenseMsg}</p>
                             
                     <input type="password" name="password" value={password}  placeholder="Password" className={styles.emailInput} onChange={e => onChange(e)} />
-                    <p className={styles.userMsg} >{passMsg}</p>
+                    <p className={styles.userMsg} >{passMsg2}</p>
                         
                     <input type="password" name="confirmPass" value={confirmPass}  placeholder="Confirm Pass" className={styles.emailInput} onChange={e => onChange(e)} />
                         <p className={styles.userMsg} >{passMsg2}</p>

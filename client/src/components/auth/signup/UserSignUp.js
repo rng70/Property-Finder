@@ -1,21 +1,35 @@
 import styles from "./SignUpStyle.module.css";
 import {useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const UserSignUp = (props) => {
-
-    //for dispalying user message about valid email input
+    let navigation = useNavigate();
+    //for dispalying user message about    valid email input
     // keeping state using react hooks
-    const [email,setEmail] = useState('')
     const [userMsg,setUserMsg] = useState('')
 
 
-    const handleLoginWIthEmail = (event) =>{
+    const [formData, setFormData] = useState({
+        firstName: '',
+        lastName : "",
+        email: '',
+        phone : "",
+        nid : "",
+        password: '',
+        confirmPass: ''
+    })
+
+    const { firstName,lastName, email,phone,nid,password } = formData;
+
+    const onChange = async e => setFormData({ ...formData, [e.target.name]: e.target.value });
+
+    const handleSignup = (event) =>{
         setUserMsg('');
         // check if email exists from database
         if(email){
             //route to dashboard
             const emailFromDB = "tanin@gmail.com";
-            if(email==emailFromDB){
+            if(email===emailFromDB){
                 //route to dashboard
                 //router.push("/");
             }else{
@@ -29,10 +43,6 @@ const UserSignUp = (props) => {
         event.preventDefault();  
     }
 
-    const handleOnChnangeEmail = (event)  =>{
-        const email = event.target.value;
-        setEmail(email);
-    }
     
     return( 
     <div className={styles.container}>
@@ -57,32 +67,32 @@ const UserSignUp = (props) => {
 
                 <h1 className={styles.signinHeader}>Sign Up as User</h1>
                 
-                <input type="text" placeholder="Email Address" className={styles.emailInput} onChange={handleOnChnangeEmail}/>
+                <input type="text" name="email" value={email} placeholder="Email Address" className={styles.emailInput} onChange={e => onChange(e)}/>
                 
                 <p className={styles.userMsg} >{userMsg}</p>
                 
-                <input type="text" placeholder="First Name" className={styles.emailInput} onChange={handleOnChnangeEmail}/>
+                <input type="text" name="firstName" value={firstName} placeholder="First Name" className={styles.emailInput} onChange={e => onChange(e)}/>
 
                 <p className={styles.userMsg} >{userMsg}</p>
                 
-                <input type="text" placeholder="Last Name" className={styles.emailInput} onChange={handleOnChnangeEmail}/>
+                <input type="text" name="lastName" value={lastName} placeholder="Last Name" className={styles.emailInput} onChange={e => onChange(e)}/>
 
                 <p className={styles.userMsg} >{userMsg}</p>
 
-                <input type="text" placeholder="Contact Number" className={styles.emailInput} onChange={handleOnChnangeEmail}/>
+                <input type="text" name="phone" value={phone} placeholder="Contact Number" className={styles.emailInput} onChange={e => onChange(e)}/>
 
                 <p className={styles.userMsg} >{userMsg}</p>
 
-                <input type="text" placeholder="NID" className={styles.emailInput} onChange={handleOnChnangeEmail}/>
+                <input type="text" name="nid" value={nid} placeholder="NID" className={styles.emailInput} onChange={e => onChange(e)}/>
 
                 <p className={styles.userMsg} >{userMsg}</p>
 
 
-                <input type="text" placeholder="Password" className={styles.emailInput} onChange={handleOnChnangeEmail}/>
+                <input type="text" placeholder="Password" className={styles.emailInput} onChange={e => onChange(e)}/>
 
                 <p className={styles.userMsg} >{userMsg}</p>
 
-                <button onClick = {handleLoginWIthEmail} className={styles.loginBtn}>Sign Up</button>
+                <button onClick = {handleSignup} className={styles.loginBtn}>Sign Up</button>
             </div>
         </main>
     </div>
