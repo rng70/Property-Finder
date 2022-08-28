@@ -68,7 +68,7 @@ router.post('/addLand',
                 }
                 type = 'agency';
             }
-
+            console.log("body sireuce ",req.body.previewSource );
             const promises = [];
             const publicIds = [];
             if (req.body.previewSource !== undefined) {
@@ -90,7 +90,14 @@ router.post('/addLand',
                 isSold: req.body.isSold,
                 name: ownerName,
                 owner: req.user.id,
-                image: publicIds
+                image: publicIds,
+                plot : req.body.plot,
+                road : req.body.road,
+                block : req.body.block,
+                postCode : req.body.postCode,
+                areaName: req.body.areaName,
+                district : req.body.district,
+                division : req.body.division
             });
 
             const land = await newLand.save();

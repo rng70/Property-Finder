@@ -9,3 +9,4 @@ export { default as FinanceHome } from './Finance_a_home.jpg';
 export {default as AddTypeSpace} from './space.avif';
 export {default as AddTypeHouse} from './house.avif';
 export {default as AddTypeLand} from './land.jpeg';
+export { default as newsFeed } from './newsfeed.webp';

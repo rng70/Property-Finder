@@ -37,6 +37,27 @@ const landSchema = new mongoose.Schema({
     landDetails: {
         type: String,
         required: false
+    },
+    plot :{
+        type : String
+    },
+    road : {
+        type : String
+    },
+    block :{
+        type : String
+    },
+    postCode : {
+        type : String
+    },
+    areaName : {
+        type : String
+    },
+    district : {
+        type : String
+    },
+    division : {
+        type : String
     }
 }
 );

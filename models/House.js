@@ -46,6 +46,27 @@ const houseSchema = new mongoose.Schema({
         type: [
             String,
         ],
+    },
+    plot :{
+        type : String
+    },
+    road : {
+        type : String
+    },
+    block :{
+        type : String
+    },
+    postCode : {
+        type : String
+    },
+    areaName : {
+        type : String
+    },
+    district : {
+        type : String
+    },
+    division : {
+        type : String
     }
 });
 
