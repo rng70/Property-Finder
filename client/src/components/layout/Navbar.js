@@ -32,22 +32,14 @@ const Navbar = () => {
                         Sell
                     </Link>
                 </li>
-                {/* <li className='nav-item'>
+                <li className='nav-item'>
                     <Link
-                        to="/register"
+                        to="/feed"
                         style={{ textDecoration: 'none' }}
                     >
-                        Register
+                        Newsfeed
                     </Link>
                 </li>
-                <li >
-                    <Link
-                        to="/login"
-                        style={{ textDecoration: 'none' }}
-                    >
-                        Login
-                    </Link>
-                </li> */}
             </ul>
         </nav>
     )

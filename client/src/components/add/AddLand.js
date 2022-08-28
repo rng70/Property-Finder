@@ -3,8 +3,10 @@ import Jumbo from "./Jumbo";
 import { addLand } from '../../actions/property';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 
 const AddLand = ({addLand}) =>{
+    let navigation = useNavigate();
     const [formData, setFormData] = useState({
         landArea: '',
         price: '',
@@ -26,6 +28,7 @@ const AddLand = ({addLand}) =>{
     const handleSubmit = (e)=>{
         e.preventDefault();
         addLand({landArea, price, isSold})
+        navigation("/feed")
     }
 
     return (
