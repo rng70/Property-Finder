@@ -134,10 +134,6 @@ const AddHouse =({addHouse})=>{
                     <input type="text" className="form-control" value={division} autoFocus onChange={setDivisionValue}></input>
                     
                     <label className="text-muted">Upload photos</label>
-                    <input type="file" id="myfile" name="myfile" className="form-control" multiple="multiple"/> 
-                    <p></p>
-                    
-                    <label className="text-muted">Upload photos</label>
                     <input type="file" id="myfile" name="myfile" value={fileInputState} onChange={handleFileInputChange}  className="form-control" multiple="multiple"/> 
                     <p></p>
                     <button className="btn btn-outline-primary">Create Post</button>
