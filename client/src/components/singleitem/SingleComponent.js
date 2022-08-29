@@ -7,6 +7,7 @@ import Jumbo from '../jumbo/Jumbo';
 import {MDBBtn} from 'mdb-react-ui-kit'
 import CardImage from "./CardImage";
 import { Image } from 'cloudinary-react';
+import Footer from '../layout/Footer';
 
 const SingleComponent = ({ getSingleItem, singleItem }) => {
     const { id } = useParams();
@@ -16,7 +17,8 @@ const SingleComponent = ({ getSingleItem, singleItem }) => {
     }, [getSingleItem, id]);
 
     const imgStyle = {
-        height: 250,
+        height: "80%",
+        width : "80%",
         objectFit: "cover",
         objectPosition: "0px 0px"
     }
@@ -75,6 +77,7 @@ const SingleComponent = ({ getSingleItem, singleItem }) => {
             </div>
           
         </div>
+        <Footer/>
     </div>
   )
 }

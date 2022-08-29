@@ -11,6 +11,14 @@ const FeedCard =(props) =>{
     const title =property.areaName;
     const description = "In "+property.areaName
     const price = "Price "+property.price
+
+        const imgStyle = {
+        height: "85%",
+        width : "100%",
+        height: 250,
+        objectFit: "cover",
+        objectPosition: "0px 0px"
+    }
     return(
         <div className="col-4 mb-3 ml-3 mt-3">
             <div className="card">
@@ -18,17 +26,23 @@ const FeedCard =(props) =>{
                     {title}
                 </div>
                 <div className="card-body">
-                    <CardImage />
+                    {/* <CardImage /> */}
+                    {property.image && property.image.map((im, i) => (
+                    <Image
+                        key={i}
+                        cloudName={"dj33aqcp1"}
+                        publicId={im}
+                        width="300"
+                        crop="scale"
+                        style={imgStyle}
+                    />))
+                }
                     <p>{description}</p>
                     <p>{price}</p>
                     <Link to={`/feed/${property._id}` }>
                         <MDBBtn className='mx-2' color='primary'>
                             View Details
                         </MDBBtn>
-                    </Link>
-                    <Link to="/"><MDBBtn className='mx-2' color='success'>
-                        Add to List
-                    </MDBBtn>
                     </Link>
                 </div>
             </div>
