@@ -6,7 +6,7 @@ const CardImage = props =>{
         <div className="product-img">
             <img src="https://picsum.photos/200/300/?blur=1" alt={altText}
                 className='mb-3'
-                style={{height:"40%",width:"100%", aspectRatio: 1 }}/>
+                style={{height:"100%",width:"100%", aspectRatio: 1 }}/>
         </div>
     )
 }

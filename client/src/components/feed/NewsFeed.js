@@ -17,9 +17,9 @@ const NewsFeed = ({ getLands, getHouses, getSpaces, lands, houses , spaces }) =>
   
   //later will be fetched from database
   const description = 'See what are posted by our community to find your suitable place!';
-  console.log("lands here ",lands);
-  console.log("houses here ", houses);
-  console.log("spaces herer ",spaces);
+  // console.log("lands here ",lands);
+  // console.log("houses here ", houses);
+  // console.log("spaces herer ",spaces);
 
 
   const [selectedArea, setSelectedArea] = useState();
@@ -38,7 +38,7 @@ const NewsFeed = ({ getLands, getHouses, getSpaces, lands, houses , spaces }) =>
   const CardDivStyle = {
     objectFit: "cover",
     objectPosition: "0px 0px",
-    marginLeft : 5,
+    marginLeft : "5px",
     marginBottom : "5px",
     marginTop : 5
   }
@@ -54,13 +54,25 @@ const NewsFeed = ({ getLands, getHouses, getSpaces, lands, houses , spaces }) =>
                 isSearchable={true}/>
             </div>
       </div>
-      <h2 className='mb-4'>Latest Posted</h2>
+      <h2 className='mb-4'>Latest Posted Lands</h2>
       <div className='row' style={CardDivStyle}>
         {lands && lands.map((property, i) => {
           return <FeedCard key={i} property={property} />;
         })}
       </div>
-      <div>
+      <h2 className='mb-4'>Latest Apartments/Commercial spaces</h2>
+      <div className='row' style={CardDivStyle}>
+        {spaces && spaces.map((space, i) => {
+          return <FeedCard key={i} property={space} />;
+        })}
+      </div>
+      <h2 className='mb-4'>Latest Posted Houses</h2>
+      <div className='row' style={CardDivStyle}>
+        {houses && houses.map((property, i) => {
+          return <FeedCard key={i} property={property} />;
+        })}
+      </div>
+      {/* <div>
         {houses && houses.map((land, i) => {
           return (
             <div>
@@ -72,7 +84,7 @@ const NewsFeed = ({ getLands, getHouses, getSpaces, lands, houses , spaces }) =>
             </div>
           );
         })}
-      </div>
+      </div> */}
     </div>
   );
 };
