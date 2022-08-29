@@ -1,5 +1,5 @@
 import styles from './InTypeStyle.module.css';
-import { Card } from '../../components';
+import { Card, Footer } from '../../components';
 
 const SingInType = (props) => {
   const addStr = (str, index, strintToAdd) => {
@@ -28,6 +28,7 @@ const SingInType = (props) => {
           </div>
         )}
       </div>
+      <Footer/>
     </div>
   );
 };

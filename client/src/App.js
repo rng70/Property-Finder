@@ -74,7 +74,7 @@ const App = () => {
                             <Route path="/posts/:id" element={<Post />} /> */}
             </Routes>
           </section>
-          <Footer />
+          {/* <Footer /> */}
         </Fragment>
       </BrowserRouter>
     </Provider>

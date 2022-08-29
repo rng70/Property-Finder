@@ -23,10 +23,11 @@ const AgencySignUp = ({registerAgency, isAuthenticated}) => {
         password: '123456',
         confirmPass: '123456',
         tradeLicenseNo: '170506817050',
-        yearOfEstablishment: Date.now()
+        yearOfEstablishment: Date.now(),
+        userType: 'agency'
     })
 
-    const { name, email, tradeLicenseNo, password, confirmPass, yearOfEstablishment } = formData;
+    const { name, email, tradeLicenseNo, password, confirmPass, yearOfEstablishment, userType } = formData;
 
     
 
@@ -48,7 +49,7 @@ const AgencySignUp = ({registerAgency, isAuthenticated}) => {
             if (password !== confirmPass) {
                 setPassMsg2('Password mismatch! Please enter valid password');
             } else {
-                registerAgency({ name, email, password, tradeLicenseNo, yearOfEstablishment });
+                registerAgency({ name, email, password, tradeLicenseNo, yearOfEstablishment, userType });
             }
         }  
     }

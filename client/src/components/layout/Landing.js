@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Landing.module.css';
-import { Carousel, HomeCard, Button } from '../';
+import { Carousel, HomeCard, Button, Footer } from '../';
 import { getIndexCardData } from '../../data/index-card-data';
 
 const Landing = () => {
@@ -37,6 +37,7 @@ const Landing = () => {
           );
         })}
       </div>
+      <Footer/>
     </section>
   );
 };

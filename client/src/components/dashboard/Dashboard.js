@@ -1,8 +1,9 @@
-import {useEffect, useState} from 'react';
-import Sidebar from './Sidebar';
+import {useEffect} from 'react';
 import { getCurrentProfile } from '../../actions/profile';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import styles from './Dashboard.module.css';
+import cls from 'classnames';
  
  
 const Dashboard = ({getCurrentProfile, profile}) => {
@@ -12,17 +13,24 @@ const Dashboard = ({getCurrentProfile, profile}) => {
 
     console.log("Profile ==> ", profile);
 
-    const record = [
-        {
-            id : "1705070",
-            name : "Al Arafat Tanin",
-            email : "tanin70@hotmail.com",
-            username : "rng70",
-            website : 70
+    const record = {
+            id: 'Tanin',
+            name : 'Arafat Tanin',
+            email : "user@propertyfinder.com",
+            username : 'rng70',
+            website: `www.user.com`,
+            avatar: null
         }
-    ]
 
     return (
+        <>
+            {profile && <div className={cls(styles.profile, styles.bgLight)}>
+                <img src={profile.avatar} alt="profileimg" className={styles.roundimg} />
+                <div>
+                    <h2>{profile.name}</h2>
+                    <p>{profile.website}</p>
+                </div>
+            </div>}
     <div class="col main pt-5 mt-3">
         <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
@@ -122,15 +130,17 @@ const Dashboard = ({getCurrentProfile, profile}) => {
                 <h4 className='title mt-3 mb-3 text-center text-secondary'>Data in Chart</h4>
                 <div className="mb-5" style={{height:"300px",width:"400px"}}> </div></div>
         </div>
-    </div>
+    </div></>
     )
 }
 
 Dashboard.propTypes = {
     getCurrentProfile: PropTypes.func.isRequired,
+    profile: PropTypes.object
 }
 
 const mapStateToProps = state => ({
-    profile: state.profile.profile
+    profile: state.profile
 })
+
 export default connect(mapStateToProps, { getCurrentProfile })(Dashboard);

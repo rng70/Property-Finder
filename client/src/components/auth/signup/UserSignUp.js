@@ -24,10 +24,11 @@ const UserSignUp = ({registerUser, isAuthenticated}) => {
         phone : "01711153713",
         nid : "1234567890",
         password: '',
-        confirmPass: ''
+        confirmPass: '',
+        userType: 'user'
     })
 
-    const { firstName,lastName, email,phone,nid,password,confirmPass } = formData;
+    const { firstName, lastName, email, phone, nid, password, confirmPass, userType } = formData;
 
     const onChange = async e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -48,7 +49,7 @@ const UserSignUp = ({registerUser, isAuthenticated}) => {
               setPassMsg2('Password mismatch! Please enter valid password');
           } else {
             console.log("calling")
-              registerUser({ firstName, lastName, email,phone,nid,password });
+              registerUser({ firstName, lastName, email, phone, nid, password, userType });
           }
       }  
   }

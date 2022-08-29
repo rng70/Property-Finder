@@ -22,10 +22,11 @@ const OwnerSignUp = ({registerOwner, isAuthenticated}) => {
         phone : "",
         nid : "",
         password: '',
-        confirmPass: ''
+        confirmPass: '',
+        userType: 'owner',
     })
 
-    const { firstName,lastName, email,phone,nid,password,confirmPass } = formData;
+    const { firstName,lastName, email,phone,nid,password,confirmPass, userType } = formData;
 
     const onChange = async e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -45,7 +46,7 @@ const OwnerSignUp = ({registerOwner, isAuthenticated}) => {
               setPassMsg2('Password mismatch! Please enter valid password');
           } else {
             console.log("calling")
-              registerOwner({ firstName, lastName, email,phone,nid,password });
+              registerOwner({ firstName, lastName, email, phone, nid, password, userType });
           }
       }  
   }

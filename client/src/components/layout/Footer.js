@@ -2,7 +2,7 @@ import React from 'react';
 
 function Footer(props) {
     return(
-    <div className="footer">
+    <div className="footer position-sticky">
         <div className="container">
             <div className="row justify-content-center">             
                 <div className="col-4 offset-1 col-sm-2">
