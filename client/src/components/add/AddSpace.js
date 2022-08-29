@@ -67,7 +67,7 @@ const AddSpace = ({addSpace}) =>{
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        addSpace({ area, price, sellType, type,  noOfRooms, noOfKitchens, noOfWashrooms, noOfDiningRooms, noOfLivingRooms, noOfServentRooms, apartmentNo, noOfFloors, hasLift, hasSecurityGuard, noOfBalcony, parkingSpace, isAvailable, spaceDetails, whichFloors, plot, road, block, district, division, postCode, areaName });
+        addSpace({ area, price, sellType, type,  noOfRooms, noOfKitchens, noOfWashrooms, noOfDiningRooms, noOfLivingRooms, noOfServentRooms, apartmentNo, noOfFloors, hasLift, hasSecurityGuard, noOfBalcony, parkingSpace, isAvailable, spaceDetails, whichFloors, plot, road, block, district, division, postCode, areaName,previewSource });
         navigation("/feed");
     }
 
