@@ -21,7 +21,8 @@ import {
   Dashboard,
   AgencySignUp,
   UserSignUp,
-  OwnerSignUp
+  OwnerSignUp,
+  SingleComponent
 } from './components';
 import setAuthToken from './utils/setAuthToken';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -51,7 +52,7 @@ const App = () => {
               <Route path='/addSpace' element={<AddSpace />} />
               <Route path='/addHouse' element={<AddHouse />} />
               <Route path='/feed' element={<NewsFeed />} />
-              <Route path='/feed/:id' element={<NewsFeed/>} />
+              <Route path='/feed/:id' element={<SingleComponent/>} />
               <Route
                 path='/register'
                 element={<SignUpType cardInfo={cardInfoData} />}

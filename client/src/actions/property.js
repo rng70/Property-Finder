@@ -144,7 +144,7 @@ export const getSpaces = () => async dispatch => {
 
     try {
         const res = await axios.get(`http://localhost:5000/api/info/getSpaces`, config);
-        console.log(res)
+        //console.log(res)
 
         dispatch({
         type: GET_SPACES,
@@ -167,13 +167,15 @@ export const getSingleItem = (id) => async dispatch => {
     }
 
     try {
-        const res = await axios.get(`http://localhost:5000/api/info/${id}`, config);
-
+        console.log("hrerrrrrrrrrrrrrrr")
+        const res = await axios.get(`http://localhost:5000/api/info/feed/${id}`, config);
+        console.log("response gotten!");
         dispatch({
             type: GET_SINGLE_ITEM,
             payload: res.data
         })
     } catch (err) {
+        console.log("error khaise")
         dispatch({
             type: GET_SINGLE_ITEM_FAIL,
             payload: { msg: err.response.statusText, status: err.response.status }
