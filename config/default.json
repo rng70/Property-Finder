@@ -1,9 +1,0 @@
-{
-    "JWT_SECRET": "nothing-is-secret",
-    "MONGO_URI": "mongodb+srv://saadman:1705068@realestatefinder.v2e8p.mongodb.net/?retryWrites=true&w=majority",
-    "GITHUB_CLIENT_ID": "4dfd61e4ee5daaf8c679",
-    "GITHUB_SECRET": "e7bb18c7d991ac1815631f3930383ec5c84a77c2",
-    "CLOUDINARY_API_KEY": "777973579659723",
-    "CLOUDINARY_API_SECRET": "VsUP0oc99ya7wQ2bKoML9kdToU4",
-    "CLOUDINARY_NAME": "dj33aqcp1"
-}
