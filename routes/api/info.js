@@ -247,9 +247,10 @@ router.delete('/space/:id', auth, async (req, res) => {
 });
 
 
-router.get('/:id', auth, async (req, res) => {
+router.get('/feed/:id', auth, async (req, res) => {
     try {
         const id = req.params.id;
+        console.log("info te id ",id);
         let item = await Land.findById(id);
         if (!item) {
             item = await House.findById(id);
